@@ -6,6 +6,8 @@
 define Ke = Character("Kei")
 define K = Character("Kou")
 
+image kei default = "kei_default.png"
+
 # The game starts here.
 
 label start:
