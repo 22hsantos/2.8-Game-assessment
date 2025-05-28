@@ -60,10 +60,15 @@ label start:
         "Pick it up":
             jump good_ending
         "Leave it alone":
-            $ file = open("game/book.txt", "w")
-            $ file.write("You didn't pick up the book.")
-            $ file.close()
-            jump bad_ending
+
+            python:
+                file = open("game/book.txt", "w")
+                file.write("You didn't pick up the book.")
+                file.close()
+                if os.path.exists("game/book.txt"):
+                    renpy.jump("good_ending")
+                else:
+                    renpy.jump("bad_ending")
 
 label good_ending:
     $ book = True

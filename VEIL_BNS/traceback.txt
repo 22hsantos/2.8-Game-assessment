@@ -1,26 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 63, in script
-    $ file = open("game/book.txt", "w")
-  File "game/script.rpy", line 63, in <module>
-    $ file = open("game/book.txt", "w")
+  File "game/script.rpy", line 64, in script
+    python:
+  File "game/script.rpy", line 65, in <module>
+    file = open("game/book.txt", "w")
 FileNotFoundError: [Errno 2] No such file or directory: 'game/book.txt'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 63, in script
-    $ file = open("game/book.txt", "w")
+  File "game/script.rpy", line 64, in script
+    python:
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 63, in <module>
-    $ file = open("game/book.txt", "w")
+  File "game/script.rpy", line 65, in <module>
+    file = open("game/book.txt", "w")
 FileNotFoundError: [Errno 2] No such file or directory: 'game/book.txt'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL_BNS 1.0
-Wed May 28 15:08:57 2025
+Thu May 29 10:18:43 2025
