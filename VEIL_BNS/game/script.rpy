@@ -11,7 +11,7 @@ init python:
     #gets the player's name
     player_name = os.getlogin()
 
-
+#aligns and resizes sprites
 transform scale_sprite:
     zoom 2
     xalign 0.5

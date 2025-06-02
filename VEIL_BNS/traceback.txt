@@ -23,4 +23,4 @@ FileNotFoundError: [Errno 2] No such file or directory: 'game/book.txt'
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL_BNS 1.0
-Thu May 29 10:18:43 2025
+Tue Jun  3 09:10:19 2025
