@@ -37,6 +37,22 @@ default book = False
 
 label start:
 
+    menu:
+        "troubleshoot file creation":
+            jump file_write
+        "Play the story":
+            jump story_start
+
+# shortcut to troubleshoot errors without going through dialogue
+label file_write:
+    u "Hello."
+    menu:
+        "Return to menu":
+            return
+        "Write a file":
+
+label story_start:
+
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
@@ -60,15 +76,7 @@ label start:
         "Pick it up":
             jump good_ending
         "Leave it alone":
-
-            python:
-                file = open("game/book.txt", "w")
-                file.write("You didn't pick up the book.")
-                file.close()
-                if os.path.exists("game/book.txt"):
-                    renpy.jump("good_ending")
-                else:
-                    renpy.jump("bad_ending")
+            jump bad_ending
 
 label good_ending:
     $ book = True
