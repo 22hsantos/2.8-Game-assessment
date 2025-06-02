@@ -51,6 +51,22 @@ label file_write:
             return
         "Write a file":
 
+                python:
+
+                    #absolute path to game directory
+                    file_path = os.path.join(renpy.config.basedir, "game")
+                    
+                    #create and write to file
+                    with open(file_path, "w") as file:
+                        file.write("File created.")
+                    
+                    #check if the file exists
+                    if os.path.exists(file_path):
+                        print("File exists!!!")
+                    else:
+                        print("oh no")
+
+
 label story_start:
 
     # Show a background. This uses a placeholder by default, but you can
