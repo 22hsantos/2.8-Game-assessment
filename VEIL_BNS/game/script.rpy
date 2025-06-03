@@ -16,6 +16,7 @@ init python:
     import os, sys, ctypes
 
     def is_admin():
+
         """
         ctypes.windll - gives acces to windows system libraries
         shell32 (Shell32.dll) - system library that manages shell functions
@@ -35,6 +36,15 @@ init python:
             """
             ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
             sys.exit()#terminates the session
+
+    #absolute path to game directory
+    file_path = os.path.join(renpy.config.basedir, "game", "book.txt")
+                    
+    #check if the file exists
+    file_exists = os.path.exists(file_path)
+
+    if file_exists:
+        os.remove(file_path)
 
     #gets the player's name
     player_name = os.getlogin()
@@ -80,9 +90,6 @@ label file_write:
         "Write a file":
 
                 python:
-
-                    #absolute path to game directory
-                    file_path = os.path.join(renpy.config.basedir, "game", "book.txt")
                     
                     #create and write to file
                     with open(file_path, "w") as file:
@@ -91,10 +98,14 @@ label file_write:
 
                     #check if the file exists
                     file_exists = os.path.exists(file_path)
+
                 if file_exists:
+                    python:
+                        with open(file_path, "r") as file:
+                            file_contents = file.read()
                     u "I wrote a file."
                 else:
-                    "I didn't write a file."
+                    u "I didn't write a file."
 
                 return
 
