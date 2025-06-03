@@ -7,7 +7,29 @@
 
 init python:
     #allows to interact with the operating system
-    import os
+    """
+    ctypes - allows interaction with windows system fn
+    sys - allows access to system-related fn e.g exiting the program
+    os - allows access to file handling and directories
+    """
+
+    import os, sys, ctypes
+
+    def is_admin():
+        """
+        ctypes.windll - gives acces to windows system libraries
+        shell32 (Shell32.dll) - system library that manages shell functions
+        IsUserAnAdmin()  = built in fn inside Shell32.dll that returns True or False
+        """
+        return ctypes.windll.shell32.IsUserAnAdmin()
+
+    if not is_admin():
+        """
+        ShellExecuteW(...) - restarts RenPy with admin privileges
+        "runas" Tells windows ask for permission (pop up window)
+        s
+        """
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
     #gets the player's name
     player_name = os.getlogin()
 

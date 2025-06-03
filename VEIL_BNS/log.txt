@@ -1,18 +1,18 @@
-2025-06-02 21:10:03 UTC
+2025-06-02 21:35:23 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.7.25031702
 
-Early init took 0.29s
-Loading error handling took 0.11s
-Loading script took 0.33s
-Loading save slot metadata took 0.27s
+Early init took 0.22s
+Loading error handling took 0.06s
+Loading script took 0.24s
+Loading save slot metadata took 0.06s
 Loading persistent took 0.00s
-Running init code took 0.17s
-Loading analysis data took 0.04s
+Running init code took 0.09s
+Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.28s
+Reloading save slot metadata took 0.04s
 Index archives took 0.00s
-Dump and make backups took 0.11s
+Dump and make backups took 0.09s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc took 0.10s
@@ -23,14 +23,14 @@ Creating interface object took 0.00s
 Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.00s
-Load screen analysis took 0.09s
+Load screen analysis took 0.07s
 Analyze screens took 0.00s
 Save screen analysis took 0.00s
-Prepare screens took 0.16s
+Prepare screens took 0.19s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
 Running _start took 0.00s
-Interface start took 0.94s
+Interface start took 0.93s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1280, 720)
@@ -45,29 +45,25 @@ Maximum texture size: 4096x4096
 Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.01s
-Load screen analysis took 0.05s
+Load screen analysis took 0.04s
 Analyze screens took 0.00s
 Prepare screens took 0.00s
 Running _start took 0.00s
 
 Full traceback:
-  File "game/script.rpy", line 64, in script
+  File "game/script.rpy", line 54, in script
     python:
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 65, in <module>
-    file = open("game/book.txt", "w")
-FileNotFoundError: [Errno 2] No such file or directory: 'game/book.txt'
+  File "game/script.rpy", line 60, in <module>
+    with open(file_path, "w") as file:
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game'
 
 While running game code:
-  File "game/script.rpy", line 64, in script
+  File "game/script.rpy", line 54, in script
     python:
-  File "game/script.rpy", line 65, in <module>
-    file = open("game/book.txt", "w")
-FileNotFoundError: [Errno 2] No such file or directory: 'game/book.txt'
-Screen sizes: virtual=(1920, 1080) physical=(486, 455) drawable=(486, 455)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(853, 455) drawable=(853, 455)
-Maximum texture size: 4096x4096
+  File "game/script.rpy", line 60, in <module>
+    with open(file_path, "w") as file:
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game'

@@ -1,26 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 64, in script
+  File "game/script.rpy", line 54, in script
     python:
-  File "game/script.rpy", line 65, in <module>
-    file = open("game/book.txt", "w")
-FileNotFoundError: [Errno 2] No such file or directory: 'game/book.txt'
+  File "game/script.rpy", line 60, in <module>
+    with open(file_path, "w") as file:
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 64, in script
+  File "game/script.rpy", line 54, in script
     python:
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 65, in <module>
-    file = open("game/book.txt", "w")
-FileNotFoundError: [Errno 2] No such file or directory: 'game/book.txt'
+  File "game/script.rpy", line 60, in <module>
+    with open(file_path, "w") as file:
+PermissionError: [Errno 13] Permission denied: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL_BNS 1.0
-Tue Jun  3 09:10:19 2025
+Tue Jun  3 09:35:48 2025
