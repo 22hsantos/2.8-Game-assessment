@@ -21,15 +21,21 @@ init python:
         shell32 (Shell32.dll) - system library that manages shell functions
         IsUserAnAdmin()  = built in fn inside Shell32.dll that returns True or False
         """
+        print("hi")
         return ctypes.windll.shell32.IsUserAnAdmin()
 
     if not is_admin():
         """
+
         ShellExecuteW(...) - restarts RenPy with admin privileges
-        "runas" Tells windows ask for permission (pop up window)
-        s
+        "runas" - Tells windows ask for permission (pop up window)
+        sys.executable - restarts Python instance with admin privileges
+        os.path.abspath("renpy.exe") - makes sure that renpy starts from the correct location
+        sys.exit() - 
         """
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
+        sys.exit()#terminates the session
+
     #gets the player's name
     player_name = os.getlogin()
 
@@ -76,7 +82,7 @@ label file_write:
                 python:
 
                     #absolute path to game directory
-                    file_path = os.path.join(renpy.config.basedir, "game")
+                    file_path = os.path.join(renpy.config.basedir, "game", "book.txt")
                     
                     #create and write to file
                     with open(file_path, "w") as file:
