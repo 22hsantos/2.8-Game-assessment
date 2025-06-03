@@ -23,18 +23,18 @@ init python:
         """
         print("hi")
         return ctypes.windll.shell32.IsUserAnAdmin()
+    
+        if not is_admin():
+            """
 
-    if not is_admin():
-        """
-
-        ShellExecuteW(...) - restarts RenPy with admin privileges
-        "runas" - Tells windows ask for permission (pop up window)
-        sys.executable - restarts Python instance with admin privileges
-        os.path.abspath("renpy.exe") - makes sure that renpy starts from the correct location
-        sys.exit() - 
-        """
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
-        sys.exit()#terminates the session
+            ShellExecuteW(...) - restarts RenPy with admin privileges
+            "runas" - Tells windows ask for permission (pop up window)
+            sys.executable - restarts Python instance with admin privileges
+            os.path.abspath("renpy.exe") - makes sure that renpy starts from the correct location
+            sys.exit() - 
+            """
+            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
+            sys.exit()#terminates the session
 
     #gets the player's name
     player_name = os.getlogin()
@@ -87,13 +87,16 @@ label file_write:
                     #create and write to file
                     with open(file_path, "w") as file:
                         file.write("File created.")
-                    
-                    #check if the file exists
-                    if os.path.exists(file_path):
-                        print("File exists!!!")
-                    else:
-                        print("oh no")
+                        file.close()
 
+                    #check if the file exists
+                    file_exists = os.path.exists(file_path)
+                if file_exists:
+                    u "I wrote a file."
+                else:
+                    "I didn't write a file."
+
+                return
 
 label story_start:
 
