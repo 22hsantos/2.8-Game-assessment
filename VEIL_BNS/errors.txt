@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 111: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    $ os.system("taskill /IM notepad.exe /F")
-    ^
+File "game/script.rpy", line 109: invalid syntax
+    subprocess.Popen(['notepad.exe'] {file_path})
+                                      ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Thu Jun  5 12:06:02 2025
+Fri Jun  6 09:56:02 2025
