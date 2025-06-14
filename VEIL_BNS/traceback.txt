@@ -1,26 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "game/script.rpy", line 47, in <module>
-    os.path.remove(file_path)
-AttributeError: module 'ntpath' has no attribute 'remove'
+  File "game/script.rpy", line 92, in script
+    $ os.remove(file_path)
+  File "game/script.rpy", line 92, in <module>
+    $ os.remove(file_path)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\EternalShrine Maiden\\Documents\\DIT work ugh\\2.8-Game-assessment\\VEIL_BNS\\game\\book.txt'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
+  File "game/script.rpy", line 92, in script
+    $ os.remove(file_path)
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 47, in <module>
-    os.path.remove(file_path)
-AttributeError: module 'ntpath' has no attribute 'remove'
+  File "game/script.rpy", line 92, in <module>
+    $ os.remove(file_path)
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\EternalShrine Maiden\\Documents\\DIT work ugh\\2.8-Game-assessment\\VEIL_BNS\\game\\book.txt'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL_BNS 1.0
-Wed Jun  4 11:24:38 2025
+Sun Jun 15 10:19:27 2025

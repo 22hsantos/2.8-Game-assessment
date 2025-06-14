@@ -89,6 +89,7 @@ label file_write:
         u "Book does not exist."
     else:
         u "Book exists"
+        $ os.remove(file_path)
     menu:
         "Return to menu":
             return
@@ -108,7 +109,7 @@ label file_write:
                     python:
                         os.system(f'notepad.exe {file_path}')
                         ctypes.windll.user32.MessageBoxW(None, 
-                        "Unexpected file interference! Please close interfering file before continuing."
+                        "Unexpected error! Press OK to continue the game."
                         ,"Oh No!", 48)
                         os.system("taskkill /IM notepad.exe /F")
                     u "I wrote a file."
