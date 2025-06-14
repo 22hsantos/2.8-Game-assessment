@@ -131,12 +131,13 @@ label story_start:
 
     scene bg default at bg
 
+    scene bg black at bg
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
     play music "LEASE.mp3"
-    
+
     K "(My name is Shujin Kou)"
 
     K "(I’m a third year high school student that has recently transferred to another school"

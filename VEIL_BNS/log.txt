@@ -1,8 +1,8 @@
-2025-06-14 22:55:59 UTC
+2025-06-14 23:04:08 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.7.25031702
 
-Early init took 0.08s
+Early init took 0.07s
 Loading error handling took 0.02s
 Loading script took 0.09s
 Loading save slot metadata took 0.02s
@@ -19,7 +19,7 @@ Initial gc took 0.03s
 DPI scale factor: 1.500000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.22s
+Creating interface object took 0.24s
 Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.00s
@@ -29,24 +29,3 @@ Save screen analysis took 0.00s
 Prepare screens took 0.05s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.00s
-Running _start took 0.00s
-Interface start took 0.23s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce RTX 3060/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 572.83'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(960, 540) drawable=(960, 540)
-Maximum texture size: 4096x4096
-controller: '030000005e040000ff02000000007200' 'Controller (Xbox One For Windows)' 1
-Cleaning stores took 0.00s
-Init translation took 0.00s
-Build styles took 0.00s
-Load screen analysis took 0.02s
-Analyze screens took 0.00s
-Prepare screens took 0.00s
-Running _start took 0.00s
