@@ -135,14 +135,19 @@ label story_start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
+    play music "LEASE.mp3"
+    
+    K "(My name is Shujin Kou)"
 
-    K "My name is Shujin Kou."
+    K "(I’m a third year high school student that has recently transferred to another school"
 
-    K "You will be playing the MVP of VEIL: BENEATH THE SURFACE."
+    K "(Why you ask?) "
 
-    K "(I find a book on the ground)"
+    K "(Because my mom felt like it.)"
 
-    K "(Should I…)"
+    K "(Yeah.)"
+
+    K "(It’s whatever, I’ll just start getting ready for my first day.)"
 
     menu:
         "Pick it up":
