@@ -13,7 +13,7 @@ init python:
     os - allows access to file handling and directories
     """
 
-    import time, os, sys, ctypes
+    import subprocess, time, os, sys, ctypes
 
     def is_admin():
 
@@ -85,10 +85,14 @@ label start:
 # shortcut to troubleshoot errors without going through dialogue
 label file_write:
     u "Hello."
-    if not file_exists:
-        u "Book does not exist."
+
+    if file_exists:
+        u "Book exists."
+        $ os.remove(file_path)
     else:
-        u "Book exists"
+        u "Book does not exist."
+        u "yipeee"
+        
     menu:
         "Return to menu":
             return
@@ -106,10 +110,12 @@ label file_write:
 
                 if file_exists:
                     python:
-                        os.system(f'notepad.exe {file_path}')
-                        ctypes.windll.user32.MessageBoxW(None, 
-                        "Unexpected file interference! Please close interfering file before continuing."
-                        ,"Oh No!", 48)
+                        subprocess.Popen(['notepad.exe', file_path])
+                        ctypes.windll.user32.MessageBoxW(None,
+                        "Unexpected file interference! Please close interfering file before continuing.", 
+                        "Oh No!",
+                        48
+                        )
                         os.system("taskkill /IM notepad.exe /F")
                     u "I wrote a file."
                 else:
