@@ -13,7 +13,7 @@ init python:
     os - allows access to file handling and directories
     """
 
-    import subprocess, time, os, sys, ctypes
+    import time, os, sys, ctypes
 
     def is_admin():
 
@@ -45,12 +45,16 @@ init python:
 
     #removes file
     if file_exists:
-        os.remove(file_path)
+        try:
+            os.remove(file_path)
+            print("File deleted.")
+        except FileNotFoundError:
+            print("Error: File not found.")
+        except PermissionError:
+            print("Error: You don't have permission to delete this file.")
 
     #gets the player's name
     player_name = os.getlogin()
-
-    #dialogue sound effects
 
 
 
@@ -62,22 +66,29 @@ transform scale_sprite:
 
 #aligns bg to centre and sizes up
 transform bg:
-    zoom 3.0
+    zoom 1.5
     xalign 0.5
     yalign 0.5
 
-define Ke = Character("Kei")
-define K = Character("Kou")
+define Ke = Character("Zaigaku Kei")
+define K = Character("Shujin Kou")
 define u = Character("[player_name]")
-
-#Sound effects
+define uk = Character("Unkown")
+define Ka = Character("Takahashi Kagaku")
 
 #Character Sprites
 image kei default = "images/Kei/kei_default.png"
 
+#Kagaku Sprites
+image kagaku sil = "images/Kagaku/kagaku_silhouette.png"
+image kagaku ang = "images/Kagaku/kagaku_angry.png"
+
 #Backgrounds
 image bg hood = "images/backgrounds/bg_neighbourhood.jpeg"
 image bg black = "images/backgrounds/bg_black.jpg"
+image bg hallway = "images/backgrounds/bg_hallway.jpg"
+image bg outside library = "images/backgrounds/bg_outside_library.jpg"
+image bg library = "images/backgrounds/bg_library.jpg"
 
 
 # The game starts here.
@@ -89,6 +100,8 @@ label start:
             jump file_write
         "Play the story":
             jump story_start
+        "Jump to checkpoint":
+            jump checkpoint
 
 # shortcut to troubleshoot errors without going through dialogue
 label file_write:
@@ -146,15 +159,15 @@ label story_start:
 
     
     # START MONDAY
-    K "(My name is Shujin Kou)"
-    K "(I’m a third year high school student that has recently transferred to another school"
+    K "(My name is Shujin Kou.)"
+    K "(I’m a third year high school student that has recently transferred to another school.)"
     K "(Why you ask?) "
     K "(Because my mom felt like it.)"
     K "(Yeah.)"
     K "(It’s whatever, I’ll just start getting ready for my first day.)"
 
     play music "LEASE.mp3"
-    scene bg hood
+    scene bg hood with dissolve
     
     K "I’ve only moved here a few days ago… "
     K "But I have to admit this neighbourhood is way better than my last one."
@@ -182,6 +195,7 @@ label story_start:
 
     stop music
 
+    play sound "sad_trombone.mp3"
     K "(I left my house keys at home.)"
     K "(I let out a long disappointed sigh of defeat.)"
     K "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
@@ -214,7 +228,7 @@ label story_start:
             Attempting to define 'Kei'
             Scanning game directory for 'Kei'
             'Kei' successfully defined.
-            Please close this message once finished.
+            YOU MAY CLOSE THIS MESSAGE.
 
             Windows-10-10.0.26100 AMD64
             Ren'Py 8.3.7.25031702
@@ -234,9 +248,11 @@ label story_start:
             48
             )
             os.system("taskkill /IM notepad.exe /F")
+    else:
+        K "What the heck..."
 
     scene bg hood
-
+    play music "LEASE.mp3"
     K "Huh, I can’t even read this… "
     K "It’s all random measurements."
     K "(I disregard the note and continue walking to my new school.)"
@@ -244,4 +260,65 @@ label story_start:
     jump monday_morning
 
 label monday_morning:
-    K "damn ts pmo fr sybau"
+    scene bg hallway with dissolve
+    play music "sincememo.mp3"
+    play sound "stepping.mp3"
+
+    K "(I was admiring my surroundings while strolling through the hallway.)"
+    K "(It was like everywhere I saw was masterpiece painted by renowned painters.)"
+    K "(After a while, I found myself in front of a familiar feeling door.) "
+    scene bg outside library at bg ,with dissolve
+    K "Ah."
+    K "This must be the library."
+    K "(I was relieved to see a school library so similar to mine.)"
+    K "(That even though I’m in a new place, I'd still have a place to run away and escape reality.)"
+    K "(I gently slid open the door.)"
+
+    scene bg black
+    play sound "stepping.mp3"
+
+    K "(...)"
+
+    K "(The Glass Atlas)"
+    K "(Chronicles of a Vanished Kingdom)"
+    K "(Where the Shadows Dream)"
+    K "Woah…"
+    K "This library has a great selection of books."
+    K "(I couldn’t contain my excitement as I was indulging in my dearly missed paradise.)"
+    K "I wonder if they have-"
+
+    stop sound
+    stop music
+    play sound "bamboo.ogg"
+
+    K "...!"
+
+    play sound "crash.ogg"
+
+    uk "Hey."
+
+    scene bg library with dissolve
+    show kagaku sil at scale_sprite
+    play music "spirited.mp3"
+
+    uk "Hey! Watch where you’re going."
+
+    show kagaku ang with dissolve
+    K ""
+    K ""
+    K ""
+    K ""
+
+label checkpoint:
+
+    menu:
+        u "Checkpoint reached"
+
+        "jump story start":
+            jump story_start
+        
+        "jump monday morning":
+            jump monday_morning
+        
+        "go to main menu":
+            return

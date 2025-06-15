@@ -22,7 +22,7 @@
             Attempting to define 'Kei'
             Scanning game directory for 'Kei'
             'Kei' successfully defined.
-            Please close this message once finished.
+            YOU MAY CLOSE THIS MESSAGE.
 
             Windows-10-10.0.26100 AMD64
             Ren'Py 8.3.7.25031702
