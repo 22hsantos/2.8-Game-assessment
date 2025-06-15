@@ -1,26 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 91, in script
-    $ os.remove(file_path)
-  File "game/script.rpy", line 91, in <module>
-    $ os.remove(file_path)
-FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\book.txt'
+  File "game/script.rpy", line 189, in script
+    Kei "Woah"
+Exception: Sayer 'Kei' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 91, in script
-    $ os.remove(file_path)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 91, in <module>
-    $ os.remove(file_path)
-FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\book.txt'
+  File "game/script.rpy", line 189, in script
+    Kei "Woah"
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 2586, in execute
+    Say.execute(self)
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 583, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 472, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'Kei' is not defined.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
-VEIL_BNS 1.0
-Sun Jun 15 10:02:12 2025
+VEIL: Beneath The Surface 1.0
+Sun Jun 15 16:28:04 2025

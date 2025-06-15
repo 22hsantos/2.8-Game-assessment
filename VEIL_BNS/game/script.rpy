@@ -179,6 +179,9 @@ label story_start:
     K "(Hopefully, luck is on my side and my missing house key was in my left pocket…)"
     K "C’mon, c’mon…!"
     K "(...)"
+
+    stop music
+
     K "(I left my house keys at home.)"
     K "(I let out a long disappointed sigh of defeat.)"
     K "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
@@ -186,16 +189,47 @@ label story_start:
     python:
         #create and write to file
         with open(file_path, "w") as file:
-            file.write(
-            "JCBpZiBub3RlXzEgPT0gVHJ1ZToKICAgICAgVU5VU0VEX0NIQVIgPSBUcnVl"
-            )
+
+            message_1 = r"""
+            [code]
+            I'm sorry, but an uncaught exception occurred.
+
+            While running game code:
+            File "game/script.rpy", line 189, in script
+            Kei "Please help me"
+            Exception: Sayer 'Kei' is not defined.
+
+            -- Full Traceback ------------------------------------------------------------
+
+            Full traceback:
+              File "game/script.rpy", line 189, in script
+                Kei "Please help me"
+              File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 2586, in execute
+                Say.execute(self)
+              File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 583, in execute
+                who = eval_who(self.who, self.who_fast)
+              File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 472, in eval_who
+                raise Exception("Sayer '%s' is not defined." % who)
+            Exception: Sayer 'Kei' is not defined.
+            Attempting to define 'Kei'
+            Scanning game directory for 'Kei'
+            'Kei' successfully defined.
+            Please close this message once finished.
+
+            Windows-10-10.0.26100 AMD64
+            Ren'Py 8.3.7.25031702
+            VEIL: Beneath The Surface 1.0
+            XXX XXX 15 16:28:04 2025
+            [/code]"""
+
+            file.write(message_1)
             file.close()
 
     if file_exists:
         python:
             os.system(f'notepad.exe {file_path}')
             ctypes.windll.user32.MessageBoxW(None,
-            "Unexpected file interference! Please close interfering file before continuing.", 
+            "Unexpected file interference! Please select OK to continue with the game.", 
             "Oh No!",
             48
             )
