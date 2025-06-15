@@ -50,6 +50,21 @@ init python:
     #gets the player's name
     player_name = os.getlogin()
 
+    #dialogue sound effects
+
+    """
+    event parameter - used to determine what is happening at the moment. 
+    if event == text is on screen, run the following code.
+    
+    **kwargs - "Keyword arguments". allows for extra arguments without being defined in the parameters
+
+    """
+    def dialogue(event, **kwargs):
+        if event == "show":
+            renpy.music.play("dialogue.mp3", channel = "sound", loop = True)
+        elif event == "end":
+            renpy.music.stop(channel = "sound", fadeout 0.75)
+
 #aligns and resizes sprites
 transform scale_sprite:
     zoom 2
@@ -62,13 +77,16 @@ transform bg:
     xalign 0.5
     yalign 0.5
 
-
 define Ke = Character("Kei")
 define K = Character("Kou")
 define u = Character("[player_name]")
 
+#Sound effects
+
+#Character Sprites
 image kei default = "images/Kei/kei_default.png"
 
+#Backgrounds
 image bg hood = "images/backgrounds/bg_neighbourhood.jpeg"
 image bg black = "images/backgrounds/bg_black.jpg"
 
@@ -138,21 +156,25 @@ label story_start:
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
 
-    play music "LEASE.mp3"
-
+    
+    # MONDAY MORNING
     K "(My name is Shujin Kou)"
-
     K "(I’m a third year high school student that has recently transferred to another school"
-
     K "(Why you ask?) "
-
     K "(Because my mom felt like it.)"
-
     K "(Yeah.)"
-
     K "(It’s whatever, I’ll just start getting ready for my first day.)"
 
+    play music "LEASE.mp3"
     scene bg hood
+    
+    K "I’ve only moved here a few days ago… "
+    K "But I have to admit this neighbourhood is way better than my last one."
+    K "the amount of sleep I’ve lost because of those damn barking dogs was enough to drive me insane."
+
+    play sound "stepping.mp3"
+
+    K "(...)"
 
     menu:
         "Pick it up":

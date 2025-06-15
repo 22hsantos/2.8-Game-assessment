@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("VEIL_BNS")
+define config.name = _("VEIL: Beneath The Surface")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -30,6 +30,12 @@ define config.version = "1.0"
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("""
+Set in the fictional city of Hoshizora,
+ Shujin Kou finds himself transferred to a new school; 
+ Hoshizora Academy. As he explores the unfamiliar place, 
+ he finds unexpected company…Join Kou as he makes new friends, 
+ and potentially more?
+
 """)
 
 
@@ -62,7 +68,7 @@ define config.has_voice = True
 ## the player is at the main menu. This file will continue playing into the
 ## game, until it is stopped or another file is played.
 
-# define config.main_menu_music = "main-menu-theme.ogg"
+define config.main_menu_music = "main-menu-theme.mp3"
 
 
 ## Transitions #################################################################
@@ -150,7 +156,7 @@ define config.save_directory = "VEIL_BNS-1748214513"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "images/icon.png"
 
 
 ## Build configuration #########################################################
