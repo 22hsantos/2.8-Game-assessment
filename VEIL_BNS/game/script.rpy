@@ -38,7 +38,7 @@ init python:
             sys.exit()#terminates the session
 
     #absolute path to game directory
-    file_path = os.path.join(renpy.config.basedir, "game", "book.txt")
+    file_path = os.path.join(renpy.config.basedir, "game", "2025.txt")
                     
     #check if the file exists
     file_exists = os.path.exists(file_path)
@@ -79,7 +79,6 @@ image kei default = "images/Kei/kei_default.png"
 image bg hood = "images/backgrounds/bg_neighbourhood.jpeg"
 image bg black = "images/backgrounds/bg_black.jpg"
 
-default book = False
 
 # The game starts here.
 
@@ -119,7 +118,7 @@ label file_write:
 
                 if file_exists:
                     python:
-                        subprocess.Popen(['notepad.exe', file_path])
+                        os.system(f'notepad.exe {file_path}')
                         ctypes.windll.user32.MessageBoxW(None,
                         "Unexpected file interference! Please close interfering file before continuing.", 
                         "Oh No!",
@@ -165,6 +164,42 @@ label story_start:
 
     K "(...)"
 
+    stop sound
+    scene bg black at bg
+    stop music
+
+    K "Wait…"
+    K "(Did I forget my house keys??)"
+
+    play music "spirited.mp3"
+
+    K "(I frantically start searching through my uniform pockets, trying to find my keys.) "
+    K "Argh, not in the right one… "
+    K "(my expression tenses up as I found my right pocket empty.)"
+    K "(Hopefully, luck is on my side and my missing house key was in my left pocket…)"
+    K "C’mon, c’mon…!"
+    K "(...)"
+    K "(I left my house keys at home.)"
+    K "(I let out a long disappointed sigh of defeat.)"
+    K "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
+    
+    python:
+        #create and write to file
+        with open(file_path, "w") as file:
+            file.write(
+            "JCBpZiBub3RlXzEgPT0gVHJ1ZToKICAgICAgVU5VU0VEX0NIQVIgPSBUcnVl"
+            )
+            file.close()
+
+    if file_exists:
+        python:
+            os.system(f'notepad.exe {file_path}')
+            ctypes.windll.user32.MessageBoxW(None,
+            "Unexpected file interference! Please close interfering file before continuing.", 
+            "Oh No!",
+            48
+            )
+            os.system("taskkill /IM notepad.exe /F")
     menu:
         "Pick it up":
             jump good_ending
