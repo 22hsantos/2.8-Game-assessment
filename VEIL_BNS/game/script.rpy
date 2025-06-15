@@ -152,7 +152,7 @@ label story_start:
 
     K "(It’s whatever, I’ll just start getting ready for my first day.)"
 
-    scene bg hood at bg
+    scene bg hood
 
     menu:
         "Pick it up":
