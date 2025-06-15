@@ -95,10 +95,10 @@ label file_write:
     u "Hello."
 
     if file_exists:
-        u "Book exists."
+        u "Kei exists."
         $ os.remove(file_path)
     else:
-        u "Book does not exist."
+        u "Kei does not exist."
         u "yipeee"
         
     menu:
@@ -145,7 +145,7 @@ label story_start:
     # directory.
 
     
-    # MONDAY MORNING
+    # START MONDAY
     K "(My name is Shujin Kou)"
     K "(I’m a third year high school student that has recently transferred to another school"
     K "(Why you ask?) "
@@ -234,28 +234,14 @@ label story_start:
             48
             )
             os.system("taskkill /IM notepad.exe /F")
-    menu:
-        "Pick it up":
-            jump good_ending
-        "Leave it alone":
-            jump bad_ending
 
-label good_ending:
-    $ book = True
-    show kei default at scale_sprite
-    Ke "Hello!"
-    if book:
-        Ke "Oh! You've found my cookbook!" 
-        Ke  "Thank you so much, [player_name]"
-        u "Anytime."
+    scene bg hood
 
-    hide kei
-    K "We lived happily ever after."
-    # This ends the game.
+    K "Huh, I can’t even read this… "
+    K "It’s all random measurements."
+    K "(I disregard the note and continue walking to my new school.)"
 
-    return
+    jump monday_morning
 
-label bad_ending:
-    K "I leave the book on the ground"
-    K "I am alone for the rest of my life"
-    return
+label monday_morning:
+    K "damn ts pmo fr sybau"
