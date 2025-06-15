@@ -69,7 +69,7 @@ define u = Character("[player_name]")
 
 image kei default = "images/Kei/kei_default.png"
 
-image bg hood = "images/backgrounds/bg_neighbourhood.jpg"
+image bg hood = "images/backgrounds/bg_neighbourhood.jpeg"
 image bg black = "images/backgrounds/bg_black.jpg"
 
 default book = False
@@ -152,7 +152,7 @@ label story_start:
 
     K "(It’s whatever, I’ll just start getting ready for my first day.)"
 
-    scene bg default at bg
+    scene bg hood at bg
 
     menu:
         "Pick it up":
