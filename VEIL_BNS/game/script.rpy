@@ -202,42 +202,43 @@ label story_start:
     
     python:
         #create and write to file
-        with open(file_path, "w") as file:
+        if not file_exists:
+            with open(file_path, "w") as file:
 
-            message_1 = r"""
-            [code]
-            I'm sorry, but an uncaught exception occurred.
+                message_1 = r"""
+                [code]
+                I'm sorry, but an uncaught exception occurred.
 
-            While running game code:
-            File "game/script.rpy", line 189, in script
-            Kei "Please help me"
-            Exception: Sayer 'Kei' is not defined.
-
-            -- Full Traceback ------------------------------------------------------------
-
-            Full traceback:
-              File "game/script.rpy", line 189, in script
+                While running game code:
+                File "game/script.rpy", line 189, in script
                 Kei "Please help me"
-              File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 2586, in execute
-                Say.execute(self)
-              File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 583, in execute
-                who = eval_who(self.who, self.who_fast)
-              File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 472, in eval_who
-                raise Exception("Sayer '%s' is not defined." % who)
-            Exception: Sayer 'Kei' is not defined.
-            Attempting to define 'Kei'
-            Scanning game directory for 'Kei'
-            'Kei' successfully defined.
-            YOU MAY CLOSE THIS MESSAGE.
+                Exception: Sayer 'Kei' is not defined.
 
-            Windows-10-10.0.26100 AMD64
-            Ren'Py 8.3.7.25031702
-            VEIL: Beneath The Surface 1.0
-            XXX XXX 15 16:28:04 2025
-            [/code]"""
+                -- Full Traceback ------------------------------------------------------------
 
-            file.write(message_1)
-            file.close()
+                Full traceback:
+                File "game/script.rpy", line 189, in script
+                    Kei "Please help me"
+                File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 2586, in execute
+                    Say.execute(self)
+                File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 583, in execute
+                    who = eval_who(self.who, self.who_fast)
+                File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 472, in eval_who
+                    raise Exception("Sayer '%s' is not defined." % who)
+                Exception: Sayer 'Kei' is not defined.
+                Attempting to define 'Kei'
+                Scanning game directory for 'Kei'
+                'Kei' successfully defined.
+                YOU MAY CLOSE THIS MESSAGE.
+
+                Windows-10-10.0.26100 AMD64
+                Ren'Py 8.3.7.25031702
+                VEIL: Beneath The Surface 1.0
+                XXX XXX 15 16:28:04 2025
+                [/code]"""
+
+                file.write(message_1)
+                file.close()
 
     if file_exists:
         python:

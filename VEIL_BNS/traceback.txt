@@ -1,26 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 101, in script
-    $ os.remove(file_path)
-  File "game/script.rpy", line 101, in <module>
-    $ os.remove(file_path)
-FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\EternalShrine Maiden\\Documents\\DIT work ugh\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt'
+  File "game/script.rpy", line 203, in script
+    python:
+  File "game/script.rpy", line 205, in <module>
+    if not file_exists():
+TypeError: 'bool' object is not callable
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 101, in script
-    $ os.remove(file_path)
+  File "game/script.rpy", line 203, in script
+    python:
   File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 101, in <module>
-    $ os.remove(file_path)
-FileNotFoundError: [WinError 2] The system cannot find the file specified: 'C:\\Users\\EternalShrine Maiden\\Documents\\DIT work ugh\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt'
+  File "game/script.rpy", line 205, in <module>
+    if not file_exists():
+TypeError: 'bool' object is not callable
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Sun Jun 15 17:58:41 2025
+Sun Jun 15 22:01:04 2025
