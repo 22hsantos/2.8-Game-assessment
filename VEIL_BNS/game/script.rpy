@@ -68,8 +68,9 @@ define K = Character("Kou")
 define u = Character("[player_name]")
 
 image kei default = "images/Kei/kei_default.png"
-image bg default = "images/backgrounds/bg_default.jpg"
-image bg black = "images/backgrounds/bg_black.png"
+
+image bg hood = "images/backgrounds/bg_neighbourhood.jpg"
+image bg black = "images/backgrounds/bg_black.jpg"
 
 default book = False
 
@@ -152,7 +153,7 @@ label story_start:
     K "(It’s whatever, I’ll just start getting ready for my first day.)"
 
     scene bg default at bg
-    
+
     menu:
         "Pick it up":
             jump good_ending
