@@ -52,18 +52,7 @@ init python:
 
     #dialogue sound effects
 
-    """
-    event parameter - used to determine what is happening at the moment. 
-    if event == text is on screen, run the following code.
-    
-    **kwargs - "Keyword arguments". allows for extra arguments without being defined in the parameters
 
-    """
-    def dialogue(event, **kwargs):
-        if event == "show":
-            renpy.music.play("dialogue.mp3", channel = "sound", loop = True)
-        elif event == "end":
-            renpy.music.stop(channel = "sound", fadeout 0.75)
 
 #aligns and resizes sprites
 transform scale_sprite:
