@@ -97,6 +97,9 @@ define config.after_load_transition = None
 
 define config.end_game_transition = None
 
+## Add dissolve to each character sprite
+define config.say_attribute_transition = dissolve
+
 
 ## A variable to set the transition used when the game starts does not exist.
 ## Instead, use a with statement after showing the initial scene.

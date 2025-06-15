@@ -1,26 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 203, in script
-    python:
-  File "game/script.rpy", line 205, in <module>
-    if not file_exists():
-TypeError: 'bool' object is not callable
+  File "renpy/common/00definitions.rpy", line 445, in script
+    init 1400 python:
+  File "renpy/common/00definitions.rpy", line 451, in <module>
+    config.default_transform.update_state()
+AttributeError: 'Partial' object has no attribute 'update_state'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 203, in script
-    python:
+  File "renpy/common/00definitions.rpy", line 445, in script
+    init 1400 python:
   File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 205, in <module>
-    if not file_exists():
-TypeError: 'bool' object is not callable
+  File "renpy/common/00definitions.rpy", line 451, in <module>
+    config.default_transform.update_state()
+AttributeError: 'Partial' object has no attribute 'update_state'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Sun Jun 15 22:01:04 2025
+Mon Jun 16 00:01:08 2025

@@ -56,7 +56,10 @@ init python:
     #gets the player's name
     player_name = os.getlogin()
 
+    kei = 0
 
+#transitions
+define dissolve = Dissolve(0.5)
 
 #aligns and resizes sprites
 transform scale_sprite:
@@ -73,15 +76,19 @@ transform bg:
 define Ke = Character("Zaigaku Kei")
 define K = Character("Shujin Kou")
 define u = Character("[player_name]")
-define uk = Character("Unkown")
+define uk = Character("Unknown")
 define Ka = Character("Takahashi Kagaku")
 
 #Character Sprites
 image kei default = "images/Kei/kei_default.png"
 
 #Kagaku Sprites
+image kagaku neutral = "images/Kagaku/kagaku_neutral.png"
 image kagaku sil = "images/Kagaku/kagaku_silhouette.png"
-image kagaku ang = "images/Kagaku/kagaku_angry.png"
+image kagaku angry = "images/Kagaku/kagaku_angry.png"
+image kagaku excited = "images/Kagaku/kagaku_excited.png"
+image kagaku startled = "images/Kagaku/kagaku_startled.png"
+image kagaku neutral 2 = "images/Kagaku/kagaku_neutral2.png"
 
 #Backgrounds
 image bg hood = "images/backgrounds/bg_neighbourhood.jpeg"
@@ -110,6 +117,7 @@ label file_write:
     if file_exists:
         u "Kei exists."
         $ os.remove(file_path)
+        u "Kei does not exist."
     else:
         u "Kei does not exist."
         u "yipeee"
@@ -199,64 +207,82 @@ label story_start:
     K "(I left my house keys at home.)"
     K "(I let out a long disappointed sigh of defeat.)"
     K "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
-    
-    python:
-        #create and write to file
-        if not file_exists:
-            with open(file_path, "w") as file:
 
-                message_1 = r"""
-                [code]
-                I'm sorry, but an uncaught exception occurred.
+    menu:
+        "Open it":
+            python:
+                #create and write to file
+        
+                with open(file_path, "w") as file:
 
-                While running game code:
-                File "game/script.rpy", line 189, in script
-                Kei "Please help me"
-                Exception: Sayer 'Kei' is not defined.
+                    message_1 = r"""
+                    [code]
+                    I'm sorry, but an uncaught exception occurred.
 
-                -- Full Traceback ------------------------------------------------------------
-
-                Full traceback:
-                File "game/script.rpy", line 189, in script
+                    While running game code:
+                    File "game/script.rpy", line 189, in script
                     Kei "Please help me"
-                File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 2586, in execute
-                    Say.execute(self)
-                File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 583, in execute
-                    who = eval_who(self.who, self.who_fast)
-                File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 472, in eval_who
-                    raise Exception("Sayer '%s' is not defined." % who)
-                Exception: Sayer 'Kei' is not defined.
-                Attempting to define 'Kei'
-                Scanning game directory for 'Kei'
-                'Kei' successfully defined.
-                YOU MAY CLOSE THIS MESSAGE.
+                    Exception: Sayer 'Kei' is not defined.
 
-                Windows-10-10.0.26100 AMD64
-                Ren'Py 8.3.7.25031702
-                VEIL: Beneath The Surface 1.0
-                XXX XXX 15 16:28:04 2025
-                [/code]"""
+                        -- Full Traceback ------------------------------------------------------------
 
-                file.write(message_1)
-                file.close()
+                    Full traceback:
+                    File "game/script.rpy", line 189, in script
+                        Kei "Please help me"
+                    File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 2586, in execute
+                        Say.execute(self)
+                    File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 583, in execute
+                        who = eval_who(self.who, self.who_fast)
+                    File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 472, in eval_who
+                        raise Exception("Sayer '%s' is not defined." % who)
+                    Exception: Sayer 'Kei' is not defined.
+                    Attempting to define 'Kei'
+                    Scanning game directory for 'Kei'
+                    'Kei' successfully defined.
+                    YOU MAY CLOSE THIS MESSAGE.
 
-    if file_exists:
-        python:
-            os.system(f'notepad.exe {file_path}')
-            ctypes.windll.user32.MessageBoxW(None,
-            "Unexpected file interference! Please select OK to continue with the game.", 
-            "Oh No!",
-            48
-            )
-            os.system("taskkill /IM notepad.exe /F")
-    else:
-        K "What the heck..."
+                    Windows-10-10.0.26100 AMD64
+                    Ren'Py 8.3.7.25031702
+                    VEIL: Beneath The Surface 1.0
+                    XXX XXX 15 16:28:04 2025
+                    [/code]"""
 
-    scene bg hood
-    play music "LEASE.mp3"
-    K "Huh, I can’t even read this… "
-    K "It’s all random measurements."
-    K "(I disregard the note and continue walking to my new school.)"
+                    file.write(message_1)
+                    file.close()
+
+                    file_exists = os.path.exists(file_path)
+                
+            
+            if file_exists:
+                python:
+                    os.system(f'notepad.exe {file_path}')
+                    ctypes.windll.user32.MessageBoxW(None,
+                    "Unexpected file interference! Please select OK to continue with the game.", 
+                    "Oh No!",
+                    48
+                    )
+                    os.system("taskkill /IM notepad.exe /F")
+
+                    kei = kei + 1
+                
+                K "Huh, I can’t even read this… "
+                K "It’s all random measurements."
+                K "(I disregard the note and continue walking to my new school.)"
+
+            else:
+                K "What the heck..."   
+
+                scene bg hood
+                play music "LEASE.mp3"
+                K "Huh, I can’t even read this… "
+                K "It’s all random measurements."
+                K "(I disregard the note and continue walking to my new school.)"
+
+        "Leave it alone.":
+            K "Ehh..."
+            K "I can open it later."
+            K "(I disregard the note and continue walking to my new school.)"
+    
 
     jump monday_morning
 
@@ -296,19 +322,128 @@ label monday_morning:
 
     play sound "crash.ogg"
 
-    uk "Hey."
+    uk "Oof!"
 
-    scene bg library with dissolve
+    scene bg library
     show kagaku sil at scale_sprite
     play music "spirited.mp3"
 
-    uk "Hey! Watch where you’re going."
+    uk "Hey."
+    uk "Watch where you’re going."
 
-    show kagaku ang with dissolve
+    show kagaku angry
+
+    K "Oh! I’m sorry…"
+    K "I didn’t see you there."
+
+    show kagaku neutral 
+
+    uk "*sigh*"
+    uk "It’s fine."
+
+    play music "BTS.mp3"
+
+    uk "I’ve never seen you around before."
+    uk "Are you new?"
+
+    K "(I’m startled at her sharp observation.)"
+    K "Y-yeah, how did you know?"
+
+    uk "I’m the student council president, so I know my peers quite well."
+    uk "Allow me to welcome you to Hoshizora Academy…"
+
+    K "Ah, Shujin Kou."
+
+    Ka "Shujin-kun. My name is Takahashi Kagaku."
+    K "Taka…Takaha-"
+
+    show kagaku neutral 2
+
+    Ka "*Sigh*"
+    Ka "Kagaku is fine."
+
+    show kagaku neutral
+
+    K "Thank you very much, Kagaku."
+
+    K "(I could feel the tension set in as soon as it fell silent)"
+    K "(My eyes quickly dart around the room, as to keep the already dead conversation going)"
+    K "(Suddenly, I recognize the book that was in Kagaku’s hand)"
+    K "(It was *Echoes in the Fog*, a classic thriller novel that was popular upon release)"
+    K "(However, popularity has dwindled in the recent years, so it quickly became a niche.)"
+    K "Hey…"
+    K "Is that *Echoes in the Fog*?"
+
+    show kagaku startled at scale_sprite
+
+    Ka "!"
+
+    show kagaku excited
+
+    Ka "You’ve read *Echoes in the Fog*?!"
+    Ka "No way!"
+    Ka "I’ve never met anyone who has read this book before…!"
+    Ka "Honestly, everyone I’ve tried to convince to read it just called me an old woman and said it sounded quite boring."
+    Ka "I really liked the part where—"
+
+    menu:
+        "Interrupt her":
+            jump interrupt_kagaku
+
+        "Let her yap":
+            jump let_kagaku_talk
+
+label interrupt_kagaku:
+    show kagaku startled
+    Ka "Ah."
+    show kagaku neutral
+    Ka "Ahem. Sorry, I got a bit carried away."
+    Ka "I have to go to class."
+    Ka "See you."
+
+    hide kagaku
+
+    K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
+    K "(...)"
+    K "I guess I’ll go too…"
+
+    scene bg black
+    jump classroom_scene
+
+label let_kagaku_talk:
+    Ka "Oh, and I love the twist in chapter 8—"
+    Ka "Ahem. Sorry, I got a bit carried away."
+    Ka "I have to go to class."
+    Ka "See you."
+
+    hide kagaku
+
+    K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
+    K "(...)"
+    K "I guess I’ll go too…"
+
+    scene bg black
+    jump classroom_scene
+
+label classroom_scene:
+    #scene bg classroom
+
+    K "I’ve got nothing to do right now."
+    K "I should…"
+
+    jump checkpoint
+
+"""    menu:
+        "Eat at cafeteria":
+            jump cafeteria_scene
+
+        "Explore the school (rooftop)":
+            jump rooftop_scene"""
+"""
     K ""
     K ""
     K ""
-    K ""
+    K """""
 
 label checkpoint:
 

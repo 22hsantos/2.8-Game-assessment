@@ -2,8 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 205: invalid syntax
-    if not file_exists(file_path)
+File "game/script.rpy", line 380: expected 'simple_expression' not found.
+    show kagaku excited with
+                            ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Sun Jun 15 21:58:25 2025
+Sun Jun 15 23:57:48 2025
