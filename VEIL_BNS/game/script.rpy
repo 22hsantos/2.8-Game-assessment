@@ -412,6 +412,13 @@ label interrupt_kagaku:
 
 label let_kagaku_talk:
     Ka "Oh, and I love the twist in chapter 8—"
+    
+    show kagaku startled
+    
+    Ka "!"
+
+    show kagaku neutral
+
     Ka "Ahem. Sorry, I got a bit carried away."
     Ka "I have to go to class."
     Ka "See you."
@@ -433,17 +440,16 @@ label classroom_scene:
 
     jump checkpoint
 
-"""    menu:
+    menu:
         "Eat at cafeteria":
             jump cafeteria_scene
 
         "Explore the school (rooftop)":
-            jump rooftop_scene"""
-"""
+            jump rooftop
     K ""
     K ""
     K ""
-    K """""
+    K ""
 
 label checkpoint:
 
