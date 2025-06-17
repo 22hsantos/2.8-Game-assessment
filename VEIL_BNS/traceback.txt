@@ -1,26 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00definitions.rpy", line 445, in script
-    init 1400 python:
-  File "renpy/common/00definitions.rpy", line 451, in <module>
-    config.default_transform.update_state()
-AttributeError: 'Partial' object has no attribute 'update_state'
+  File "renpy/common/00keymap.rpy", line 433, in script
+    init -1100 python:
+  File "renpy/common/00keymap.rpy", line 433, in script
+    init -1100 python:
+  File "renpy/common/00keymap.rpy", line 443, in <module>
+    game_menu = _invoke_game_menu,
+NameError: name '_invoke_game_menu' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00definitions.rpy", line 445, in script
-    init 1400 python:
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\main.py", line 541, in main
+    renpy.game.context().run(node)
+  File "renpy/common/00keymap.rpy", line 433, in script
+    init -1100 python:
+  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
+  File "renpy/common/00keymap.rpy", line 433, in script
+    init -1100 python:
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "renpy/common/00definitions.rpy", line 451, in <module>
-    config.default_transform.update_state()
-AttributeError: 'Partial' object has no attribute 'update_state'
+  File "renpy/common/00keymap.rpy", line 443, in <module>
+    game_menu = _invoke_game_menu,
+NameError: name '_invoke_game_menu' is not defined
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Mon Jun 16 00:01:08 2025
+Tue Jun 17 09:41:55 2025

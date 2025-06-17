@@ -6,6 +6,7 @@
 #aligns sprite to centre and sizes up
 
 init python:
+
     #allows to interact with the operating system
     """
     ctypes - allows interaction with windows system fn
@@ -373,9 +374,10 @@ label monday_morning:
     K "(It was *Echoes in the Fog*, a classic thriller novel that was popular upon release)"
     K "(However, popularity has dwindled in the recent years, so it quickly became a niche.)"
     K "Hey…"
-    K "Is that *Echoes in the Fog*?"
 
     show kagaku startled at scale_sprite
+
+    K "Is that *Echoes in the Fog*?"
 
     Ka "!"
 
@@ -444,6 +446,7 @@ label classroom_scene:
             jump monday_cafeteria
 
         "Explore the school (rooftop)":
+<<<<<<< Updated upstream
             jump rooftop
         
 label monday_cafeteria:
@@ -462,6 +465,21 @@ label monday_cafeteria:
     jump checkpoint
 
 label rooftop:
+=======
+            jump monday_rooftop
+
+    K ""
+    K ""
+    K ""
+    K ""
+
+label monday_cafeteria:
+    K "wah"
+    jump checkpoint
+
+label monday_rooftop:
+    K "wahh"
+>>>>>>> Stashed changes
     jump checkpoint
 
 label checkpoint:
