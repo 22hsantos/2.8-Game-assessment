@@ -97,7 +97,8 @@ image bg black = "images/backgrounds/bg_black.jpg"
 image bg hallway = "images/backgrounds/bg_hallway.jpg"
 image bg outside library = "images/backgrounds/bg_outside_library.jpg"
 image bg library = "images/backgrounds/bg_library.jpg"
-image bg cafeteria = 'images/backgrounds/bg_cafeteria.jpg'
+image bg cafeteria = 'images/backgrounds/bg_cafeteria.png'
+image bg staircase = 'images/backgrounds/bg_staircase.jpg'
 
 
 # The game starts here.
@@ -426,6 +427,7 @@ label let_kagaku_talk:
     Ka "I have to go to class."
     Ka "See you."
 
+    show kagaku neutral at center with moveoutleft
     hide kagaku
 
     K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
@@ -446,16 +448,14 @@ label classroom_scene:
             jump monday_cafeteria
 
         "Explore the school (rooftop)":
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-            jump rooftop
+            jump monday_rooftop
         
 label monday_cafeteria:
     K "I should get something to eat."
     K "I didn't have time to eat breakfast after all."
     scene bg black
     play music "cafeteria.mp3"
-    scene bg cafeteria at bg
+    scene bg cafeteria at bg ,with fade
 
     K "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose)"
     K "(Was that... curry?)"
@@ -465,31 +465,37 @@ label monday_cafeteria:
 
     jump checkpoint
 
-label rooftop:
-=======
-=======
->>>>>>> Stashed changes
-            jump monday_rooftop
-
-    K ""
-    K ""
-    K ""
-    K ""
-
-label monday_cafeteria:
-    K "wah"
-    jump checkpoint
-
 label monday_rooftop:
-    K "wahh"
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
+    K "I wonder what the view up on the rooftop is like"
+
+    scene bg black
+
+    scene bg staircase
+    play sound "stepping.mp3"
+
+    K "(I find myself stepping up what might've been the longest staircase of my entire life.)"
+    K "*Huff* Huff"
+    K "How big..."
+    K "Is this..."
+    K "Goddamn school...!?"
+
+    scene bg black
+
+    play sound "sliding_door.mp3"
+    Rooftop BG
+    BGM calm 3
+    K "Woah...!"
+    K "What a view..."
+    K "(I walked closer to the fence, looking down the whole city)"
+    K "Everything looks so small from up here."
+    Black BG
+    K "(I spend a moment enjoying watching people live their everyday life before going back to class)"
+    Bell ring sfx
     jump checkpoint
 
 label checkpoint:
-
+    
     menu:
         u "Checkpoint reached"
 
@@ -501,6 +507,9 @@ label checkpoint:
         
         "jump monday midday":
             jump classroom_scene
+        
+        "jump monday_cafeteria":
+            jump monday_cafeteria
         
         "go to main menu":
             return
