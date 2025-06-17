@@ -96,6 +96,7 @@ image bg black = "images/backgrounds/bg_black.jpg"
 image bg hallway = "images/backgrounds/bg_hallway.jpg"
 image bg outside library = "images/backgrounds/bg_outside_library.jpg"
 image bg library = "images/backgrounds/bg_library.jpg"
+image bg cafeteria = 'images/backgrounds/bg_cafeteria.jpg'
 
 
 # The game starts here.
@@ -438,18 +439,30 @@ label classroom_scene:
     K "I’ve got nothing to do right now."
     K "I should…"
 
-    jump checkpoint
-
     menu:
         "Eat at cafeteria":
-            jump cafeteria_scene
+            jump monday_cafeteria
 
         "Explore the school (rooftop)":
             jump rooftop
-    K ""
-    K ""
-    K ""
-    K ""
+        
+label monday_cafeteria:
+    K "I should get something to eat."
+    K "I didn't have time to eat breakfast after all."
+    scene bg black
+    play music "cafeteria.mp3"
+    scene bg cafeteria at bg
+
+    K "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose)"
+    K "(Was that... curry?)"
+    K "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life)"
+    scene bg black
+    play sound "bell.wav"
+
+    jump checkpoint
+
+label rooftop:
+    jump checkpoint
 
 label checkpoint:
 
@@ -461,6 +474,9 @@ label checkpoint:
         
         "jump monday morning":
             jump monday_morning
+        
+        "jump monday midday":
+            jump classroom_scene
         
         "go to main menu":
             return
