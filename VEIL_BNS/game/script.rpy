@@ -447,6 +447,7 @@ label classroom_scene:
 
         "Explore the school (rooftop)":
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             jump rooftop
         
 label monday_cafeteria:
@@ -466,6 +467,8 @@ label monday_cafeteria:
 
 label rooftop:
 =======
+=======
+>>>>>>> Stashed changes
             jump monday_rooftop
 
     K ""
@@ -479,6 +482,9 @@ label monday_cafeteria:
 
 label monday_rooftop:
     K "wahh"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     jump checkpoint
 
