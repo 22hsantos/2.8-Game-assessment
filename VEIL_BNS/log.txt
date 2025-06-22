@@ -1,22 +1,22 @@
-2025-06-22 23:07:41 UTC
+2025-06-22 23:41:12 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.7.25031702
 
-Early init took 0.18s
-Loading error handling took 0.07s
-Loading script took 0.73s
+Early init took 0.17s
+Loading error handling took 0.06s
+Loading script took 0.39s
 Loading save slot metadata took 0.07s
 Loading persistent took 0.00s
-Running init code took 0.11s
+Running init code took 0.10s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
 Reloading save slot metadata took 0.04s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\heave\\AppData\\Roaming/RenPy/backups\\VEIL_BNS':
-Dump and make backups took 0.11s
+Dump and make backups took 0.10s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.08s
+Initial gc took 0.06s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
@@ -26,12 +26,12 @@ Init translation took 0.00s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.02s
-Save screen analysis took 0.04s
-Prepare screens took 0.13s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
 Save pyanalysis. took 0.00s
-Save bytecode. took 0.05s
+Save bytecode. took 0.04s
 Running _start took 0.00s
-Interface start took 0.58s
+Interface start took 0.54s
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1280, 720)
@@ -43,3 +43,12 @@ Version: b'4.6.0 Compatibility Profile Context 22.20.44.45.230320'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(770, 433) drawable=(770, 433)
 Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(638, 640) drawable=(638, 640)
+Maximum texture size: 4096x4096
+Cleaning stores took 0.00s
+Init translation took 0.00s
+Build styles took 0.01s
+Load screen analysis took 0.05s
+Analyze screens took 0.00s
+Prepare screens took 0.00s
+Running _start took 0.00s

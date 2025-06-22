@@ -109,6 +109,7 @@ image bg staircase = 'images/backgrounds/bg_staircase.jpg'
 image bg rooftop = 'images/backgrounds/bg_rooftop.jpg'
 image bg rooftop view = "images/backgrounds/bg_rooftop_view.jpg"
 image bg afterschool = "images/backgrounds/bg_afterschool.png"
+image bg gym = "images/backgrounds/bg_gym.png"
 
 
 # The game starts here.
@@ -521,20 +522,19 @@ label monday_rooftop:
     jump monday_afterschool
 
 label monday_afterschool:
+    play sound "bell.wav" volume 0.5
     scene bg afterschool with fade
-label scene_one:
+    play music "TOL.mp3"
 
-    play sound "bell_ring.wav"
-    scene bg classroom_afterschool
-
-    K "(*Yawn*) That class had me beat."
+    K "*Yawn*"
+    K "That class had me beat."
     K "How am I supposed to be on the same level as everyone else, anyway?"
     K "This is literally my first day here!"
     K "..."
     K "Whatever, I’m going home."
 
-    scene black
-    play sound "sfx/stepping_repeat.ogg"
+    scene bg black with dissolve
+    play sound "stepping.mp3"
 
     K "(Hmm? What’s all that noise?)"
     K "(I look around, and find that the source of the commotion has been coming from the school gym.)"
@@ -544,46 +544,49 @@ label scene_one:
 
     K "(It seems that the basketball club had some activities today.)"
     K "(I stick around for a while, watching the players do their drills.)"
-    K "(When suddenly, a ball came out of nowhere.)"
+    K "(I blankly stare at a ball that came out of nowhere.)"
     K "(Hey, isn’t that ball coming straight towards my—)"
 
-    scene black
+    #replace sfx
+    stop music
+    play sound "bamboo.ogg"
+    scene bg black
 
     K "*Thud!*"
     K "(An inexplicable pain started radiating from my forehead.)"
     K "(I could feel all the blood rushing as the red mark started thumping non-stop.)"
 
-    Unknown "Oh my gosh! Are you okay!?"
+    uk "Oh my gosh! Are you okay!?"
 
     K "(I open my eyes to find a girl standing right in front of me.)"
 
-    Unknown "Ahh, what do I do??"
+    uk "Ahh, what do I do??"
     K "Huh…"
     K "(I manage to open my eyes.)"
 
-    scene bg gym
-    play music "bgm/spirited_music.ogg"
-    show taiiku_silhouette
+    scene bg gym with dissolve
+    play music "spirited.mp3"
+    show kei default at scale_sprite
 
-    Unknown "Um!"
-    Unknown "How many fingers am I holding!?"
+    uk "Um!"
+    uk "How many fingers am I holding!?"
 
     K "What…?"
     K "(I try to readjust my vision.)"
 
-    show taiiku_fingers
+    #show taiiku_fingers
 
-    Unknown "I said how many fingers am I holding??"
+    uk "I said how many fingers am I holding??"
 
     K "Uhh…"
 
     menu:
         "3":
-            $ fingers_choice = 3
+            jump checkpoint
         "7":
-            $ fingers_choice = 7
+            jump checkpoint
 
-    Unknown "Here, let me help you up."
+    uk "Here, let me help you up."
     K "(The peculiar girl reaches out her hand.)"
 
     return
