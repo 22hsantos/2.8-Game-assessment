@@ -68,11 +68,12 @@ transform scale_sprite:
     xalign 0.5
     yalign 1.0
 
-transform exit_offscreen:
-    # linear = determine how fast transition is (seconds)
-    # xpos = x  position, determines where sprite with end up
-    # 0.0 = left, 0.5 = center, 1.0 = right
-    linear 0.1, xalign -1.5
+#zooms in bg, pans left to right
+transform bg_pan:
+    subpixel True
+    zoom 1.5
+    xalign 0.0
+    linear 4.0 xalign 1.0
 
 #aligns bg to centre and sizes up
 transform bg:
@@ -107,6 +108,7 @@ image bg cafeteria = 'images/backgrounds/bg_cafeteria.png'
 image bg staircase = 'images/backgrounds/bg_staircase.jpg'
 image bg rooftop = 'images/backgrounds/bg_rooftop.jpg'
 image bg rooftop view = "images/backgrounds/bg_rooftop_view.jpg"
+image bg afterschool = "images/backgrounds/bg_afterschool.png"
 
 
 # The game starts here.
@@ -437,7 +439,7 @@ label let_kagaku_talk:
     Ka "I have to go to class."
     Ka "See you."
 
-    show kagaku neutral at left with move
+    hide  kagaku neutral at left with easeoutleft
     hide kagaku
 
     K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
@@ -471,7 +473,7 @@ label monday_cafeteria:
     K "(Was that... curry?)"
     K "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life)"
     scene bg black
-    play sound "bell.wav"
+    play sound "bell.wav" volume 0.5
 
     jump checkpoint
 
@@ -481,11 +483,11 @@ label monday_rooftop:
 
     scene bg black
 
-    scene bg staircase
+    scene bg staircase at bg
     play sound "stepping.mp3"
 
     K "(I find myself stepping up what might've been the longest staircase of my entire life.)"
-    K "*Huff* Huff"
+    K "*Huff* *Huff*"
     K "How big..."
     K "Is this..."
     K "Goddamn school...!?"
@@ -494,7 +496,7 @@ label monday_rooftop:
 
     play sound "sliding_door.mp3"
 
-    $ time.sleep(3)
+    pause 1.5
 
     scene bg rooftop with dissolve
     
@@ -502,19 +504,89 @@ label monday_rooftop:
 
     K "Woah...!"
     K "What a view..."
-    K "(I walked closer to the fence, looking down the whole city)"
+    K "(I stepped closer to the fence, looking down the whole city.)"
 
-    scene bg rooftop view with dissolve
+    scene bg rooftop view at bg_pan
+    with dissolve
+    pause
 
     K "Everything looks so small from up here."
     
     scene bg black
 
-    K "(I spend a moment enjoying watching people live their everyday life before going back to class)"
+    K "(I spend a moment enjoying watching people live their everyday life before going back to class.)"
 
-    play sound "bell.wav"
+    play sound "bell.wav" volume 0.5
 
-    jump checkpoint
+    jump monday_afterschool
+
+label monday_afterschool:
+    scene bg afterschool with fade
+label scene_one:
+
+    play sound "bell_ring.wav"
+    scene bg classroom_afterschool
+
+    K "(*Yawn*) That class had me beat."
+    K "How am I supposed to be on the same level as everyone else, anyway?"
+    K "This is literally my first day here!"
+    K "..."
+    K "Whatever, I’m going home."
+
+    scene black
+    play sound "sfx/stepping_repeat.ogg"
+
+    K "(Hmm? What’s all that noise?)"
+    K "(I look around, and find that the source of the commotion has been coming from the school gym.)"
+    K "(Guess I might check it out, I guess.)"
+
+    scene bg gym
+
+    K "(It seems that the basketball club had some activities today.)"
+    K "(I stick around for a while, watching the players do their drills.)"
+    K "(When suddenly, a ball came out of nowhere.)"
+    K "(Hey, isn’t that ball coming straight towards my—)"
+
+    scene black
+
+    K "*Thud!*"
+    K "(An inexplicable pain started radiating from my forehead.)"
+    K "(I could feel all the blood rushing as the red mark started thumping non-stop.)"
+
+    Unknown "Oh my gosh! Are you okay!?"
+
+    K "(I open my eyes to find a girl standing right in front of me.)"
+
+    Unknown "Ahh, what do I do??"
+    K "Huh…"
+    K "(I manage to open my eyes.)"
+
+    scene bg gym
+    play music "bgm/spirited_music.ogg"
+    show taiiku_silhouette
+
+    Unknown "Um!"
+    Unknown "How many fingers am I holding!?"
+
+    K "What…?"
+    K "(I try to readjust my vision.)"
+
+    show taiiku_fingers
+
+    Unknown "I said how many fingers am I holding??"
+
+    K "Uhh…"
+
+    menu:
+        "3":
+            $ fingers_choice = 3
+        "7":
+            $ fingers_choice = 7
+
+    Unknown "Here, let me help you up."
+    K "(The peculiar girl reaches out her hand.)"
+
+    return
 
 label checkpoint:
     

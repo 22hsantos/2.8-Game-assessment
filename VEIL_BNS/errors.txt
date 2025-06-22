@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 75: ATL statement contains two expressions in a row; is one of them a misspelled property? If not, separate them with pass.
-    xpos -1.5 linear 1.0
-                        ^
+File "game/script.rpy", line 78: invalid syntax
+    ("bell.wav", relative_volume =0.5 )
+                                  ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Thu Jun 19 13:44:30 2025
+Mon Jun 23 11:01:45 2025
