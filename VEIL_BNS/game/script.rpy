@@ -68,6 +68,12 @@ transform scale_sprite:
     xalign 0.5
     yalign 1.0
 
+transform exit_offscreen:
+    # linear = determine how fast transition is (seconds)
+    # xpos = x  position, determines where sprite with end up
+    # 0.0 = left, 0.5 = center, 1.0 = right
+    linear 0.1, xalign -1.5
+
 #aligns bg to centre and sizes up
 transform bg:
     zoom 1.5
@@ -99,11 +105,15 @@ image bg outside library = "images/backgrounds/bg_outside_library.jpg"
 image bg library = "images/backgrounds/bg_library.jpg"
 image bg cafeteria = 'images/backgrounds/bg_cafeteria.png'
 image bg staircase = 'images/backgrounds/bg_staircase.jpg'
+image bg rooftop = 'images/backgrounds/bg_rooftop.jpg'
+image bg rooftop view = "images/backgrounds/bg_rooftop_view.jpg"
 
 
 # The game starts here.
 
 label start:
+
+    stop music
 
     menu:
         "troubleshoot file creation":
@@ -405,7 +415,7 @@ label interrupt_kagaku:
     Ka "I have to go to class."
     Ka "See you."
 
-    hide kagaku
+    show kagaku neutral at exit_offscreen
 
     K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
     K "(...)"
@@ -427,7 +437,7 @@ label let_kagaku_talk:
     Ka "I have to go to class."
     Ka "See you."
 
-    show kagaku neutral at center with moveoutleft
+    show kagaku neutral at left with move
     hide kagaku
 
     K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
@@ -483,15 +493,27 @@ label monday_rooftop:
     scene bg black
 
     play sound "sliding_door.mp3"
-    Rooftop BG
-    BGM calm 3
+
+    $ time.sleep(3)
+
+    scene bg rooftop with dissolve
+    
+    play music "rooftop.mp3"
+
     K "Woah...!"
     K "What a view..."
     K "(I walked closer to the fence, looking down the whole city)"
+
+    scene bg rooftop view with dissolve
+
     K "Everything looks so small from up here."
-    Black BG
+    
+    scene bg black
+
     K "(I spend a moment enjoying watching people live their everyday life before going back to class)"
-    Bell ring sfx
+
+    play sound "bell.wav"
+
     jump checkpoint
 
 label checkpoint:
