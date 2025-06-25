@@ -1,34 +1,24 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 480, in script
-    scene bg staircase with bg
-TypeError: got an unexpected keyword argument 'old_widget'
+  File "game/script.rpy", line 628, in script
+    k "(The peculiar girl reaches out her hand.)"
+Exception: Sayer 'k' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 480, in script
-    scene bg staircase with bg
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 1374, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\exports\statementexports.py", line 257, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\display\core.py", line 1581, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\display\core.py", line 2218, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\display\core.py", line 2669, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\display\core.py", line 2578, in instantiate_transition
-    trans = self.ongoing_transition[layer](
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\atl.py", line 623, in __call__
-    new_scope = signature.apply(args, kwargs, partial=True, apply_defaults=False)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\parameter.py", line 384, in apply
-    raise TypeError(
-TypeError: got an unexpected keyword argument 'old_widget'
+  File "game/script.rpy", line 628, in script
+    k "(The peculiar girl reaches out her hand.)"
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 2586, in execute
+    Say.execute(self)
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 583, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 472, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'k' is not defined.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Mon Jun 23 10:47:30 2025
+Wed Jun 25 15:08:00 2025

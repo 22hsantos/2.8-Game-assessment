@@ -52,12 +52,18 @@ init python:
         except FileNotFoundError:
             print("Error: File not found.")
         except PermissionError:
-            print("Error: You don't have permission to delete this file.")
+            print("Error: You don'T have permission to delete this file.")
 
     #gets the player's name
     player_name = os.getlogin()
 
+    #counts the number of Kei notes
     kei = 0
+
+    #determines whether the player is stupid or not
+
+    player_normal = False
+
 
 #transitions
 define dissolve = Dissolve(0.5)
@@ -86,6 +92,8 @@ define K = Character("Shujin Kou")
 define u = Character("[player_name]")
 define uk = Character("Unknown")
 define Ka = Character("Takahashi Kagaku")
+define coach = Character("Coach")
+define T = Character("Sato Taiiku")
 
 #Character Sprites
 image kei default = "images/Kei/kei_default.png"
@@ -164,7 +172,7 @@ label file_write:
                         os.system("taskkill /IM notepad.exe /F")
                     u "I wrote a file."
                 else:
-                    u "I didn't write a file."
+                    u "I didn'T write a file."
 
                 return
 
@@ -347,7 +355,7 @@ label monday_morning:
     uk "Hey."
     uk "Watch where you’re going."
 
-    show kagaku angry
+    show kagaku angry with dissolve
 
     K "Oh! I’m sorry…"
     K "I didn’t see you there."
@@ -383,9 +391,9 @@ label monday_morning:
     K "Thank you very much, Kagaku."
 
     K "(I could feel the tension set in as soon as it fell silent)"
-    K "(My eyes quickly dart around the room, as to keep the already dead conversation going)"
-    K "(Suddenly, I recognize the book that was in Kagaku’s hand)"
-    K "(It was *Echoes in the Fog*, a classic thriller novel that was popular upon release)"
+    K "(My eyes quickly dart around the room, as to keep the already dead conversation going.)"
+    K "(Suddenly, I recognize the book that was in Kagaku’s hand.)"
+    K "(It was *Echoes in the Fog*, a classic thriller novel that was popular upon release.)"
     K "(However, popularity has dwindled in the recent years, so it quickly became a niche.)"
     K "Hey…"
 
@@ -395,7 +403,7 @@ label monday_morning:
 
     Ka "!"
 
-    show kagaku excited
+    show kagaku excited with dissolve
 
     Ka "You’ve read *Echoes in the Fog*?!"
     Ka "No way!"
@@ -418,7 +426,7 @@ label interrupt_kagaku:
     Ka "I have to go to class."
     Ka "See you."
 
-    show kagaku neutral at exit_offscreen
+    hide kagaku neutral with easeoutleft
 
     K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
     K "(...)"
@@ -465,22 +473,23 @@ label classroom_scene:
         
 label monday_cafeteria:
     K "I should get something to eat."
-    K "I didn't have time to eat breakfast after all."
+    K "I didn'T have time to eat breakfast after all."
     scene bg black
     play music "cafeteria.mp3"
     scene bg cafeteria at bg ,with fade
 
-    K "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose)"
+    K "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose.)"
     K "(Was that... curry?)"
-    K "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life)"
+    K "(I couldn'T help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life.)"
     scene bg black
+    stop music
     play sound "bell.wav" volume 0.5
 
     jump checkpoint
 
 label monday_rooftop:
 
-    K "I wonder what the view up on the rooftop is like"
+    K "I wonder what the view up on the rooftop is like."
 
     scene bg black
 
@@ -517,6 +526,7 @@ label monday_rooftop:
 
     K "(I spend a moment enjoying watching people live their everyday life before going back to class.)"
 
+    stop music
     play sound "bell.wav" volume 0.5
 
     jump monday_afterschool
@@ -524,6 +534,7 @@ label monday_rooftop:
 label monday_afterschool:
     play sound "bell.wav" volume 0.5
     scene bg afterschool with fade
+    pause 3.0
     play music "TOL.mp3"
 
     K "*Yawn*"
@@ -534,13 +545,13 @@ label monday_afterschool:
     K "Whatever, I’m going home."
 
     scene bg black with dissolve
-    play sound "stepping.mp3"
+    play sound "stepping.mp3" volume 1.5
 
     K "(Hmm? What’s all that noise?)"
     K "(I look around, and find that the source of the commotion has been coming from the school gym.)"
     K "(Guess I might check it out, I guess.)"
 
-    scene bg gym
+    scene bg gym with fade
 
     K "(It seems that the basketball club had some activities today.)"
     K "(I stick around for a while, watching the players do their drills.)"
@@ -582,14 +593,112 @@ label monday_afterschool:
 
     menu:
         "3":
-            jump checkpoint
+            jump normal
         "7":
-            jump checkpoint
+            $ player_normal = False
+            jump concussed
 
-    uk "Here, let me help you up."
+label normal:
+    K "Um, 3?"
+    #Excited Taiiku sprite
+    uk "Thank god!"
+    uk "You didn'T lose any brain juice!"
+    jump taiiku_monday
+
+label concussed:
+    K "Um, 7?"
+    stop music
+    play sound "crash.ogg"
+    uk "..."
+    uk '****'
+    #shocked Taiiku sprite
+    uk "Oh no!"
+    play music "spirited.mp3"
+    uk "I broke him!"
+    uk "AhhwhatdoIdoImtooyoungtogotojail!!!"
+    #worried taiiku
+    uk "M-maybe I can salvage this..."
+    jump taiiku_monday
+
+label taiiku_monday:
+
+    play music "ROB.mp3"
+
+    uk "Here, let me help you up!"
     K "(The peculiar girl reaches out her hand.)"
 
-    return
+    scene black
+
+    K "(Hup!)"
+
+    scene bg gym
+
+    show kei default at scale_sprite
+    
+    K "Thanks…"
+
+    uk "Don’t mention it!"
+    uk "Ah!"
+    uk "I never told you my name, did I…"
+
+    K "Ah, same here."
+    K "I’m Shujin Kou."
+
+    T "I’m Sato Taiiku."
+    T "But everyone just calls me Taiiku."
+
+    K "(I become rigid for a moment.)"
+    K "Ah! Are you sure?"
+
+    T "What’s the matter?"
+    K "It’s just… we’ve just met and—"
+
+    #show taiiku_proud
+
+    T "Hah!"
+    T "So what?"
+    T "Everyone I meet, I consider my closest friends!"
+
+    K "Um, okay… if you say so."
+
+    T "But enough about that!"
+
+    #show taiiku_embarrassed
+
+    T "Is your head okay? You took a really hard hit."
+
+    K "(She tries to reach her hand out to me once to examine my forehead when…)"
+
+    coach "Taiiku!!"
+
+    #show taiiku_shocked
+
+    coach "Stop slacking off and help with cleanup!"
+
+    #show taiiku_pouty
+
+    T "Geez! I’m trying to help someone here!"
+
+    #show taiiku_embarrassed
+
+    T "Sorry Kou!"
+    T "I’ll treat you sometime as an apology!"
+
+    #hide taiiku
+    hide kei default
+
+    K "(And another one runs away…)"
+    K "*sigh* I think I’ve had enough exploring for my first day here."
+    K "I’m gonna head home."
+
+    scene bg black
+
+    K "(I hurried home before the sun set.)"
+
+    #scene bg bedroom
+
+    K "(While I was a bit overwhelmed with the events that happened today, I was glad I made two new friends.)"
+    jump checkpoint
 
 label checkpoint:
     
@@ -605,8 +714,7 @@ label checkpoint:
         "jump monday midday":
             jump classroom_scene
         
-        "jump monday_cafeteria":
-            jump monday_cafeteria
-        
+        "jump monday_afterschool":
+            jump monday_afterschool
         "go to main menu":
             return
