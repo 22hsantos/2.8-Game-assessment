@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 78: invalid syntax
-    ("bell.wav", relative_volume =0.5 )
-                                  ^
+File "game/script.rpy", line 897: menu statement expects a non-empty block.
+    menu
+        ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Jun 23 11:01:45 2025
+Thu Jun 26 08:58:51 2025

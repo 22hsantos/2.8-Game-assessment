@@ -886,3 +886,53 @@ label tuesday_morning:
 
     jump checkpoint
 
+label tuesday_midday:
+    play sound "bell.wav" volume 0.5
+
+    #classroom bg
+
+    K "I've got nothing to do right now."
+    K "I should..."
+
+    menu:
+        
+        "eat at the cafeteria":
+            jump tuesday_cafeteria
+        
+        "Explore the school":
+            jump tuesday_theatre
+    
+    
+label tuesday_cafeteria:
+    
+    K "I should go to the cafeteria."
+    K "I am feeling a bit hungry"
+
+    scene bg black
+
+    K "(I make my way to the cafeteria once again, curious for what's on the menu today.)"
+
+    play music "cafeteria.mp3"
+
+    scene bg cafeteria
+
+    K "...!"
+    K "(I expected a delicious smell to greet me like yesterday...)"
+
+    stop music
+
+    K "(But today's meal took a total 180 degree turn)"
+
+    play music "spirited.mp3"
+
+    K "Ugh...what is this smell?"
+    K "(It was an indescribable smell.)"
+    K "(The closest I could get to describing this is physical assault...)"
+    K "(But to my nose.)"
+    K "(Yeah, no.)"
+    K "(I guess it's no lunch for me today.)"
+
+    scene bg black
+    play sound "bell.wav" volume 0.5
+
+    jump checkpoint
