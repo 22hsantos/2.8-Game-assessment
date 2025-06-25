@@ -123,6 +123,8 @@ image bg gym = "images/backgrounds/bg_gym.png"
 
 # The game starts here.
 
+
+
 label start:
 
     stop music
@@ -134,6 +136,21 @@ label start:
             jump story_start
         "Jump to checkpoint":
             jump checkpoint
+
+#for easy label access
+label checkpoint:
+
+    u "Checkpoint reached"
+
+    menu:
+
+        "monday":
+            jump monday_labels
+        
+        "tuesday":
+            jump tuesday_labels
+        "main menu":
+            return
 
 # shortcut to troubleshoot errors without going through dialogue
 label file_write:
@@ -311,6 +328,7 @@ label story_start:
 
     jump monday_morning
 
+#--- MONDAY ---
 label monday_morning:
     scene bg hallway with dissolve
     play music "sincememo.mp3"
@@ -328,6 +346,8 @@ label monday_morning:
 
     scene bg black
     play sound "stepping.mp3"
+
+label monday_kagaku:
 
     K "(...)"
 
@@ -604,7 +624,7 @@ label normal:
     #Excited Taiiku sprite
     uk "Thank god!"
     uk "You didn'T lose any brain juice!"
-    jump taiiku_monday
+    jump monday_taiiku
 
 label concussed:
     K "Um, 7?"
@@ -619,9 +639,9 @@ label concussed:
     uk "AhhwhatdoIdoImtooyoungtogotojail!!!"
     #worried taiiku
     uk "M-maybe I can salvage this..."
-    jump taiiku_monday
+    jump monday_taiiku
 
-label taiiku_monday:
+label monday_taiiku:
 
     play music "ROB.mp3"
 
@@ -694,6 +714,9 @@ label taiiku_monday:
     K "I’m gonna head home."
 
     scene bg black
+    jump monday_bedroom
+
+label monday_bedroom:
 
     K "(I hurried home before the sun set.)"
 
@@ -701,18 +724,6 @@ label taiiku_monday:
 
     K "(While I was a bit overwhelmed with the events that happened today, I was glad I made two new friends.)"
     jump checkpoint
-
-label checkpoint:
-
-    u "Checkpoint reached"
-
-    menu:
-
-        "monday":
-            jump monday_labels
-        
-        "main menu":
-            return
 
 label monday_labels:
     u "all monday labels"
@@ -733,3 +744,145 @@ label monday_labels:
         
         "return to checkpoint":
             jump checkpoint
+
+
+#--- TUESDAY ---
+
+label tuesday_labels:
+    u "all tuesday labels"
+
+    menu:
+        "tuesday_morning":
+            jump tuesday_morning
+        
+        "go back":
+            jump checkpoint
+
+label tuesday_morning:
+
+    scene bg black
+
+    K "(My eyelids started lifting the moment the sun hit my eyes.)"
+
+    #scene bg bedroom
+    play music "ROB.mp3"
+
+    K "Argh… Morning already?"
+    K "(I groggily put on my uniform and gather my things.)"
+    K "Okay, time to go to—"
+
+    stop music
+
+    K "(I suddenly put my hand over my right pocket.)"
+
+    play music "ROB.mp3"
+
+    K "*Sigh* Thank god I remembered this time…"
+    K "I don’t want to ever climb in through the window again."
+    K "Hopefully no one saw me, I’d die of embarrassment."
+    K "Well, I’m off."
+
+    play music "LEASE.mp3"
+    scene bg hood with dissolve
+    play sound "stepping.mp3"
+
+    K "I wonder if I’ll see Kagaku again."
+    K "She seems a bit odd, but I’m glad to have another book-buddy."
+    K "Taiiku too."
+    K "I hope she treats me today, that ball did leave a bruise after all."
+    K "It took forever to stop the swelling…"
+
+    scene bg black
+
+    K "(As soon as I arrived inside the school entrance, I immediately headed straight for the library.)"
+
+    scene bg outside library at bg ,with dissolve
+
+    K "(Here goes nothing...)"
+
+    scene bg black
+    scene bg library
+
+    show kagaku neutral at scale_sprite
+
+    Ka "Oh!"
+    Ka "Shujin-kun."
+
+    #show kagaku smile
+
+    Ka "Good morning."
+
+    K "Ka…Kagaku-san..."
+
+    #show kagaku laugh
+
+    Ka "Hahaha!"
+
+    #show kagaku neutral
+
+    Ka "Just Kagaku is fine."
+    Ka "It’s a bit odd if you add -san to my first name."
+
+    K "(My cheeks grow a bit pink from embarrassment.)"
+
+    Ka "How are you today?"
+
+    K "I’m pretty alright, thanks."
+    K "How about you?"
+
+    #show kagaku hesitated
+
+    Ka "I’m… alright, thank you."
+
+    K "(I sense the slight hesitation in her words.)"
+    K "Is… something wrong?"
+
+    show kagaku startled at scale_sprite
+
+    Ka "Ah! It’s nothing. It’s just…"
+
+    #show kagaku hesitated
+    show kagaku neutral
+
+    Ka "..."
+    Ka "I’ve just taken a lot of responsibilities at once since we’re starting the school year."
+    Ka "And I’ve just been a bit stressed while organising that and other things too."
+
+    K "(A wave of empathy washes over me as I continue to listen to her troubles.)"
+    K "Woah, sounds tough on you."
+
+    show kagaku startled
+
+    Ka "No! Not at all! I can handle it myself."
+
+    #show kagaku hesitated
+
+    Ka "I just need a little time, that’s all."
+
+    K "(A sense of doubt and concern hits me, but I try to encourage Kagaku.)"
+    K "Alright, just…"
+    K "Tell me if you need anything, okay?"
+
+    #show kagaku startled
+
+    Ka "..."
+
+    #show kagaku smile
+
+    Ka "Thank you, Shujin-kun."
+    Ka "That means a lot to me."
+
+    play sound "bell.wav" volume 0.5
+
+    pause 3.0
+
+    show kagaku neutral
+    Ka "What a shame, I guess I’ll have to see you later?"
+
+    K "Yeah, later."
+
+    hide kagaku
+    scene bg black
+
+    jump checkpoint
+
