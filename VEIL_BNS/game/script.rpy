@@ -61,7 +61,6 @@ init python:
     kei = 0
 
     #determines whether the player is stupid or not
-
     player_normal = False
 
 
@@ -97,6 +96,8 @@ define T = Character("Sato Taiiku")
 
 #Character Sprites
 image kei default = "images/Kei/kei_default.png"
+
+image ph = "images/PH_default.png"
 
 #Kagaku Sprites
 image kagaku neutral = "images/Kagaku/kagaku_neutral.png"
@@ -577,7 +578,7 @@ label monday_afterschool:
 
     scene bg gym with dissolve
     play music "spirited.mp3"
-    show kei default at scale_sprite
+    show ph
 
     uk "Um!"
     uk "How many fingers am I holding!?"
@@ -633,7 +634,7 @@ label taiiku_monday:
 
     scene bg gym
 
-    show kei default at scale_sprite
+    show ph
     
     K "Thanks…"
 
@@ -685,10 +686,11 @@ label taiiku_monday:
     T "I’ll treat you sometime as an apology!"
 
     #hide taiiku
-    hide kei default
+    hide ph with easeoutleft
 
     K "(And another one runs away…)"
-    K "*sigh* I think I’ve had enough exploring for my first day here."
+    K "*sigh*"
+    K "I think I’ve had enough exploring for my first day here."
     K "I’m gonna head home."
 
     scene bg black
@@ -701,20 +703,33 @@ label taiiku_monday:
     jump checkpoint
 
 label checkpoint:
-    
+
+    u "Checkpoint reached"
+
     menu:
-        u "Checkpoint reached"
+
+        "monday":
+            jump monday_labels
+        
+        "main menu":
+            return
+
+label monday_labels:
+    u "all monday labels"
+
+    menu:
 
         "jump story start":
             jump story_start
-        
-        "jump monday morning":
+
+        "monday morning":
             jump monday_morning
-        
-        "jump monday midday":
+
+        "monday midday classroom":
             jump classroom_scene
         
-        "jump monday_afterschool":
+        "monday afterschool":
             jump monday_afterschool
-        "go to main menu":
-            return
+        
+        "return to checkpoint":
+            jump checkpoint
