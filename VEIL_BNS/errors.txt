@@ -2,8 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1116: invalid syntax
-        message_2 = 
+File "game/script.rpy", line 413: expected 'simple_expression' not found.
+    show kagaku neutral 2 at 
+                             ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Mon Jul 14 21:44:22 2025
+Tue Jul 15 09:14:34 2025

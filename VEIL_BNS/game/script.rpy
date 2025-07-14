@@ -44,11 +44,10 @@ init python:
 
     #file path list
     file_path_list = [file_path1 , file_path2]
-
-    file_exists = os.path.exists(file_path1)
     
 
     for path in file_path_list:
+
         file_exists = os.path.exists(path)
 
         if file_exists:
@@ -78,6 +77,14 @@ transform scale_sprite:
     zoom 2
     xalign 0.5
     yalign 1.0
+
+transform scale:
+    zoom 1.13
+
+transform scale_t:
+    zoom 1.15
+    xalign 0.4
+    yalign 1.02
 
 #zooms in bg, pans left to right
 transform bg_pan:
@@ -112,6 +119,13 @@ image kagaku angry = "images/Kagaku/kagaku_angry.png"
 image kagaku excited = "images/Kagaku/kagaku_excited.png"
 image kagaku startled = "images/Kagaku/kagaku_startled.png"
 image kagaku neutral 2 = "images/Kagaku/kagaku_neutral2.png"
+
+#Taiiku Sprites
+image taiiku neutral = "images/Taiiku/Taiiku_neutral.png"
+image taiiku excited = "images/Taiiku/Taiiku_excited.png"
+image taiiku shocked = "images/Taiiku/Taiiku_shocked.png"
+image taiiku worried = "images/Taiiku/Taiiku_worried.png"
+image taiiku embarrassed = "images/Taiiku/Taiiku_embarrassed.png"
 
 #Backgrounds
 image bg hood = "images/backgrounds/bg_neighbourhood.jpeg"
@@ -408,16 +422,16 @@ label monday_kagaku:
     Ka "Shujin-kun. My name is Takahashi Kagaku."
     K "Taka…Takaha-"
 
-    show kagaku neutral 2
+    show kagaku neutral 2 at scale
 
     Ka "*Sigh*"
     Ka "Kagaku is fine."
 
-    show kagaku neutral
+    show kagaku neutral at scale_sprite
 
     K "Thank you very much, Kagaku."
 
-    K "(I could feel the tension set in as soon as it fell silent)"
+    K "(I could feel the tension set in as soon as it fell silent.)"
     K "(My eyes quickly dart around the room, as to keep the already dead conversation going.)"
     K "(Suddenly, I recognize the book that was in Kagaku’s hand.)"
     K "(It was *Echoes in the Fog*, a classic thriller novel that was popular upon release.)"
@@ -446,6 +460,7 @@ label monday_kagaku:
             jump let_kagaku_talk
 
 label interrupt_kagaku:
+
     show kagaku startled
     Ka "Ah."
     show kagaku neutral
@@ -618,6 +633,8 @@ label monday_afterschool:
 
     K "Uhh…"
 
+    hide ph
+
     menu:
         "3":
             jump normal
@@ -627,7 +644,9 @@ label monday_afterschool:
 
 label normal:
     K "Um, 3?"
-    #Excited Taiiku sprite
+    
+    show taiiku excited at scale_t
+
     uk "Thank god!"
     uk "You didn't lose any brain juice!"
     jump monday_taiiku
@@ -638,12 +657,16 @@ label concussed:
     play sound "crash.ogg"
     uk "..."
     uk '****'
-    #shocked Taiiku sprite
+    
+    show taiiku shocked at scale_t
+
     uk "Oh no!"
     play music "spirited.mp3"
     uk "I broke him!"
     uk "AhhwhatdoIdoImtooyoungtogotojail!!!"
-    #worried taiiku
+    
+    show taiiku worried at scale_t
+
     uk "M-maybe I can salvage this..."
     jump monday_taiiku
 
@@ -660,22 +683,35 @@ label monday_taiiku:
 
     scene bg gym
 
-    show ph
+    show taiiku neutral at scale_t
     
     K "Thanks…"
 
     uk "Don’t mention it!"
+
+    #replace
+    show taiiku shocked at scale_t
+
     uk "Ah!"
+
+    #taiiku smile
+    show taiiku neutral at scale_t
+
     uk "I never told you my name, did I…"
 
     K "Ah, same here."
     K "I’m Shujin Kou."
 
     T "I’m Sato Taiiku."
+
+    #taiiku smile
+
     T "But everyone just calls me Taiiku."
 
     K "(I become rigid for a moment.)"
     K "Ah! Are you sure?"
+
+    #taiiku confused
 
     T "What’s the matter?"
     K "It’s just… we’ve just met and—"
@@ -694,11 +730,11 @@ label monday_taiiku:
 
     T "Is your head okay? You took a really hard hit."
 
-    K "(She tries to reach her hand out to me once to examine my forehead when…)"
+    K "(She tries to reach her hand out to me once again to examine my forehead when…)"
+
+    show taiiku shocked at scale_t
 
     coach "Taiiku!!"
-
-    #show taiiku_shocked
 
     coach "Stop slacking off and help with cleanup!"
 
@@ -706,13 +742,18 @@ label monday_taiiku:
 
     T "Geez! I’m trying to help someone here!"
 
-    #show taiiku_embarrassed
+    show taiiku embarrassed at scale_t
+
+    T "Heheh..."
 
     T "Sorry Kou!"
+
+    show taiiku neutral at scale_t
+
     T "I’ll treat you sometime as an apology!"
 
     #hide taiiku
-    hide ph with easeoutleft
+    hide taiiku neutral with easeoutleft
 
     K "(And another one runs away…)"
     K "*sigh*"
@@ -833,7 +874,7 @@ label tuesday_morning:
 
     Ka "Hahaha!"
 
-    #show kagaku neutral
+    show kagaku neutral
 
     Ka "Just Kagaku is fine."
     Ka "It’s a bit odd if you add -san to my first name."
@@ -1004,8 +1045,7 @@ label tuesday_afterschool:
     K "(And a tight-lipped girl knelt down in the middle, gathering all of the balls.)"
     K "(I make my way towards her, planning to offer my help but—)"
 
-    #show taiiku shocked
-    show ph
+    show taiiku shocked at scale_t
 
     T "KYAH!"
     K "Woah!"
@@ -1017,7 +1057,7 @@ label tuesday_afterschool:
     K "You sounded quite shocked, haha…"
     K "(I nervously laugh, trying to brush off the guilt weighing upon me)"
 
-    #show taiiku embarrassed
+    show taiiku embarrassed at scale_t
 
     T "No, no."
     T "It’s fine."
@@ -1063,7 +1103,9 @@ label tuesday_afterschool:
         "Console her":
             K "Hey, I don't mind at all..."
             K "And I don't think you're a bad senpai."
+
             #Slight smile Taiiku sprite
+            
             T "Thanks, Kou."
             T "I'm glad to hear that."
             
