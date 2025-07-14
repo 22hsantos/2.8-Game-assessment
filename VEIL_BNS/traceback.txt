@@ -1,26 +1,37 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "game/script.rpy", line 68, in <module>
-    monday_morning, interrupt_kagaku,let_kagaku_talk,
-NameError: name 'monday_morning' is not defined
+  File "renpy/common/00keymap.rpy", line 504, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 504, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 531, in _execute_python_hide
+    renpy.save("_reload-1", "reload save game")
+TypeError: cannot pickle '_io.TextIOWrapper' object (perhaps store.file = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='w' encoding='UTF-8'>)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 8, in script
-    init python:
+  File "renpy/common/00keymap.rpy", line 504, in script
+    python hide:
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 68, in <module>
-    monday_morning, interrupt_kagaku,let_kagaku_talk,
-NameError: name 'monday_morning' is not defined
+  File "renpy/common/00keymap.rpy", line 504, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 531, in _execute_python_hide
+    renpy.save("_reload-1", "reload save game")
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\loadsave.py", line 436, in save
+    reraise(t, e, tb)
+  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\loadsave.py", line 417, in save
+    dump((roots, renpy.game.log), logf)
+  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\compat\pickle.py", line 107, in dump
+    pickle.dump(o, f, pickle.HIGHEST_PROTOCOL if highest else PROTOCOL)
+TypeError: cannot pickle '_io.TextIOWrapper' object (perhaps store.file = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='w' encoding='UTF-8'>)
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Wed Jun 25 16:11:59 2025
+Mon Jul 14 21:55:21 2025

@@ -43,25 +43,22 @@ init python:
     file_path2 = os.path.join(renpy.config.basedir, "game", "hello?.txt")
 
     #file path list
-    file_path_list [file_path1 , file_path2]
+    file_path_list = [file_path1 , file_path2]
 
     file_exists = os.path.exists(file_path1)
     
 
-    for paths in file_path_list:
-        file
-    #check if the file exists
-    file_exists = os.path.exists(file_path1)
+    for path in file_path_list:
+        file_exists = os.path.exists(path)
 
-    #removes file
-    if file_exists:
-        try:
-            os.remove(file_path1)
-            print("File deleted.")
-        except FileNotFoundError:
-            print("Error: File not found.")
-        except PermissionError:
-            print("Error: You don'T have permission to delete this file.")
+        if file_exists:
+            try:
+                os.remove(path)
+                print("File deleted.")
+            except FileNotFoundError:
+                print("Error: File not found.")
+            except PermissionError:
+                print("Error: You don't have permission to delete this file.")
 
     #gets the player's name
     player_name = os.getlogin()
@@ -503,14 +500,14 @@ label classroom_scene:
         
 label monday_cafeteria:
     K "I should get something to eat."
-    K "I didn'T have time to eat breakfast after all."
+    K "I didn't have time to eat breakfast after all."
     scene bg black
     play music "cafeteria.mp3"
     scene bg cafeteria at bg ,with fade
 
     K "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose.)"
     K "(Was that... curry?)"
-    K "(I couldn'T help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life.)"
+    K "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life.)"
     scene bg black
     stop music
     play sound "bell.wav" volume 0.5
@@ -632,7 +629,7 @@ label normal:
     K "Um, 3?"
     #Excited Taiiku sprite
     uk "Thank god!"
-    uk "You didn'T lose any brain juice!"
+    uk "You didn't lose any brain juice!"
     jump monday_taiiku
 
 label concussed:
@@ -950,6 +947,7 @@ label tuesday_cafeteria:
     K "(I guess it's no lunch for me today.)"
 
     scene bg black
+    stop music
     play sound "bell.wav" volume 0.5
 
     jump checkpoint
@@ -995,7 +993,7 @@ label tuesday_afterschool:
 
     scene bg black with fade
 
-    K "(I head over to the school gym, my stomach non-stop sounding like it was playing some kind of desperate symphony.)"
+    K "(I head over to the school gym, my stomach pounding like it was playing some kind of desperate symphony.)"
 
     play sound "stepping.mp3"
     scene bg gym with dissolve
@@ -1106,28 +1104,15 @@ label tuesday_bedroom:
     K "Huh? What is this?"
     K "Another piece of paper…"
 
-    menu:
-        "open it":
-            python:
-                #create and write to file
-        
-                with open(file_path1, "w") as file:
-
-                    message_2 = 
-
-                    file.write(message_2)
-                    file.close()
-
-                    file_exists = os.path.exists(file_path1)
-        
-        "leave it alone"
+    #menu choice
 
     K "(I examine the paper closer)"
     K "Butter?"
     K "Flour?"
     K "Milk?"
     K "Huh, must’ve ripped off mom’s cooking books…"
-    K "I throw the paper into the corner of the room and felt myself dozing off."
+    K "I carelessly throw the paper into the corner of the room..."
+    K "Then dozed off under the sweet embrace of my warm blanket."
 
     scene bg black with fade
 
