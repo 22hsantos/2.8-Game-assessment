@@ -2,9 +2,8 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 897: menu statement expects a non-empty block.
-    menu
-        ^
+File "game/script.rpy", line 1115: invalid syntax
+        message_2 = 
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Thu Jun 26 08:58:51 2025
+Fri Jun 27 12:59:36 2025

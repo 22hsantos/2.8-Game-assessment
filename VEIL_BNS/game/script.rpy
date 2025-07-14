@@ -38,16 +38,25 @@ init python:
             ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
             sys.exit()#terminates the session
 
-    #absolute path to game directory
-    file_path = os.path.join(renpy.config.basedir, "game", "2025.txt")
-                    
+    #note file paths
+    file_path1 = os.path.join(renpy.config.basedir, "game", "2025.txt")
+    file_path2 = os.path.join(renpy.config.basedir, "game", "hello?.txt")
+
+    #file path list
+    file_path_list [file_path1 , file_path2]
+
+    file_exists = os.path.exists(file_path1)
+    
+
+    for paths in file_path_list:
+        file
     #check if the file exists
-    file_exists = os.path.exists(file_path)
+    file_exists = os.path.exists(file_path1)
 
     #removes file
     if file_exists:
         try:
-            os.remove(file_path)
+            os.remove(file_path1)
             print("File deleted.")
         except FileNotFoundError:
             print("Error: File not found.")
@@ -158,7 +167,7 @@ label file_write:
 
     if file_exists:
         u "Kei exists."
-        $ os.remove(file_path)
+        $ os.remove(file_path1)
         u "Kei does not exist."
     else:
         u "Kei does not exist."
@@ -172,16 +181,16 @@ label file_write:
                 python:
                     
                     #create and write to file
-                    with open(file_path, "w") as file:
+                    with open(file_path1, "w") as file:
                         file.write("File created.")
                         file.close()
 
                     #check if the file exists
-                    file_exists = os.path.exists(file_path)
+                    file_exists = os.path.exists(file_path1)
 
                 if file_exists:
                     python:
-                        os.system(f'notepad.exe {file_path}')
+                        os.system(f'notepad.exe {file_path1}')
                         ctypes.windll.user32.MessageBoxW(None,
                         "Unexpected file interference! Please close interfering file before continuing.", 
                         "Oh No!",
@@ -255,7 +264,7 @@ label story_start:
             python:
                 #create and write to file
         
-                with open(file_path, "w") as file:
+                with open(file_path1, "w") as file:
 
                     message_1 = r"""
                     [code]
@@ -292,12 +301,12 @@ label story_start:
                     file.write(message_1)
                     file.close()
 
-                    file_exists = os.path.exists(file_path)
+                    file_exists = os.path.exists(file_path1)
                 
             
             if file_exists:
                 python:
-                    os.system(f'notepad.exe {file_path}')
+                    os.system(f'notepad.exe {file_path1}')
                     ctypes.windll.user32.MessageBoxW(None,
                     "Unexpected file interference! Please select OK to continue with the game.", 
                     "Oh No!",
@@ -754,6 +763,15 @@ label tuesday_labels:
     menu:
         "tuesday_morning":
             jump tuesday_morning
+
+        "tuesday midday":
+            jump tuesday_midday
+
+        "tuesday afterschool":
+            jump tuesday_afterschool
+        
+        "tuesday bedroom":
+            jump tuesday_bedroom
         
         "go back":
             jump checkpoint
@@ -884,7 +902,7 @@ label tuesday_morning:
     hide kagaku
     scene bg black
 
-    jump checkpoint
+    jump tuesday_midday
 
 label tuesday_midday:
     play sound "bell.wav" volume 0.5
@@ -902,11 +920,10 @@ label tuesday_midday:
         "Explore the school":
             jump tuesday_theatre
     
-    
 label tuesday_cafeteria:
     
     K "I should go to the cafeteria."
-    K "I am feeling a bit hungry"
+    K "I *am* feeling a bit hungry."
 
     scene bg black
 
@@ -921,7 +938,7 @@ label tuesday_cafeteria:
 
     stop music
 
-    K "(But today's meal took a total 180 degree turn)"
+    K "(But today's meal took a total 180 degree turn.)"
 
     play music "spirited.mp3"
 
@@ -934,5 +951,184 @@ label tuesday_cafeteria:
 
     scene bg black
     play sound "bell.wav" volume 0.5
+
+    jump checkpoint
+
+label  tuesday_theatre:  
+
+    K "I should check out the theatre."
+    K "A school this rich would have an impressive theatre, right?"
+
+    scene bg black
+    
+    K "(I made my way to the theatre, admiring it's beautiful design)"
+
+    #Theater BG
+
+    K "Woah..."
+    K "I haven't been one for plays but-"
+    K "Looking at a theatre this extravagant might just get me into it."
+
+    play sound "bell.wav" volume 0.5
+
+    jump checkpoint
+
+label tuesday_afterschool:
+
+    play sound "bell.wav" volume 0.5
+
+    scene bg afterschool with fade
+    pause 3.0
+    play music "TOL.mp3"
+
+    K "*Sigh*"
+    K "I still don’t get a lot of what they’re teaching but—"
+    K "I think I made a lot of progress."
+    K "(I feel myself zoning out for a few seconds.)"
+    K "..."
+    K "(*growl*)"
+    K "Ah."
+    K "Taiiku was supposed to treat me today."
+    K "Honestly, I forgot about that."
+    K "But thinking about it now has gotten me quite excited."
+    K "I should go find her."
+
+    scene bg black with fade
+
+    K "(I head over to the school gym, my stomach non-stop sounding like it was playing some kind of desperate symphony.)"
+
+    play sound "stepping.mp3"
+    scene bg gym with dissolve
+
+    K "(To my surprise, there was no rowdy commotion this time.)"
+    K "(It seems like the basketball club had to leave early.)"
+    K "(Though, there were a bunch of basketballs scattered all over the ground…)"
+    K "(And a tight-lipped girl knelt down in the middle, gathering all of the balls.)"
+    K "(I make my way towards her, planning to offer my help but—)"
+
+    #show taiiku shocked
+    show ph
+
+    T "KYAH!"
+    K "Woah!"
+    T "Who’s the—"
+    T "Oh!"
+    T "It’s just you, Kou."
+    K "Yeah…"
+    K "Sorry for startling you."
+    K "You sounded quite shocked, haha…"
+    K "(I nervously laugh, trying to brush off the guilt weighing upon me)"
+
+    #show taiiku embarrassed
+
+    T "No, no."
+    T "It’s fine."
+    T "Just, forget about how loud I screamed!"
+    T "That was like, super embarrassing…"
+    K "Yeah, of course."
+
+    #show taiiku anxious
+
+    K "(It fell silent for what felt like eternity.)"
+    K "Um!"
+    K "What are you doing here, all alone?"
+    K "Where’s the rest of the club?"
+
+    #show taiiku tense
+
+    T "Oh…"
+    T "They… um"
+    T "Had other things to do."
+    K "(I become concerned at her tense demeanor.)"
+    K "Well—"
+
+    #show taiiku sweating
+
+    T "Uh!"
+    T "It’s not like they made me do this!"
+    T "I asked to do this."
+
+    #show taiiku tense
+
+
+    T "..."
+    T "Sorry, I’m feeling a bit off today."
+    T "And I didn’t treat you yet…"
+
+    #show taiiku sad
+
+    T "I’m not a very good senpai, am I…?"
+
+    menu:
+        "Say nothing":
+            pass
+        "Console her":
+            K "Hey, I don't mind at all..."
+            K "And I don't think you're a bad senpai."
+            #Slight smile Taiiku sprite
+            T "Thanks, Kou."
+            T "I'm glad to hear that."
+            
+            pass
+
+    K "..."
+    T "..."
+    K "(Taiiku turns away from you to wipe her face with her sleeve, before facing you again.)"
+    T "Tomorrow I’ll treat you to a suuper delicious meal, okay?"
+    T "So, please don’t think bad of me!"
+    K  "(Despite her best attempts at putting on a smile, her softly creased eyebrows gave everything away.)"
+    K "(I try my best not to put down the mood.)"
+    K "Haha, of course not."
+    K "And sure, I’ll hold you to that…"
+    K "Okay?"
+
+    #show taiiku happy
+
+    T "Okay…!"
+
+    scene bg black with fade
+    K "(Shortly after I helped her clean up the gym, we parted ways at the school gates.)"
+
+    jump tuesday_bedroom
+
+label tuesday_bedroom:
+
+    #scene bedroom with dissolve
+
+    K "I hope Taiiku’s okay…"
+    K "She was super bright when I first met her yesterday."
+    K "Kagaku, too."
+    K "The start of a new year might’ve put too much pressure on both of them."
+
+    K "(As I was finishing changing into my pajamas, I was getting ready to slip under my covers...)"
+    K "(Suddenly, I nearly slip as I stepped on a mysterious object.)"
+    K "Ah!"
+    K "Huh? What is this?"
+    K "Another piece of paper…"
+
+    menu:
+        "open it":
+            python:
+                #create and write to file
+        
+                with open(file_path1, "w") as file:
+
+                    message_2 = 
+
+                    file.write(message_2)
+                    file.close()
+
+                    file_exists = os.path.exists(file_path1)
+        
+        "leave it alone"
+
+    K "(I examine the paper closer)"
+    K "Butter?"
+    K "Flour?"
+    K "Milk?"
+    K "Huh, must’ve ripped off mom’s cooking books…"
+    K "I throw the paper into the corner of the room and felt myself dozing off."
+
+    scene bg black with fade
 
     jump checkpoint
