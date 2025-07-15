@@ -1,35 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "game/script.rpy", line 48, in <module>
-    file_exists = os.path.exists()
-TypeError: exists() missing 1 required positional argument: 'path'
+  File "game/script.rpy", line 1158, in script
+    python:
+  File "game/script.rpy", line 1161, in <module>
+    with open(file_path2, "w") as file:
+         ~~~~^^^^^^^^^^^^^^^^^         
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\hello?.txt'
 
 -- Full Traceback ------------------------------------------------------------
 
-Full traceback:
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\bootstrap.py", line 359, in bootstrap
-    renpy.main.main()
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\main.py", line 541, in main
-    renpy.game.context().run(node)
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
+Traceback (most recent call last):
+  File "game/script.rpy", line 1158, in script
+    python:
+  File "renpy/ast.py", line 1187, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\heave\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1260, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 48, in <module>
-    file_exists = os.path.exists()
-TypeError: exists() missing 1 required positional argument: 'path'
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "game/script.rpy", line 1161, in <module>
+    with open(file_path2, "w") as file:
+         ~~~~^^^^^^^^^^^^^^^^^         
+OSError: [Errno 22] Invalid argument: 'C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\hello?.txt'
 
-Windows-10-10.0.26100 AMD64
-Ren'Py 8.3.7.25031702
+Windows-11-10.0.26100-SP0 AMD64
+Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Tue Jul 15 09:07:55 2025
+Wed Jul 16 11:40:07 2025

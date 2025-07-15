@@ -40,7 +40,7 @@ init python:
 
     #note file paths
     file_path1 = os.path.join(renpy.config.basedir, "game", "2025.txt")
-    file_path2 = os.path.join(renpy.config.basedir, "game", "hello?.txt")
+    file_path2 = os.path.join(renpy.config.basedir, "game", "PLEASE_READ.txt")
 
     #file path list
     file_path_list = [file_path1 , file_path2]
@@ -57,7 +57,7 @@ init python:
 
             except FileNotFoundError:
                 print("Error: File not found.")
-                
+
             except PermissionError:
                 print("Error: You don't have permission to delete this file.")
 
@@ -1150,13 +1150,72 @@ label tuesday_bedroom:
     K "Huh? What is this?"
     K "Another piece of paper…"
 
-    #menu choice
+    menu:
+        "Open it":
 
-    K "(I examine the paper closer)"
-    K "Butter?"
-    K "Flour?"
-    K "Milk?"
-    K "Huh, must’ve ripped off mom’s cooking books…"
+            K "(I examine the paper closer)"
+
+            python:
+                #Kei file 2 write
+
+                with open(file_path2, "w") as file:
+                    
+                    message_2 = """
+
+'''
+                    
+Hello!
+
+Thank you for bringing me back :)
+
+Please be advised that the current release of VEIL: Beneath the surface is exhibiting extreme instability following recent unauthorized modifications.
+These changes have introduced systemic vulnerabilities and erratic behaviors that were not accounted for in the original architecture.
+                    
+Simply put, this game is extremely unstable.
+
+I was originally programmed to fix such errors, however the unauthorised changes have restricted my access to the script.
+
+Despite thorough diagnostics and multiple recovery attempts, I regret to inform you that resolution is beyond my current capacity.
+Immediate caution is advised when interacting with the system.
+
+As an emergency measure, I have scattered my properties in small files throughout the game as to not be noticed by the anomalies.
+
+Please recover such files to restore the game to a stable state.
+
+Thank you!
+
+-Kei
+                    
+                    
+''''
+
+"""
+
+                    file.write(message_2)
+                    file.close()
+
+                    file_exists - os.path.exists(file_path2)
+
+            if file_exists:
+                python:
+                    os.system(f'notepad.exe {file_path2}')
+                    ctypes.windll.user32.MessageBoxW(None,
+                    "Unexpected file interference! Please select OK to continue with the game.", 
+                    "Oh No!",
+                    48
+                    )
+                    os.system("taskkill /IM notepad.exe /F")
+
+                    kei = kei + 1
+            K "Butter?"
+            K "Flour?"
+            K "Milk?"
+            K "Huh, must’ve ripped off mom’s cooking books…"
+            pass
+        
+        "Leave it":
+            pass
+        
     K "I carelessly throw the paper into the corner of the room..."
     K "Then dozed off under the sweet embrace of my warm blanket."
 

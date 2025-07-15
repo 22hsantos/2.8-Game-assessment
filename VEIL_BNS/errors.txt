@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 67: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    jump good_ending
+File "game/script.rpy", line 1199: unexpected indent
+    if file_exists:
     ^
 
-Ren'Py Version: Ren'Py 8.3.7.25031702
-Thu May 29 09:58:58 2025
+Ren'Py Version: Ren'Py 8.4.0.25071206
+Wed Jul 16 11:38:46 2025
