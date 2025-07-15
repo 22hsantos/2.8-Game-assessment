@@ -54,8 +54,10 @@ init python:
             try:
                 os.remove(path)
                 print("File deleted.")
+
             except FileNotFoundError:
                 print("Error: File not found.")
+                
             except PermissionError:
                 print("Error: You don't have permission to delete this file.")
 
@@ -73,6 +75,7 @@ init python:
 define dissolve = Dissolve(0.5)
 
 #aligns and resizes sprites
+#FIX IMAGE FILES SO I DONT HAVE OT DO THIS
 transform scale_sprite:
     zoom 2
     xalign 0.5
@@ -110,7 +113,8 @@ define T = Character("Sato Taiiku")
 #Character Sprites
 image kei default = "images/Kei/kei_default.png"
 
-image ph = "images/PH_default.png"
+#placeholder Sprites
+image ph = "images/placeholder/PH_default.png"
 
 #Kagaku Sprites
 image kagaku neutral = "images/Kagaku/kagaku_neutral.png"

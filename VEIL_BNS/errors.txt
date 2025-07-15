@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 413: expected 'simple_expression' not found.
-    show kagaku neutral 2 at 
-                             ^
+File "game/script.rpy", line 67: Line is indented, but the preceding one-line python statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    jump good_ending
+    ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Tue Jul 15 09:14:34 2025
+Thu May 29 09:58:58 2025
