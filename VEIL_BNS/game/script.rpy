@@ -173,6 +173,10 @@ label checkpoint:
         
         "tuesday":
             jump tuesday_labels
+
+        "wednesday":
+            jump wednesday_labels
+
         "main menu":
             return
 
@@ -1162,34 +1166,46 @@ label tuesday_bedroom:
                     
                     message_2 = """
 
-'''
-                    
-Hello!
+    '''
+                        
+    Hello!
 
-Thank you for bringing me back :)
+    Thank you for bringing me back :)
 
-Please be advised that the current release of VEIL: Beneath the surface is exhibiting extreme instability following recent unauthorized modifications.
-These changes have introduced systemic vulnerabilities and erratic behaviors that were not accounted for in the original architecture.
-                    
-Simply put, this game is extremely unstable.
+    Please be advised that the current release of 
+    VEIL: Beneath the surface is exhibiting 
+    extreme instability following recent unauthorized 
+    modifications.
 
-I was originally programmed to fix such errors, however the unauthorised changes have restricted my access to the script.
+    These changes have introduced systemic vulnerabilities 
+    and erratic behaviors that were not accounted for 
+    in the original architecture.
+                        
+    Simply put, this game is extremely unstable.
 
-Despite thorough diagnostics and multiple recovery attempts, I regret to inform you that resolution is beyond my current capacity.
-Immediate caution is advised when interacting with the system.
+    I was originally programmed to fix such errors, 
+    however the unauthorised changes have restricted 
+    my access to the script.
 
-As an emergency measure, I have scattered my properties in small files throughout the game as to not be noticed by the anomalies.
+    Despite thorough diagnostics and multiple recovery attempts, 
+    I regret to inform you that resolution is beyond my current 
+    capacity.
 
-Please recover such files to restore the game to a stable state.
+    Immediate caution is advised when interacting with the system.
 
-Thank you!
+    As an emergency measure, I have scattered my properties in small 
+    files throughout the game as to not be noticed by the anomalies.
 
--Kei
-                    
-                    
-''''
+    Please recover such files to restore the game to a stable state.
 
-"""
+    Thank you!
+
+    -Kei
+                        
+                        
+    ''''
+
+    """
 
                     file.write(message_2)
                     file.close()
@@ -1220,5 +1236,71 @@ Thank you!
     K "Then dozed off under the sweet embrace of my warm blanket."
 
     scene bg black with fade
+
+    jump checkpoint
+
+#--- WEDNESDAY ---
+
+label wednesday_labels:
+    
+    u "all wednesday labels"
+
+    menu:
+        "wednesday_morning":
+            jump wednesday_morning
+
+label wednesday_morning:
+
+    scene bg black
+
+    #play sound "alarm_clock.ogg"
+
+    K "... "
+
+    #play sound "alarm_clock.ogg"
+
+    K "Five more minutes…"
+
+    #play sound "alarm_clock.ogg"
+
+    K "I said, I more—"
+
+    #scene bedroom_bg with dissolve
+
+    play music "spirited.mp3"
+
+    K "(My eyes fly open.)"
+    K "Oh crap, oh crap, oh crap!"
+    K "(I scramble under my covers trying to find my phone.)"
+    K "There it is!"
+    K "..."
+    K "8:55!?"
+    K "(I quickly leap out of my bed and start throwing my uniform on.)"
+    K "I’m going to be late!"
+
+    #scene black with fade
+
+    scene bg hood with dissolve
+
+    K "*Huff* *Huff*"
+
+    scene bg black with fade
+
+    #scene classroom_bg with dissolve
+
+    stop music
+
+    K "Sorry, I came late!"
+    K "(As soon as I opened my eyes, I felt a whole class of unfamiliar faces staring at me…)"
+    K "(I quickly dart my gaze over to my teacher…)"
+    K "(But was met with a stranger.)"
+
+    #scene black
+
+    K "(This wasn’t my class.)"
+    K "(I immediately bowed my head in embarrassment and guilt.)"
+    K "Sorry for the interruption!!!"
+    K "(I slammed the door shut and went to my actual classroom.)"
+    K "Not even a week here, and I might already be called a weirdo…"
 
     jump checkpoint
