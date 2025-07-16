@@ -159,6 +159,9 @@ image bg rooftop view = "images/backgrounds/bg_rooftop_view.jpg"
 image bg afterschool = "images/backgrounds/bg_afterschool.png"
 image bg gym = "images/backgrounds/bg_gym.png"
 
+screen key_listener():
+    key "q" action Jump("checkpoint")
+
 
 # The game starts here.
 
@@ -166,15 +169,13 @@ image bg gym = "images/backgrounds/bg_gym.png"
 
 label start:
 
+    show screen key_listener
+
+    "Checkpoint Shortcut active. (Disregard)"
+
     stop music
 
-    menu:
-        "troubleshoot file creation":
-            jump file_write
-        "Play the story":
-            jump story_start
-        "Jump to checkpoint":
-            jump checkpoint
+    jump story_start
 
 #for easy label access
 label checkpoint:
@@ -194,6 +195,12 @@ label checkpoint:
 
         "main menu":
             return
+
+label current:
+    u "You have reached the end of the current playable instance."
+    u "Thank you :)"
+
+    return
 
 # shortcut to troubleshoot errors without going through dialogue
 label file_write:
@@ -550,7 +557,7 @@ label monday_cafeteria:
     stop music
     play sound "bell.wav" volume 0.5
 
-    jump checkpoint
+    jump monday_afterschool
 
 label monday_rooftop:
 
@@ -794,7 +801,7 @@ label monday_bedroom:
     #scene bg bedroom
 
     K "(While I was a bit overwhelmed with the events that happened today, I was glad I made two new friends.)"
-    jump checkpoint
+    jump tuesday_morning
 
 label monday_labels:
     u "all monday labels"
@@ -1016,7 +1023,7 @@ label tuesday_cafeteria:
     stop music
     play sound "bell.wav" volume 0.5
 
-    jump checkpoint
+    jump tuesday_afterschool
 
 label  tuesday_theatre:  
 
@@ -1035,7 +1042,7 @@ label  tuesday_theatre:
 
     play sound "bell.wav" volume 0.5
 
-    jump checkpoint
+    jump tuesday_afterschool
 
 label tuesday_afterschool:
 
@@ -1353,4 +1360,4 @@ label wednesday_morning:
     K "(I slammed the door shut and went to my actual classroom.)"
     K "Not even a week here, and I might already be called a weirdo…"
 
-    jump checkpoint
+    jump current
