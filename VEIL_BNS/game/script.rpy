@@ -129,6 +129,21 @@ image taiiku neutral = "images/Taiiku/Taiiku_neutral.png"
 image taiiku excited = "images/Taiiku/Taiiku_excited.png"
 image taiiku shocked = "images/Taiiku/Taiiku_shocked.png"
 image taiiku worried = "images/Taiiku/Taiiku_worried.png"
+image taiiku fingers = "images/Taiiku/Taiiku_fingers.png"
+image taiiku smile = "images/Taiiku/Taiiku_smile.png"
+image taiiku embarrassed = "images/Taiiku/Taiiku_embarrassed.png"
+image taiiku proud = "images/Taiiku/Taiiku_proud.png"
+image taiiku confused = "images/Taiiku/Taiiku_confused.png"
+image taiiku teehee = "images/Taiiku/Taiiku_teehee.png"
+image taiiku anxious = "images/Taiiku/Taiiku_anxious.png"
+image taiiku tense = "images/Taiiku/Taiiku_tense.png"
+image taiiku sweat = "images/Taiiku/Taiiku_sweating.png"
+image taiiku sad = "images/Taiiku/Taiiku_sad.png"
+image taiiku s smile = "images/Taiiku/Taiiku_slight_smile.png"
+
+
+
+
 image taiiku embarrassed = "images/Taiiku/Taiiku_embarrassed.png"
 
 #Backgrounds
@@ -430,7 +445,7 @@ label monday_kagaku:
     Ka "Shujin-kun. My name is Takahashi Kagaku."
     K "Taka…Takaha-"
 
-    show kagaku neutral 2 at scale
+    show kagaku neutral 2
 
     Ka "*Sigh*"
     Ka "Kagaku is fine."
@@ -608,9 +623,8 @@ label monday_afterschool:
     K "(I blankly stare at a ball that came out of nowhere.)"
     K "(Hey, isn’t that ball coming straight towards my—)"
 
-    #replace sfx
     stop music
-    play sound "bamboo.ogg"
+    play sound "punch.mp3"
     scene bg black
 
     K "*Thud!*"
@@ -627,7 +641,7 @@ label monday_afterschool:
 
     scene bg gym with dissolve
     play music "spirited.mp3"
-    show ph
+    show taiiku worried at scale_sprite
 
     uk "Um!"
     uk "How many fingers am I holding!?"
@@ -635,13 +649,11 @@ label monday_afterschool:
     K "What…?"
     K "(I try to readjust my vision.)"
 
-    #show taiiku_fingers
+    show taiiku fingers at scale_sprite
 
     uk "I said how many fingers am I holding??"
 
     K "Uhh…"
-
-    hide ph
 
     menu:
         "3":
@@ -653,7 +665,7 @@ label monday_afterschool:
 label normal:
     K "Um, 3?"
     
-    show taiiku excited at scale_t
+    show taiiku excited at scale_sprite
 
     uk "Thank god!"
     uk "You didn't lose any brain juice!"
@@ -661,19 +673,20 @@ label normal:
 
 label concussed:
     K "Um, 7?"
+
+    show taiiku shocked at scale_sprite
+
     stop music
     play sound "crash.ogg"
     uk "..."
     uk '****'
-    
-    show taiiku shocked at scale_t
 
     uk "Oh no!"
     play music "spirited.mp3"
-    uk "I broke him!"
+    uk "I crippled him!"
     uk "AhhwhatdoIdoImtooyoungtogotojail!!!"
     
-    show taiiku worried at scale_t
+    show taiiku worried at scale_sprite
 
     uk "M-maybe I can salvage this..."
     jump monday_taiiku
@@ -691,40 +704,43 @@ label monday_taiiku:
 
     scene bg gym
 
-    show taiiku neutral at scale_t
+    show taiiku neutral at scale_sprite
     
     K "Thanks…"
 
+    show taiiku smile at scale_sprite
+
     uk "Don’t mention it!"
 
-    #replace
-    show taiiku shocked at scale_t
+
+    show taiiku shocked at scale_sprite
 
     uk "Ah!"
 
-    #taiiku smile
-    show taiiku neutral at scale_t
+    show taiiku embarrassed at scale_sprite
 
     uk "I never told you my name, did I…"
+
+    show taiiku neutral at scale_sprite
 
     K "Ah, same here."
     K "I’m Shujin Kou."
 
     T "I’m Sato Taiiku."
 
-    #taiiku smile
+    show taiiku smile at scale_sprite
 
     T "But everyone just calls me Taiiku."
 
     K "(I become rigid for a moment.)"
     K "Ah! Are you sure?"
 
-    #taiiku confused
+    show taiiku confused at scale_sprite
 
     T "What’s the matter?"
     K "It’s just… we’ve just met and—"
 
-    #show taiiku_proud
+    show taiiku proud at scale_sprite
 
     T "Hah!"
     T "So what?"
@@ -734,29 +750,29 @@ label monday_taiiku:
 
     T "But enough about that!"
 
-    #show taiiku_embarrassed
+    show taiiku embarrassed at scale_sprite
 
     T "Is your head okay? You took a really hard hit."
 
     K "(She tries to reach her hand out to me once again to examine my forehead when…)"
 
-    show taiiku shocked at scale_t
+    show taiiku shocked at scale_sprite
 
     coach "Taiiku!!"
 
     coach "Stop slacking off and help with cleanup!"
 
-    #show taiiku_pouty
+    show taiiku embarrassed at scale_sprite
 
     T "Geez! I’m trying to help someone here!"
 
-    show taiiku embarrassed at scale_t
+    show taiiku teehee at scale_sprite
 
     T "Heheh..."
 
     T "Sorry Kou!"
 
-    show taiiku neutral at scale_t
+    show taiiku smile at scale_sprite
 
     T "I’ll treat you sometime as an apology!"
 
@@ -867,6 +883,7 @@ label tuesday_morning:
     scene bg black
     scene bg library
 
+    play music "BTS.mp3"
     show kagaku neutral at scale_sprite
 
     Ka "Oh!"
@@ -1053,55 +1070,72 @@ label tuesday_afterschool:
     K "(And a tight-lipped girl knelt down in the middle, gathering all of the balls.)"
     K "(I make my way towards her, planning to offer my help but—)"
 
-    show taiiku shocked at scale_t
+    show taiiku shocked at scale_sprite
 
     T "KYAH!"
     K "Woah!"
     T "Who’s the—"
     T "Oh!"
+
+    show taiiku tense at scale_sprite
+
     T "It’s just you, Kou."
     K "Yeah…"
     K "Sorry for startling you."
     K "You sounded quite shocked, haha…"
-    K "(I nervously laugh, trying to brush off the guilt weighing upon me)"
+    K "(I nervously laugh, trying to brush off the crushing guilt weighing upon me.)"
 
-    show taiiku embarrassed at scale_t
+    show taiiku embarrassed at scale_sprite
 
     T "No, no."
+
+    show taiiku s smile at scale_sprite
+
     T "It’s fine."
+
+    show taiiku smile at scale_sprite
+
     T "Just, forget about how loud I screamed!"
+
+    show taiiku embarrassed at scale_sprite
+
     T "That was like, super embarrassing…"
     K "Yeah, of course."
 
-    #show taiiku anxious
+    show taiiku anxious at scale_sprite
 
     K "(It fell silent for what felt like eternity.)"
     K "Um!"
     K "What are you doing here, all alone?"
     K "Where’s the rest of the club?"
 
-    #show taiiku tense
+    show taiiku tense at scale_sprite
 
     T "Oh…"
     T "They… um"
+
+    show taiiku sad at scale_sprite
+
     T "Had other things to do."
     K "(I become concerned at her tense demeanor.)"
     K "Well—"
 
-    #show taiiku sweating
+    show taiiku sweat at scale_sprite
+
 
     T "Uh!"
     T "It’s not like they made me do this!"
     T "I asked to do this."
 
-    #show taiiku tense
+    show taiiku tense at scale_sprite
+
 
 
     T "..."
     T "Sorry, I’m feeling a bit off today."
     T "And I didn’t treat you yet…"
 
-    #show taiiku sad
+    show taiiku sad at scale_sprite
 
     T "I’m not a very good senpai, am I…?"
 
@@ -1109,10 +1143,13 @@ label tuesday_afterschool:
         "Say nothing":
             pass
         "Console her":
+
             K "Hey, I don't mind at all..."
             K "And I don't think you're a bad senpai."
 
-            #Slight smile Taiiku sprite
+            T "..."
+
+            show taiiku s smile at scale_sprite
             
             T "Thanks, Kou."
             T "I'm glad to hear that."
@@ -1122,15 +1159,28 @@ label tuesday_afterschool:
     K "..."
     T "..."
     K "(Taiiku turns away from you to wipe her face with her sleeve, before facing you again.)"
+
+    show taiiku smile at scale_sprite
+
     T "Tomorrow I’ll treat you to a suuper delicious meal, okay?"
+
+    show taiiku embarrassed at scale_sprite
+
     T "So, please don’t think bad of me!"
+
+    show taiiku smile at scale_sprite
+
+    T "Haha..."
+
+    show taiiku s smile at scale_sprite
+
     K  "(Despite her best attempts at putting on a smile, her softly creased eyebrows gave everything away.)"
     K "(I try my best not to put down the mood.)"
     K "Haha, of course not."
     K "And sure, I’ll hold you to that…"
     K "Okay?"
 
-    #show taiiku happy
+    show taiiku smile at scale_sprite
 
     T "Okay…!"
 
