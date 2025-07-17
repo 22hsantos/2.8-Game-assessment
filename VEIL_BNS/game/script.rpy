@@ -106,9 +106,9 @@ define Ke = Character("Zaigaku Kei")
 define K = Character("Shujin Kou")
 define u = Character("[player_name]")
 define uk = Character("Unknown")
-define Ka = Character("Takahashi Kagaku")
+define Ka = Character("Takahashi Kanye")
 define coach = Character("Coach")
-define T = Character("Sato Taiiku")
+define T = Character("Sato Travis")
 
 #Character Sprites
 image kei default = "images/Kei/kei_default.png"
@@ -116,35 +116,35 @@ image kei default = "images/Kei/kei_default.png"
 #placeholder Sprites
 image ph = "images/placeholder/PH_default.png"
 
-#Kagaku Sprites
-image kagaku neutral = "images/Kagaku/kagaku_neutral.png"
-image kagaku sil = "images/Kagaku/kagaku_silhouette.png"
-image kagaku angry = "images/Kagaku/kagaku_angry.png"
-image kagaku excited = "images/Kagaku/kagaku_excited.png"
-image kagaku startled = "images/Kagaku/kagaku_startled.png"
-image kagaku neutral 2 = "images/Kagaku/kagaku_neutral2.png"
+#Kanye Sprites
+image kanye neutral = "images/Kanye/kanye_neutral.png"
+image kanye sil = "images/Kanye/kanye_silhouette.png"
+image kanye angry = "images/Kanye/kanye_angry.png"
+image kanye excited = "images/Kanye/kanye_excited.png"
+image kanye startled = "images/Kanye/kanye_startled.png"
+image kanye neutral 2 = "images/Kanye/kanye_neutral2.png"
 
-#Taiiku Sprites
-image taiiku neutral = "images/Taiiku/Taiiku_neutral.png"
-image taiiku excited = "images/Taiiku/Taiiku_excited.png"
-image taiiku shocked = "images/Taiiku/Taiiku_shocked.png"
-image taiiku worried = "images/Taiiku/Taiiku_worried.png"
-image taiiku fingers = "images/Taiiku/Taiiku_fingers.png"
-image taiiku smile = "images/Taiiku/Taiiku_smile.png"
-image taiiku embarrassed = "images/Taiiku/Taiiku_embarrassed.png"
-image taiiku proud = "images/Taiiku/Taiiku_proud.png"
-image taiiku confused = "images/Taiiku/Taiiku_confused.png"
-image taiiku teehee = "images/Taiiku/Taiiku_teehee.png"
-image taiiku anxious = "images/Taiiku/Taiiku_anxious.png"
-image taiiku tense = "images/Taiiku/Taiiku_tense.png"
-image taiiku sweat = "images/Taiiku/Taiiku_sweating.png"
-image taiiku sad = "images/Taiiku/Taiiku_sad.png"
-image taiiku s smile = "images/Taiiku/Taiiku_slight_smile.png"
-
-
+#Travis Sprites
+image travis neutral = "images/Travis/Travis_neutral.png"
+image travis excited = "images/Travis/Travis_excited.png"
+image travis shocked = "images/Travis/Travis_shocked.png"
+image travis worried = "images/Travis/Travis_worried.png"
+image travis fingers = "images/Travis/Travis_fingers.png"
+image travis smile = "images/Travis/Travis_smile.png"
+image travis embarrassed = "images/Travis/Travis_embarrassed.png"
+image travis proud = "images/Travis/Travis_proud.png"
+image travis confused = "images/Travis/Travis_confused.png"
+image travis teehee = "images/Travis/Travis_teehee.png"
+image travis anxious = "images/Travis/Travis_anxious.png"
+image travis tense = "images/Travis/Travis_tense.png"
+image travis sweat = "images/Travis/Travis_sweating.png"
+image travis sad = "images/Travis/Travis_sad.png"
+image travis s smile = "images/Travis/Travis_slight_smile.png"
 
 
-image taiiku embarrassed = "images/Taiiku/Taiiku_embarrassed.png"
+
+
+image travis embarrassed = "images/Travis/Travis_embarrassed.png"
 
 #Backgrounds
 image bg hood = "images/backgrounds/bg_neighbourhood.jpeg"
@@ -397,7 +397,7 @@ label monday_morning:
     scene bg black
     play sound "stepping.mp3"
 
-label monday_kagaku:
+label monday_kanye:
 
     K "(...)"
 
@@ -420,18 +420,18 @@ label monday_kagaku:
     uk "Oof!"
 
     scene bg library
-    show kagaku sil at scale_sprite
+    show kanye sil at scale_sprite
     play music "spirited.mp3"
 
     uk "Hey."
     uk "Watch where you’re going."
 
-    show kagaku angry with dissolve
+    show kanye angry with dissolve
 
     K "Oh! I’m sorry…"
     K "I didn’t see you there."
 
-    show kagaku neutral 
+    show kanye neutral 
 
     uk "*sigh*"
     uk "It’s fine."
@@ -449,17 +449,17 @@ label monday_kagaku:
 
     K "Ah, Shujin Kou."
 
-    Ka "Shujin-kun. My name is Takahashi Kagaku."
+    Ka "Shujin-kun. My name is Takahashi Kanye."
     K "Taka…Takaha-"
 
-    show kagaku neutral 2
+    show kanye neutral 2
 
     Ka "*Sigh*"
-    Ka "Kagaku is fine."
+    Ka "Kanye is fine."
 
-    show kagaku neutral at scale_sprite
+    show kanye neutral at scale_sprite
 
-    K "Thank you very much, Kagaku."
+    K "Thank you very much, Kanye."
 
     K "(I could feel the tension set in as soon as it fell silent.)"
     K "(My eyes quickly dart around the room, as to keep the already dead conversation going.)"
@@ -468,13 +468,13 @@ label monday_kagaku:
     K "(However, popularity has dwindled in the recent years, so it quickly became a niche.)"
     K "Hey…"
 
-    show kagaku startled at scale_sprite
+    show kanye startled at scale_sprite
 
     K "Is that *Echoes in the Fog*?"
 
     Ka "!"
 
-    show kagaku excited with dissolve
+    show kanye excited with dissolve
 
     Ka "You’ve read *Echoes in the Fog*?!"
     Ka "No way!"
@@ -484,21 +484,21 @@ label monday_kagaku:
 
     menu:
         "Interrupt her":
-            jump interrupt_kagaku
+            jump interrupt_kanye
 
         "Let her yap":
-            jump let_kagaku_talk
+            jump let_kanye_talk
 
-label interrupt_kagaku:
+label interrupt_kanye:
 
-    show kagaku startled
+    show kanye startled
     Ka "Ah."
-    show kagaku neutral
+    show kanye neutral
     Ka "Ahem. Sorry, I got a bit carried away."
     Ka "I have to go to class."
     Ka "See you."
 
-    hide kagaku neutral with easeoutleft
+    hide kanye neutral with easeoutleft
 
     K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
     K "(...)"
@@ -507,21 +507,21 @@ label interrupt_kagaku:
     scene bg black
     jump classroom_scene
 
-label let_kagaku_talk:
+label let_kanye_talk:
     Ka "Oh, and I love the twist in chapter 8—"
     
-    show kagaku startled
+    show kanye startled
     
     Ka "!"
 
-    show kagaku neutral
+    show kanye neutral
 
     Ka "Ahem. Sorry, I got a bit carried away."
     Ka "I have to go to class."
     Ka "See you."
 
-    hide  kagaku neutral at left with easeoutleft
-    hide kagaku
+    hide  kanye neutral at left with easeoutleft
+    hide kanye
 
     K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
     K "(...)"
@@ -648,7 +648,7 @@ label monday_afterschool:
 
     scene bg gym with dissolve
     play music "spirited.mp3"
-    show taiiku worried at scale_sprite
+    show travis worried at scale_sprite
 
     uk "Um!"
     uk "How many fingers am I holding!?"
@@ -656,32 +656,32 @@ label monday_afterschool:
     K "What…?"
     K "(I try to readjust my vision.)"
 
-    show taiiku fingers at scale_sprite
+    show travis fingers at scale_sprite
 
     uk "I said how many fingers am I holding??"
 
     K "Uhh…"
 
     menu:
-        "3":
+        "2":
             jump normal
         "7":
             $ player_normal = False
             jump concussed
 
 label normal:
-    K "Um, 3?"
+    K "Um, 2?"
     
-    show taiiku excited at scale_sprite
+    show travis excited at scale_sprite
 
     uk "Thank god!"
     uk "You didn't lose any brain juice!"
-    jump monday_taiiku
+    jump monday_travis
 
 label concussed:
     K "Um, 7?"
 
-    show taiiku shocked at scale_sprite
+    show travis shocked at scale_sprite
 
     stop music
     play sound "crash.ogg"
@@ -693,12 +693,12 @@ label concussed:
     uk "I crippled him!"
     uk "AhhwhatdoIdoImtooyoungtogotojail!!!"
     
-    show taiiku worried at scale_sprite
+    show travis worried at scale_sprite
 
     uk "M-maybe I can salvage this..."
-    jump monday_taiiku
+    jump monday_travis
 
-label monday_taiiku:
+label monday_travis:
 
     play music "ROB.mp3"
 
@@ -711,43 +711,43 @@ label monday_taiiku:
 
     scene bg gym
 
-    show taiiku neutral at scale_sprite
+    show travis neutral at scale_sprite
     
     K "Thanks…"
 
-    show taiiku smile at scale_sprite
+    show travis smile at scale_sprite
 
     uk "Don’t mention it!"
 
 
-    show taiiku shocked at scale_sprite
+    show travis shocked at scale_sprite
 
     uk "Ah!"
 
-    show taiiku embarrassed at scale_sprite
+    show travis embarrassed at scale_sprite
 
     uk "I never told you my name, did I…"
 
-    show taiiku neutral at scale_sprite
+    show travis neutral at scale_sprite
 
     K "Ah, same here."
     K "I’m Shujin Kou."
 
-    T "I’m Sato Taiiku."
+    T "I’m Sato Travis."
 
-    show taiiku smile at scale_sprite
+    show travis smile at scale_sprite
 
-    T "But everyone just calls me Taiiku."
+    T "But everyone just calls me Travis."
 
     K "(I become rigid for a moment.)"
     K "Ah! Are you sure?"
 
-    show taiiku confused at scale_sprite
+    show travis confused at scale_sprite
 
     T "What’s the matter?"
     K "It’s just… we’ve just met and—"
 
-    show taiiku proud at scale_sprite
+    show travis proud at scale_sprite
 
     T "Hah!"
     T "So what?"
@@ -757,34 +757,34 @@ label monday_taiiku:
 
     T "But enough about that!"
 
-    show taiiku embarrassed at scale_sprite
+    show travis embarrassed at scale_sprite
 
     T "Is your head okay? You took a really hard hit."
 
     K "(She tries to reach her hand out to me once again to examine my forehead when…)"
 
-    show taiiku shocked at scale_sprite
+    show travis shocked at scale_sprite
 
-    coach "Taiiku!!"
+    coach "Travis!!"
 
     coach "Stop slacking off and help with cleanup!"
 
-    show taiiku embarrassed at scale_sprite
+    show travis embarrassed at scale_sprite
 
     T "Geez! I’m trying to help someone here!"
 
-    show taiiku teehee at scale_sprite
+    show travis teehee at scale_sprite
 
     T "Heheh..."
 
     T "Sorry Kou!"
 
-    show taiiku smile at scale_sprite
+    show travis smile at scale_sprite
 
     T "I’ll treat you sometime as an apology!"
 
-    #hide taiiku
-    hide taiiku neutral with easeoutleft
+    #hide travis
+    hide travis neutral with easeoutleft
 
     K "(And another one runs away…)"
     K "*sigh*"
@@ -873,9 +873,9 @@ label tuesday_morning:
     scene bg hood with dissolve
     play sound "stepping.mp3"
 
-    K "I wonder if I’ll see Kagaku again."
+    K "I wonder if I’ll see Kanye again."
     K "She seems a bit odd, but I’m glad to have another book-buddy."
-    K "Taiiku too."
+    K "Travis too."
     K "I hope she treats me today, that ball did leave a bruise after all."
     K "It took forever to stop the swelling…"
 
@@ -891,24 +891,24 @@ label tuesday_morning:
     scene bg library
 
     play music "BTS.mp3"
-    show kagaku neutral at scale_sprite
+    show kanye neutral at scale_sprite
 
     Ka "Oh!"
     Ka "Shujin-kun."
 
-    #show kagaku smile
+    #show kanye smile
 
     Ka "Good morning."
 
     K "Ka…Kagaku-san..."
 
-    #show kagaku laugh
+    #show kanye laugh
 
     Ka "Hahaha!"
 
-    show kagaku neutral
+    show kanye neutral
 
-    Ka "Just Kagaku is fine."
+    Ka "Just Kanye is fine."
     Ka "It’s a bit odd if you add -san to my first name."
 
     K "(My cheeks grow a bit pink from embarrassment.)"
@@ -918,19 +918,19 @@ label tuesday_morning:
     K "I’m pretty alright, thanks."
     K "How about you?"
 
-    #show kagaku hesitated
+    #show kanye hesitated
 
     Ka "I’m… alright, thank you."
 
     K "(I sense the slight hesitation in her words.)"
     K "Is… something wrong?"
 
-    show kagaku startled at scale_sprite
+    show kanye startled at scale_sprite
 
     Ka "Ah! It’s nothing. It’s just…"
 
-    #show kagaku hesitated
-    show kagaku neutral
+    #show kanye hesitated
+    show kanye neutral
 
     Ka "..."
     Ka "I’ve just taken a lot of responsibilities at once since we’re starting the school year."
@@ -939,23 +939,23 @@ label tuesday_morning:
     K "(A wave of empathy washes over me as I continue to listen to her troubles.)"
     K "Woah, sounds tough on you."
 
-    show kagaku startled
+    show kanye startled
 
     Ka "No! Not at all! I can handle it myself."
 
-    #show kagaku hesitated
+    #show kanye hesitated
 
     Ka "I just need a little time, that’s all."
 
-    K "(A sense of doubt and concern hits me, but I try to encourage Kagaku.)"
+    K "(A sense of doubt and concern hits me, but I try to encourage Kanye.)"
     K "Alright, just…"
     K "Tell me if you need anything, okay?"
 
-    #show kagaku startled
+    #show kanye startled
 
     Ka "..."
 
-    #show kagaku smile
+    #show kanye smile
 
     Ka "Thank you, Shujin-kun."
     Ka "That means a lot to me."
@@ -964,12 +964,12 @@ label tuesday_morning:
 
     pause 3.0
 
-    show kagaku neutral
+    show kanye neutral
     Ka "What a shame, I guess I’ll have to see you later?"
 
     K "Yeah, later."
 
-    hide kagaku
+    hide kanye
     scene bg black
 
     jump tuesday_midday
@@ -1059,7 +1059,7 @@ label tuesday_afterschool:
     K "..."
     K "(*growl*)"
     K "Ah."
-    K "Taiiku was supposed to treat me today."
+    K "Travis was supposed to treat me today."
     K "Honestly, I forgot about that."
     K "But thinking about it now has gotten me quite excited."
     K "I should go find her."
@@ -1077,14 +1077,14 @@ label tuesday_afterschool:
     K "(And a tight-lipped girl knelt down in the middle, gathering all of the balls.)"
     K "(I make my way towards her, planning to offer my help but—)"
 
-    show taiiku shocked at scale_sprite
+    show travis shocked at scale_sprite
 
     T "KYAH!"
     K "Woah!"
     T "Who’s the—"
     T "Oh!"
 
-    show taiiku tense at scale_sprite
+    show travis tense at scale_sprite
 
     T "It’s just you, Kou."
     K "Yeah…"
@@ -1092,49 +1092,49 @@ label tuesday_afterschool:
     K "You sounded quite shocked, haha…"
     K "(I nervously laugh, trying to brush off the crushing guilt weighing upon me.)"
 
-    show taiiku embarrassed at scale_sprite
+    show travis embarrassed at scale_sprite
 
     T "No, no."
 
-    show taiiku s smile at scale_sprite
+    show travis s smile at scale_sprite
 
     T "It’s fine."
 
-    show taiiku smile at scale_sprite
+    show travis smile at scale_sprite
 
     T "Just, forget about how loud I screamed!"
 
-    show taiiku embarrassed at scale_sprite
+    show travis embarrassed at scale_sprite
 
     T "That was like, super embarrassing…"
     K "Yeah, of course."
 
-    show taiiku anxious at scale_sprite
+    show travis anxious at scale_sprite
 
     K "(It fell silent for what felt like eternity.)"
     K "Um!"
     K "What are you doing here, all alone?"
     K "Where’s the rest of the club?"
 
-    show taiiku tense at scale_sprite
+    show travis tense at scale_sprite
 
     T "Oh…"
     T "They… um"
 
-    show taiiku sad at scale_sprite
+    show travis sad at scale_sprite
 
     T "Had other things to do."
     K "(I become concerned at her tense demeanor.)"
     K "Well—"
 
-    show taiiku sweat at scale_sprite
+    show travis sweat at scale_sprite
 
 
     T "Uh!"
     T "It’s not like they made me do this!"
     T "I asked to do this."
 
-    show taiiku tense at scale_sprite
+    show travis tense at scale_sprite
 
 
 
@@ -1142,7 +1142,7 @@ label tuesday_afterschool:
     T "Sorry, I’m feeling a bit off today."
     T "And I didn’t treat you yet…"
 
-    show taiiku sad at scale_sprite
+    show travis sad at scale_sprite
 
     T "I’m not a very good senpai, am I…?"
 
@@ -1156,7 +1156,7 @@ label tuesday_afterschool:
 
             T "..."
 
-            show taiiku s smile at scale_sprite
+            show travis s smile at scale_sprite
             
             T "Thanks, Kou."
             T "I'm glad to hear that."
@@ -1165,21 +1165,21 @@ label tuesday_afterschool:
 
     K "..."
     T "..."
-    K "(Taiiku turns away from you to wipe her face with her sleeve, before facing you again.)"
+    K "(Travis turns away from you to wipe her face with her sleeve, before facing you again.)"
 
-    show taiiku smile at scale_sprite
+    show travis smile at scale_sprite
 
     T "Tomorrow I’ll treat you to a suuper delicious meal, okay?"
 
-    show taiiku embarrassed at scale_sprite
+    show travis embarrassed at scale_sprite
 
     T "So, please don’t think bad of me!"
 
-    show taiiku smile at scale_sprite
+    show travis smile at scale_sprite
 
     T "Haha..."
 
-    show taiiku s smile at scale_sprite
+    show travis s smile at scale_sprite
 
     K  "(Despite her best attempts at putting on a smile, her softly creased eyebrows gave everything away.)"
     K "(I try my best not to put down the mood.)"
@@ -1187,7 +1187,7 @@ label tuesday_afterschool:
     K "And sure, I’ll hold you to that…"
     K "Okay?"
 
-    show taiiku smile at scale_sprite
+    show travis smile at scale_sprite
 
     T "Okay…!"
 
@@ -1200,9 +1200,9 @@ label tuesday_bedroom:
 
     #scene bedroom with dissolve
 
-    K "I hope Taiiku’s okay…"
+    K "I hope Travis’s okay…"
     K "She was super bright when I first met her yesterday."
-    K "Kagaku, too."
+    K "Kanye, too."
     K "The start of a new year might’ve put too much pressure on both of them."
 
     K "(As I was finishing changing into my pajamas, I was getting ready to slip under my covers...)"

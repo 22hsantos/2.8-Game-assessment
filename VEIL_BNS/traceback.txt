@@ -1,36 +1,35 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "game/script.rpy", line 71, in <module>
-    jump_to_checkpoint()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "game/script.rpy", line 66, in jump_to_checkpoint
-    if renpy.input.is_key_pressed("q"):
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^      
-AttributeError: 'function' object has no attribute 'is_key_pressed'
+TypeError: cannot pickle 'TextIOWrapper' instances
+Perhaps bad reduction in renpy.game.log.__getstate__()['log'][127].__getstate__()['stores']['store']['file'] = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='w' encoding='utf-8'>
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 8, in script
-    init python:
+  File "renpy/common/00keymap.rpy", line 504, in script
+    python hide:
   File "renpy/ast.py", line 1187, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "renpy/python.py", line 1260, in py_exec_bytecode
     exec(bytecode, globals, locals)
     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 71, in <module>
-    jump_to_checkpoint()
-    ~~~~~~~~~~~~~~~~~~^^
-  File "game/script.rpy", line 66, in jump_to_checkpoint
-    if renpy.input.is_key_pressed("q"):
-       ^^^^^^^^^^^^^^^^^^^^^^^^^^      
-AttributeError: 'function' object has no attribute 'is_key_pressed'
+  File "renpy/common/00keymap.rpy", line 504, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 531, in _execute_python_hide
+    renpy.save("_reload-1", "reload save game")
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/loadsave.py", line 184, in save
+    dump((roots, renpy.game.log), logf)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/compat/pickle.py", line 308, in dump
+    pickle.dump(o, f, pickle.HIGHEST_PROTOCOL if highest else PROTOCOL)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: cannot pickle 'TextIOWrapper' instances
+Perhaps bad reduction in renpy.game.log.__getstate__()['log'][127].__getstate__()['stores']['store']['file'] = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='w' encoding='utf-8'>
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Thu Jul 17 08:42:28 2025
+Thu Jul 17 13:37:33 2025
