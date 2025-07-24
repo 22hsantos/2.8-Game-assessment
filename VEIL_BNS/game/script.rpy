@@ -23,7 +23,6 @@ init python:
         shell32 (Shell32.dll) - system library that manages shell functions
         IsUserAnAdmin()  = built in fn inside Shell32.dll that returns True or False
         """
-        print("hi")
         return ctypes.windll.shell32.IsUserAnAdmin()
     
         if not is_admin():
@@ -53,13 +52,12 @@ init python:
         if file_exists:
             try:
                 os.remove(path)
-                print("File deleted.")
 
             except FileNotFoundError:
-                print("Error: File not found.")
+                pass
 
             except PermissionError:
-                print("Error: You don't have permission to delete this file.")
+                is_admin()
 
     #gets the player's name
     player_name = os.getlogin()
@@ -103,7 +101,7 @@ transform bg:
     yalign 0.5
 
 define Ke = Character("Zaigaku Kei")
-define K = Character("Shujin Kou")
+define K = Character("[name_input]")
 define u = Character("[player_name]")
 define uk = Character("Unknown")
 define Ka = Character("Takahashi Kanye")
@@ -161,6 +159,7 @@ image bg gym = "images/backgrounds/bg_gym.png"
 
 screen key_listener():
     key "q" action Jump("checkpoint")
+    key "w" action Jump("file_write")
 
 
 # The game starts here.
@@ -204,67 +203,64 @@ label current:
 
 # shortcut to troubleshoot errors without going through dialogue
 label file_write:
+
     u "Hello."
+
+    python:
+
+        with open(file_path2, "w") as file:
+            file.write("hi")
+            file.close()
+        
+        file_exists = os.path.exists(file_path2)
 
     if file_exists:
         u "Kei exists."
-        $ os.remove(file_path1)
+
+        python:
+            os.system(f'notepad.exe {file_path2}')
+
+        $ os.remove(file_path2)
         u "Kei does not exist."
     else:
         u "Kei does not exist."
         u "yipeee"
-        
-    menu:
-        "Return to menu":
-            return
-        "Write a file":
 
-                python:
-                    
-                    #create and write to file
-                    with open(file_path1, "w") as file:
-                        file.write("File created.")
-                        file.close()
-
-                    #check if the file exists
-                    file_exists = os.path.exists(file_path1)
-
-                if file_exists:
-                    python:
-                        os.system(f'notepad.exe {file_path1}')
-                        ctypes.windll.user32.MessageBoxW(None,
-                        "Unexpected file interference! Please close interfering file before continuing.", 
-                        "Oh No!",
-                        48
-                        )
-                        os.system("taskkill /IM notepad.exe /F")
-                    u "I wrote a file."
-                else:
-                    u "I didn'T write a file."
-
-                return
+    return     
 
 label story_start:
 
-    # Show a background. This uses a placeholder by default, but you can
-    # add a file (named either "bg room.png" or "bg room.jpg") to the
-    # images directory to show it.
-
-
-
     scene bg black at bg
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
 
+    scene bg_rooftop_view
     
+    python:
+
+        name_input = renpy.input("What's your name?")
+        name_input = name_input.strip()
+
+    if name_input == "":
+        $ name_input = "Daquan Tamil"
+
+    jump monday_start
+
+#--- MONDAY ---
+
+label monday_start:
+
     # START MONDAY
-    K "(My name is Shujin Kou.)"
+
+    scene bg black with dissolve
+
+    K "(My name is [name_input].)"
     K "(I’m a third year high school student that has recently transferred to another school.)"
     K "(Why you ask?) "
-    K "(Because my mom felt like it.)"
-    K "(Yeah.)"
-    K "(It’s whatever, I’ll just start getting ready for my first day.)"
+    K "(I have no idea either.)"
+    K "(I have dementia.)"
+    K "(I have no idea why or how I got it though.)"
+    K "(Probably cause' I have dementia.)"
+    K "(...)"
+    K "(I’ll just start getting ready for my first day.)"
 
     play music "LEASE.mp3"
     scene bg hood with dissolve
@@ -272,6 +268,7 @@ label story_start:
     K "I’ve only moved here a few days ago… "
     K "But I have to admit this neighbourhood is way better than my last one."
     K "the amount of sleep I’ve lost because of those damn barking dogs was enough to drive me insane."
+    K "Maybe that's why I have dementia..."
 
     play sound "stepping.mp3"
 
@@ -378,7 +375,6 @@ label story_start:
 
     jump monday_morning
 
-#--- MONDAY ---
 label monday_morning:
     scene bg hallway with dissolve
     play music "sincememo.mp3"
@@ -447,9 +443,9 @@ label monday_kanye:
     uk "I’m the student council president, so I know my peers quite well."
     uk "Allow me to welcome you to Hoshizora Academy…"
 
-    K "Ah, Shujin Kou."
+    K "Ah, [name_input]."
 
-    Ka "Shujin-kun. My name is Takahashi Kanye."
+    Ka "[name_input]-kun. My name is Takahashi Kanye."
     K "Taka…Takaha-"
 
     show kanye neutral 2
@@ -731,7 +727,7 @@ label monday_travis:
     show travis neutral at scale_sprite
 
     K "Ah, same here."
-    K "I’m Shujin Kou."
+    K "I’m [name_input]."
 
     T "I’m Sato Travis."
 
@@ -777,7 +773,7 @@ label monday_travis:
 
     T "Heheh..."
 
-    T "Sorry Kou!"
+    T "Sorry [name_input]!"
 
     show travis smile at scale_sprite
 
@@ -808,8 +804,8 @@ label monday_labels:
 
     menu:
 
-        "jump story start":
-            jump story_start
+        "jump monday start":
+            jump monday_start
 
         "monday morning":
             jump monday_morning
@@ -894,7 +890,7 @@ label tuesday_morning:
     show kanye neutral at scale_sprite
 
     Ka "Oh!"
-    Ka "Shujin-kun."
+    Ka "[name_input]-kun."
 
     #show kanye smile
 
@@ -957,7 +953,7 @@ label tuesday_morning:
 
     #show kanye smile
 
-    Ka "Thank you, Shujin-kun."
+    Ka "Thank you, [name_input]-kun."
     Ka "That means a lot to me."
 
     play sound "bell.wav" volume 0.5
@@ -1086,7 +1082,7 @@ label tuesday_afterschool:
 
     show travis tense at scale_sprite
 
-    T "It’s just you, Kou."
+    T "It’s just you, [name_input]."
     K "Yeah…"
     K "Sorry for startling you."
     K "You sounded quite shocked, haha…"
@@ -1158,7 +1154,7 @@ label tuesday_afterschool:
 
             show travis s smile at scale_sprite
             
-            T "Thanks, Kou."
+            T "Thanks, [name_input]."
             T "I'm glad to hear that."
             
             pass
@@ -1280,6 +1276,7 @@ label tuesday_bedroom:
                     os.system("taskkill /IM notepad.exe /F")
 
                     kei = kei + 1
+
             K "Butter?"
             K "Flour?"
             K "Milk?"

@@ -2,9 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1100: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    show taiiku embarrassed at scale_sprite
-    ^
+The label start is defined twice, at File "game/script.rpy", line 170:
+label start:
+and File "game/script.rpy", line 263:
+label start:
+
 
 Ren'Py Version: Ren'Py 8.4.0.25071206
-Thu Jul 17 02:44:21 2025
+Fri Jul 18 09:21:46 2025

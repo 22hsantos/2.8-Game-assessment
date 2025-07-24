@@ -2,7 +2,6 @@
 
 While running game code:
 TypeError: cannot pickle 'TextIOWrapper' instances
-Perhaps bad reduction in renpy.game.log.__getstate__()['log'][127].__getstate__()['stores']['store']['file'] = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='w' encoding='utf-8'>
 
 -- Full Traceback ------------------------------------------------------------
 
@@ -27,9 +26,8 @@ Traceback (most recent call last):
     pickle.dump(o, f, pickle.HIGHEST_PROTOCOL if highest else PROTOCOL)
     ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: cannot pickle 'TextIOWrapper' instances
-Perhaps bad reduction in renpy.game.log.__getstate__()['log'][127].__getstate__()['stores']['store']['file'] = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='w' encoding='utf-8'>
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Thu Jul 17 13:37:33 2025
+Fri Jul 18 09:53:16 2025
