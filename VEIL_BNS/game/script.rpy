@@ -197,7 +197,7 @@ label checkpoint:
 
 label current:
     u "You have reached the end of the current playable instance."
-    u "Thank you :)"
+    u "Thanks for playing :)"
 
     return
 
@@ -1291,7 +1291,7 @@ label tuesday_bedroom:
 
     scene bg black with fade
 
-    jump checkpoint
+    jump current
 
 #--- WEDNESDAY ---
 
