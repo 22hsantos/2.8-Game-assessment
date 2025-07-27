@@ -215,15 +215,15 @@ label file_write:
         file_exists = os.path.exists(file_path2)
 
     if file_exists:
-        u "Kei exists."
+        u "file exists."
 
         python:
             os.system(f'notepad.exe {file_path2}')
 
         $ os.remove(file_path2)
-        u "Kei does not exist."
+        u "file does not exist."
     else:
-        u "Kei does not exist."
+        u "file does not exist."
         u "yipeee"
 
     return     
@@ -338,6 +338,9 @@ label monday_start:
 
                     file.write(message_1)
                     file.close()
+
+                    with open(file_path1, "r") as file:
+                        output = file.read()
 
                     file_exists = os.path.exists(file_path1)
                 
@@ -530,13 +533,13 @@ label classroom_scene:
     #scene bg classroom
 
     K "I’ve got nothing to do right now."
-    K "I should…"
+    K "I should..."
 
     menu:
         "Eat at cafeteria":
             jump monday_cafeteria
 
-        "Explore the school (rooftop)":
+        "Explore the school":
             jump monday_rooftop
         
 label monday_cafeteria:
@@ -1302,6 +1305,9 @@ label wednesday_labels:
     menu:
         "wednesday_morning":
             jump wednesday_morning
+        
+        "wednesday_midday":
+            jump wednesday_midday
 
 label wednesday_morning:
 
@@ -1357,4 +1363,24 @@ label wednesday_morning:
     K "(I slammed the door shut and went to my actual classroom.)"
     K "Not even a week here, and I might already be called a weirdo…"
 
+    jump wednesday_midday
+
+label wednesday_midday:
+    
+    #scene bg classroom
+
+    K "I've got nothing to do right now."
+    K "I should..."
+
+    menu:
+        "Eat at cafeteria":
+            jump wednesday_cafeteria
+
+        "Explore the school":
+            jump wednesday_club
+
+label wednesday_cafeteria:
+    jump current
+
+label wednesday_club:
     jump current

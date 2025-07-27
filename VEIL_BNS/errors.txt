@@ -2,11 +2,9 @@
 errors listed below, and try again.
 
 
-The label start is defined twice, at File "game/script.rpy", line 170:
-label start:
-and File "game/script.rpy", line 263:
-label start:
-
+File "game/script.rpy", line 305: invalid syntax
+    File = with open(file_path1, "w") as file:
+           ^^^^
 
 Ren'Py Version: Ren'Py 8.4.0.25071206
-Fri Jul 18 09:21:46 2025
+Fri Jul 25 13:11:54 2025
