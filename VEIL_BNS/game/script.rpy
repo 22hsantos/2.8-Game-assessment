@@ -7,6 +7,10 @@
 
 init python:
 
+    #why is not working
+    config.has_autosave = False
+    config.has_quicksave = False
+
     #allows to interact with the operating system
     """
     ctypes - allows interaction with windows system fn
@@ -58,6 +62,7 @@ init python:
 
             except PermissionError:
                 is_admin()
+
 
     #gets the player's name
     player_name = os.getlogin()
@@ -171,6 +176,8 @@ label start:
     show screen key_listener
 
     "Checkpoint Shortcut active. (Disregard)"
+    "Currently, saving the game is not possible due to coding issues"
+    "oops lol"
 
     stop music
 
@@ -208,23 +215,16 @@ label file_write:
 
     python:
 
-        with open(file_path2, "w") as file:
-            file.write("hi")
-            file.close()
+        #with open = auto closes file if "with" is exited       
+        with open("2025.txt", "w") as file:
+            file.write("Hi!")
+            file.close
+
+        with open("2025.txt", "r") as file:
+            output = file.read()
         
-        file_exists = os.path.exists(file_path2)
 
-    if file_exists:
-        u "file exists."
-
-        python:
-            os.system(f'notepad.exe {file_path2}')
-
-        $ os.remove(file_path2)
-        u "file does not exist."
-    else:
-        u "file does not exist."
-        u "yipeee"
+    u "It worke!!!"
 
     return     
 

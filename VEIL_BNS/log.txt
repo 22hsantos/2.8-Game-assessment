@@ -1,34 +1,33 @@
-2025-07-25 01:48:27 UTC
+2025-07-29 23:43:12 UTC
 Windows-11-10.0.26100-SP0
 Ren'Py 8.4.0.25071206
 
-Early init took 38 ms
+Early init took 39 ms
 Loading error handling took 17 ms
-Loading script took 218 ms
-Loading save slot metadata took 19 ms
-Loading persistent took 1 ms
-Running init code took 33 ms
-Loading analysis data took 3 ms
+Loading script took 85 ms
+Loading save slot metadata took 21 ms
+Loading persistent took 0 ms
+Running init code took 35 ms
+Loading analysis data took 2 ms
 Analyze and compile ATL took 1 ms
-Reloading save slot metadata took 7 ms
-Backing up script files to 'C:\\Users\\heave\\AppData\\Roaming/RenPy/backups\\VEIL_BNS':
-Dump and make backups took 31 ms
+Reloading save slot metadata took 9 ms
+Dump and make backups took 29 ms
 Cleaning cache took 0 ms
 Making clean stores took 0 ms
-Initial gc took 36 ms
+Initial gc took 31 ms
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
-Creating interface object took 2 ms
-Init translation took 0 ms
+Creating interface object took 1 ms
+Init translation took 1 ms
 Cleaning stores took 0 ms
-Load screen analysis took 0 ms
-Analyze screens took 8 ms
-Save screen analysis took 8 ms
+Load screen analysis took 13 ms
+Analyze screens took 1 ms
+Save screen analysis took 0 ms
 Save pyanalysis took 0 ms
-Save bytecode took 18 ms
+Save bytecode took 0 ms
 Running _start took 1 ms
-Interface start took 481 ms
+Interface start took 483 ms
 
 Initializing gl2 renderer:
 primary display bounds: (0, 0, 1280, 720)
@@ -38,30 +37,5 @@ Vendor: 'ATI Technologies Inc.'
 Renderer: 'AMD Radeon(TM) Graphics'
 Version: '4.6.0 Compatibility Profile Context 22.20.44.45.230320'
 Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 1280, 'current_h': 720, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
-Screen sizes: virtual=(1920, 1080) physical=(1154, 649) drawable=(1154, 649)
+Screen sizes: virtual=(1920, 1080) physical=(510, 287) drawable=(510, 287)
 Maximum texture size: 4096x4096
-
-Full traceback:
-  File "renpy/common/00keymap.rpy", line 504, in script
-    python hide:
-  File "renpy/ast.py", line 1187, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1260, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/00keymap.rpy", line 504, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 531, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/loadsave.py", line 184, in save
-    dump((roots, renpy.game.log), logf)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/compat/pickle.py", line 308, in dump
-    pickle.dump(o, f, pickle.HIGHEST_PROTOCOL if highest else PROTOCOL)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: cannot pickle 'TextIOWrapper' instances
-
-While running game code:
-TypeError: cannot pickle 'TextIOWrapper' instances

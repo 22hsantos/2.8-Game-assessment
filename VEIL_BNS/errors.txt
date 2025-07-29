@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 305: invalid syntax
-    File = with open(file_path1, "w") as file:
-           ^^^^
+File "game/screens.rpy", line 587: 'return' is not a keyword argument or valid child of the screen statement.
+    return
+          ^
 
 Ren'Py Version: Ren'Py 8.4.0.25071206
-Fri Jul 25 13:11:54 2025
+Wed Jul 30 11:42:30 2025
