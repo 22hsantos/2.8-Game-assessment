@@ -1412,4 +1412,46 @@ label wednesday_cafeteria:
     jump current
 
 label wednesday_club:
+
+    K "I should explore the clubs here."
+    K "Besides..."
+    K "I don't think I have an appetite from what I witnessed yesterday."
+
+    scene bg black
+
+    K "(I start walking around the clubrooms, fascinated by the range of activities each club hosted.)"
+    K "(One club in particular caught my eye...)"
+    K "The cooking club, huh..."
+    K "(Not to brag, but I personally think I'm a pretty good cook.)"
+    K "(I do live alone after all, and take out would drain my money quite fast.)"
+
+    #Cooking club BG
+
+    K "Woah!"
+    K "This school must be pretty rich to have a commercial kitchen this nice!"
+    K "Am I in M*sterChef??"
+    K "(I spend a second in awe of the breathtaking workstations)"
+    K "(I don't know why, but I was strangely drawn to specifically the fridge.)"
+    K "(I walk over and swing open the shiny double doors...)"
+    K "(And find a bento box tucked away in the corner.)"
+    K "(In response, my stomach starts rumbling like never before.)"
+    K "Argh...I shouldn't take someone else's food..."
+    K "(However, my empty stomach says otherwise.)"
+    K "..."
+    K "They wouldn't mind, right?"
+    K "(I sheepishly take out the lunch box and open the lid...)"
+    K "Another note?"
+
+    #Write Kei note 3
+
+    K "How strange..."
+    K "(I wasn't really interested in the note, but the food in the container)"
+    K " munch munch"
+    K "...!"
+    K "That's delicious!"
+    K "(I immediately scarf down the rest of the food, not leaving even a single grain of rice.)"
+
+    scene bg black
+    play sound "bell.wav" volume 0.5
+    
     jump current

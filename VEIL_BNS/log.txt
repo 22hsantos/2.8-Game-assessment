@@ -48,3 +48,91 @@ Analyze screens took 0 ms
 Running _start took 2 ms
 Screen sizes: virtual=(1920, 1080) physical=(510, 287) drawable=(510, 287)
 Maximum texture size: 4096x4096
+Resetting cache.
+Early init took 16 ms
+Loading error handling took 35 ms
+Loading script took 539 ms
+Loading save slot metadata took 37 ms
+Loading persistent took 1 ms
+Running init code took 58 ms
+Loading analysis data took 6 ms
+Analyze and compile ATL took 2 ms
+Reloading save slot metadata took 23 ms
+Backing up script files to 'C:\\Users\\heave\\AppData\\Roaming/RenPy/backups\\VEIL_BNS':
+Dump and make backups took 74 ms
+Cleaning cache took 0 ms
+Making clean stores took 0 ms
+Initial gc took 84 ms
+DPI scale factor: 1.000000
+nvdrs: Loaded, about to disable thread optimizations.
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0 ms
+Init translation took 1 ms
+Cleaning stores took 0 ms
+Load screen analysis took 0 ms
+Analyze screens took 17 ms
+Save screen analysis took 20 ms
+Save pyanalysis took 0 ms
+Save bytecode took 2 ms
+Running _start took 1 ms
+Interface start took 526 ms
+
+Initializing gl2 renderer:
+primary display bounds: (0, 0, 1280, 720)
+swap interval: 1 frames
+Windowed mode.
+Vendor: 'ATI Technologies Inc.'
+Renderer: 'AMD Radeon(TM) Graphics'
+Version: '4.6.0 Compatibility Profile Context 22.20.44.45.230320'
+Display Info: <Info({'bitsize': 32, 'bytesize': 4, 'masks': (16711680, 65280, 255, 0), 'shifts': (16, 8, 0, 0), 'losses': (0, 0, 0, 8), 'current_w': 1280, 'current_h': 720, 'refresh_rate': 60, 'hw': False, 'wm': True, 'video_mem': 268435456, 'blit_hw': False, 'blit_hw_CC': False, 'blit_hw_A': False, 'blit_sw': False, 'blit_sw_CC': False, 'blit_sw_A': False})>
+Screen sizes: virtual=(1920, 1080) physical=(510, 287) drawable=(510, 287)
+Maximum texture size: 4096x4096
+
+Full traceback:
+  File "game/script.rpy", line 1373, in script
+    K "I've got nothing to do right now."
+  File "renpy/ast.py", line 2915, in execute
+    Say.execute(self)
+    ~~~~~~~~~~~^^^^^^
+  File "renpy/ast.py", line 991, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/exports/sayexports.py", line 129, in say
+    who(what, *args, **kwargs)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/character.py", line 1526, in __call__
+    who = self.prefix_suffix("who", self.who_prefix, who, self.who_suffix)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/character.py", line 1444, in prefix_suffix
+    return sub(prefix) + sub(body) + sub(suffix)
+                         ~~~^^^^^^              
+  File "renpy/character.py", line 1421, in sub
+    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
+  File "renpy/substitutions.py", line 355, in substitute
+    s = interpolate(s, variables)  # type: ignore
+        ~~~~~~~~~~~^^^^^^^^^^^^^^                
+  File "renpy/substitutions.py", line 89, in interpolate
+    raise e
+  File "renpy/substitutions.py", line 81, in interpolate
+    value = renpy.python.py_eval(code, {}, scope)
+            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1292, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1285, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<none>", line 1, in <module>
+NameError: name 'name_input' is not defined. Did you mean: 'raw_input'?
+
+While running game code:
+  File "game/script.rpy", line 1373, in script
+    K "I've got nothing to do right now."
+NameError: name 'name_input' is not defined. Did you mean: 'raw_input'?
+Screen sizes: virtual=(1920, 1080) physical=(1280, 649) drawable=(1280, 649)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(510, 287) drawable=(510, 287)
+Maximum texture size: 4096x4096
+Screen sizes: virtual=(1920, 1080) physical=(1280, 649) drawable=(1280, 649)
+Maximum texture size: 4096x4096

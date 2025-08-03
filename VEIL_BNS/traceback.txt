@@ -1,16 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 359, in script
-    K "It’s all random measurements."
-TypeError: cannot pickle 'TextIOWrapper' instances
-Perhaps bad reduction in store.file = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='r' encoding='utf-8'>
+  File "game/script.rpy", line 1373, in script
+    K "I've got nothing to do right now."
+NameError: name 'name_input' is not defined. Did you mean: 'raw_input'?
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 359, in script
-    K "It’s all random measurements."
+  File "game/script.rpy", line 1373, in script
+    K "I've got nothing to do right now."
   File "renpy/ast.py", line 2915, in execute
     Say.execute(self)
     ~~~~~~~~~~~^^^^^^
@@ -20,74 +19,33 @@ Traceback (most recent call last):
   File "renpy/exports/sayexports.py", line 129, in say
     who(what, *args, **kwargs)
     ~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/character.py", line 1543, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, dtt=dtt, **display_args)
-    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/character.py", line 1198, in do_display
-    display_say(who, what, self.do_show, **display_args)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/character.py", line 888, in display_say
-    rv = renpy.ui.interact(mouse="say", type=type, roll_forward=roll_forward)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/ui.py", line 304, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/core.py", line 2216, in interact
-    repeat, rv = self.interact_core(
-                 ~~~~~~~~~~~~~~~~~~^
-        preloads=preloads,
-        ^^^^^^^^^^^^^^^^^^
-    ...<4 lines>...
-        **kwargs,
-        ^^^^^^^^^
-    )  # type: ignore
-    ^                
-  File "renpy/display/core.py", line 3299, in interact_core
-    rv = root_widget.event(ev, x, y, 0)
-         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1284, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1284, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1284, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/screen.py", line 805, in event
-    rv = self.child.event(ev, x, y, st)
-         ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1284, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/layout.py", line 1284, in event
-    rv = i.event(ev, x - xo, y - yo, cst)
-         ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/behavior.py", line 1184, in event
-    return handle_click(self.clicked)
-           ~~~~~~~~~~~~^^^^^^^^^^^^^^
-  File "renpy/display/behavior.py", line 1107, in handle_click
-    rv = run(action)
-         ~~~^^^^^^^^
-  File "renpy/display/behavior.py", line 404, in run
-    new_rv = run(i, *args, **kwargs)
-             ~~~^^^^^^^^^^^^^^^^^^^^
-  File "renpy/display/behavior.py", line 411, in run
-    return action(*args, **kwargs)
-           ~~~~~~^^^^^^^^^^^^^^^^^
-  File "renpy/common/00action_file.rpy", line 415, in __call__
-    renpy.save(fn, extra_info=save_name)
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/loadsave.py", line 184, in save
-    dump((roots, renpy.game.log), logf)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/compat/pickle.py", line 308, in dump
-    pickle.dump(o, f, pickle.HIGHEST_PROTOCOL if highest else PROTOCOL)
-    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: cannot pickle 'TextIOWrapper' instances
-Perhaps bad reduction in store.file = <_io.TextIOWrapper name='C:\\Users\\heave\\OneDrive\\2.8-Game-assessment\\VEIL_BNS\\game\\2025.txt' mode='r' encoding='utf-8'>
+  File "renpy/character.py", line 1526, in __call__
+    who = self.prefix_suffix("who", self.who_prefix, who, self.who_suffix)
+          ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/character.py", line 1444, in prefix_suffix
+    return sub(prefix) + sub(body) + sub(suffix)
+                         ~~~^^^^^^              
+  File "renpy/character.py", line 1421, in sub
+    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^   
+  File "renpy/substitutions.py", line 355, in substitute
+    s = interpolate(s, variables)  # type: ignore
+        ~~~~~~~~~~~^^^^^^^^^^^^^^                
+  File "renpy/substitutions.py", line 89, in interpolate
+    raise e
+  File "renpy/substitutions.py", line 81, in interpolate
+    value = renpy.python.py_eval(code, {}, scope)
+            ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1292, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1285, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<none>", line 1, in <module>
+NameError: name 'name_input' is not defined. Did you mean: 'raw_input'?
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Wed Jul 30 11:40:22 2025
+Mon Aug  4 11:41:39 2025
