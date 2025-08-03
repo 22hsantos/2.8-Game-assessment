@@ -545,6 +545,7 @@ label classroom_scene:
 label monday_cafeteria:
     K "I should get something to eat."
     K "I didn't have time to eat breakfast after all."
+
     scene bg black
     play music "cafeteria.mp3"
     scene bg cafeteria at bg ,with fade
@@ -1380,7 +1381,34 @@ label wednesday_midday:
             jump wednesday_club
 
 label wednesday_cafeteria:
-    
+
+    K "I should go to the cafeteria."
+    K "Maybe this time will be better..."
+    K "Third time's the charm, right?"
+    K "(I hesitantly tread over to the lunchroom.)"
+
+    scene bg black
+
+    K "(To my surprise, there was no smell indicating the quality of the food this time.)"
+    K "...Is that good or bad?"
+    K "..."
+    K "Eh, at least there's a chance that I won't succumb from biological warfare."
+    K "(I take a closer look at what was on the menu...)"
+
+    scene bg cafeteria
+    play music "cafeteria.mp3"
+
+    K "Huh?"
+    K "What is that..."
+    K "Is that even food...?"
+    K "It's literally a grey blob."
+    K "(After a moment of contemplating my life choices, I take a big gulp and try the miscellaneous substance.)"
+    K "..."
+    K "It was meh."
+
+    play sound "bell.wav" volume 0.5
+
+    scene bg black
     jump current
 
 label wednesday_club:
