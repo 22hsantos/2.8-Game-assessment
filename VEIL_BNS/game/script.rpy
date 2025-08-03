@@ -1380,6 +1380,7 @@ label wednesday_midday:
             jump wednesday_club
 
 label wednesday_cafeteria:
+    
     jump current
 
 label wednesday_club:
