@@ -74,6 +74,9 @@ init python:
     #determines whether the player is stupid or not
     player_normal = False
 
+    #Default name for player
+    name_input = "Daquan Tamil"
+
 
 #transitions
 define dissolve = Dissolve(0.5)
@@ -107,7 +110,7 @@ transform bg:
     yalign 0.5
 
 define Ke = Character("Zaigaku Kei")
-define K = Character("[name_input]")
+define P = Character("[name_input]")
 define u = Character("[player_name]")
 define uk = Character("Unknown")
 define Ka = Character("Takahashi Kanye")
@@ -254,50 +257,50 @@ label monday_start:
 
     scene bg black with dissolve
 
-    K "(My name is [name_input].)"
-    K "(I’m a third year high school student that has recently transferred to another school.)"
-    K "(Why you ask?) "
-    K "(I have no idea either.)"
-    K "(I have dementia.)"
-    K "(I have no idea why or how I got it though.)"
-    K "(Probably cause' I have dementia.)"
-    K "(...)"
-    K "(I’ll just start getting ready for my first day.)"
+    P "(My name is [name_input].)"
+    P "(I’m a third year high school student that has recently transferred to another school.)"
+    P "(Why you ask?) "
+    P "(I have no idea either.)"
+    P "(I have dementia.)"
+    P "(I have no idea why or how I got it though.)"
+    P "(Probably cause' I have dementia.)"
+    P "(...)"
+    P "(I’ll just start getting ready for my first day.)"
 
     play music "LEASE.mp3"
     scene bg hood with dissolve
     
-    K "I’ve only moved here a few days ago… "
-    K "But I have to admit this neighbourhood is way better than my last one."
-    K "the amount of sleep I’ve lost because of those damn barking dogs was enough to drive me insane."
-    K "Maybe that's why I have dementia..."
+    P "I’ve only moved here a few days ago… "
+    P "But I have to admit this neighbourhood is way better than my last one."
+    P "the amount of sleep I’ve lost because of those damn barking dogs was enough to drive me insane."
+    P "Maybe that's why I have dementia..."
 
     play sound "stepping.mp3"
 
-    K "(...)"
+    P "(...)"
 
     stop sound
     scene bg black at bg
     stop music
 
-    K "Wait…"
-    K "(Did I forget my house keys??)"
+    P "Wait…"
+    P "(Did I forget my house keys??)"
 
     play music "spirited.mp3"
 
-    K "(I frantically start searching through my uniform pockets, trying to find my keys.) "
-    K "Argh, not in the right one… "
-    K "(my expression tenses up as I found my right pocket empty.)"
-    K "(Hopefully, luck is on my side and my missing house key was in my left pocket…)"
-    K "C’mon, c’mon…!"
-    K "(...)"
+    P "(I frantically start searching through my uniform pockets, trying to find my keys.) "
+    P "Argh, not in the right one… "
+    P "(my expression tenses up as I found my right pocket empty.)"
+    P "(Hopefully, luck is on my side and my missing house key was in my left pocket…)"
+    P "C’mon, c’mon…!"
+    P "(...)"
 
     stop music
 
     play sound "sad_trombone.mp3"
-    K "(I left my house keys at home.)"
-    K "(I let out a long disappointed sigh of defeat.)"
-    K "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
+    P "(I left my house keys at home.)"
+    P "(I let out a long disappointed sigh of defeat.)"
+    P "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
 
     menu:
         "Open it":
@@ -359,23 +362,23 @@ label monday_start:
 
                     kei = kei + 1
                 
-                K "Huh, I can’t even read this… "
-                K "It’s all random measurements."
-                K "(I disregard the note and continue walking to my new school.)"
+                P "Huh, I can’t even read this… "
+                P "It’s all random measurements."
+                P "(I disregard the note and continue walking to my new school.)"
 
             else:
-                K "What the heck..."   
+                P "What the heck..."   
 
                 scene bg hood
                 play music "LEASE.mp3"
-                K "Huh, I can’t even read this… "
-                K "It’s all random measurements."
-                K "(I disregard the note and continue walking to my new school.)"
+                P "Huh, I can’t even read this… "
+                P "It’s all random measurements."
+                P "(I disregard the note and continue walking to my new school.)"
 
         "Leave it alone.":
-            K "Ehh..."
-            K "I can open it later."
-            K "(I disregard the note and continue walking to my new school.)"
+            P "Ehh..."
+            P "I can open it later."
+            P "(I disregard the note and continue walking to my new school.)"
     
 
     jump monday_morning
@@ -385,36 +388,36 @@ label monday_morning:
     play music "sincememo.mp3"
     play sound "stepping.mp3"
 
-    K "(I was admiring my surroundings while strolling through the hallway.)"
-    K "(It was like everywhere I saw was masterpiece painted by renowned painters.)"
-    K "(After a while, I found myself in front of a familiar feeling door.) "
+    P "(I was admiring my surroundings while strolling through the hallway.)"
+    P "(It was like everywhere I saw was masterpiece painted by renowned painters.)"
+    P "(After a while, I found myself in front of a familiar feeling door.) "
     scene bg outside library at bg ,with dissolve
-    K "Ah."
-    K "This must be the library."
-    K "(I was relieved to see a school library so similar to mine.)"
-    K "(That even though I’m in a new place, I'd still have a place to run away and escape reality.)"
-    K "(I gently slid open the door.)"
+    P "Ah."
+    P "This must be the library."
+    P "(I was relieved to see a school library so similar to mine.)"
+    P "(That even though I’m in a new place, I'd still have a place to run away and escape reality.)"
+    P "(I gently slid open the door.)"
 
     scene bg black
     play sound "stepping.mp3"
 
 label monday_kanye:
 
-    K "(...)"
+    P "(...)"
 
-    K "(The Glass Atlas)"
-    K "(Chronicles of a Vanished Kingdom)"
-    K "(Where the Shadows Dream)"
-    K "Woah…"
-    K "This library has a great selection of books."
-    K "(I couldn’t contain my excitement as I was indulging in my dearly missed paradise.)"
-    K "I wonder if they have-"
+    P "(The Glass Atlas)"
+    P "(Chronicles of a Vanished Kingdom)"
+    P "(Where the Shadows Dream)"
+    P "Woah…"
+    P "This library has a great selection of books."
+    P "(I couldn’t contain my excitement as I was indulging in my dearly missed paradise.)"
+    P "I wonder if they have-"
 
     stop sound
     stop music
     play sound "bamboo.ogg"
 
-    K "...!"
+    P "...!"
 
     play sound "crash.ogg"
 
@@ -429,8 +432,8 @@ label monday_kanye:
 
     show kanye angry with dissolve
 
-    K "Oh! I’m sorry…"
-    K "I didn’t see you there."
+    P "Oh! I’m sorry…"
+    P "I didn’t see you there."
 
     show kanye neutral 
 
@@ -442,16 +445,16 @@ label monday_kanye:
     uk "I’ve never seen you around before."
     uk "Are you new?"
 
-    K "(I’m startled at her sharp observation.)"
-    K "Y-yeah, how did you know?"
+    P "(I’m startled at her sharp observation.)"
+    P "Y-yeah, how did you know?"
 
     uk "I’m the student council president, so I know my peers quite well."
     uk "Allow me to welcome you to Hoshizora Academy…"
 
-    K "Ah, [name_input]."
+    P "Ah, [name_input]."
 
     Ka "[name_input]-kun. My name is Takahashi Kanye."
-    K "Taka…Takaha-"
+    P "Taka…Takaha-"
 
     show kanye neutral 2
 
@@ -460,18 +463,18 @@ label monday_kanye:
 
     show kanye neutral at scale_sprite
 
-    K "Thank you very much, Kanye."
+    P "Thank you very much, Kanye."
 
-    K "(I could feel the tension set in as soon as it fell silent.)"
-    K "(My eyes quickly dart around the room, as to keep the already dead conversation going.)"
-    K "(Suddenly, I recognize the book that was in Kagaku’s hand.)"
-    K "(It was *Echoes in the Fog*, a classic thriller novel that was popular upon release.)"
-    K "(However, popularity has dwindled in the recent years, so it quickly became a niche.)"
-    K "Hey…"
+    P "(I could feel the tension set in as soon as it fell silent.)"
+    P "(My eyes quickly dart around the room, as to keep the already dead conversation going.)"
+    P "(Suddenly, I recognize the book that was in Kagaku’s hand.)"
+    P "(It was *Echoes in the Fog*, a classic thriller novel that was popular upon release.)"
+    P "(However, popularity has dwindled in the recent years, so it quickly became a niche.)"
+    P "Hey…"
 
     show kanye startled at scale_sprite
 
-    K "Is that *Echoes in the Fog*?"
+    P "Is that *Echoes in the Fog*?"
 
     Ka "!"
 
@@ -501,9 +504,9 @@ label interrupt_kanye:
 
     hide kanye neutral with easeoutleft
 
-    K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
-    K "(...)"
-    K "I guess I’ll go too…"
+    P "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
+    P "(...)"
+    P "I guess I’ll go too…"
 
     scene bg black
     jump classroom_scene
@@ -524,9 +527,9 @@ label let_kanye_talk:
     hide  kanye neutral at left with easeoutleft
     hide kanye
 
-    K "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
-    K "(...)"
-    K "I guess I’ll go too…"
+    P "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
+    P "(...)"
+    P "I guess I’ll go too…"
 
     scene bg black
     jump classroom_scene
@@ -534,8 +537,8 @@ label let_kanye_talk:
 label classroom_scene:
     #scene bg classroom
 
-    K "I’ve got nothing to do right now."
-    K "I should..."
+    P "I’ve got nothing to do right now."
+    P "I should..."
 
     menu:
         "Eat at cafeteria":
@@ -545,16 +548,16 @@ label classroom_scene:
             jump monday_rooftop
         
 label monday_cafeteria:
-    K "I should get something to eat."
-    K "I didn't have time to eat breakfast after all."
+    P "I should get something to eat."
+    P "I didn't have time to eat breakfast after all."
 
     scene bg black
     play music "cafeteria.mp3"
     scene bg cafeteria at bg ,with fade
 
-    K "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose.)"
-    K "(Was that... curry?)"
-    K "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life.)"
+    P "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose.)"
+    P "(Was that... curry?)"
+    P "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life.)"
     scene bg black
     stop music
     play sound "bell.wav" volume 0.5
@@ -563,18 +566,18 @@ label monday_cafeteria:
 
 label monday_rooftop:
 
-    K "I wonder what the view up on the rooftop is like."
+    P "I wonder what the view up on the rooftop is like."
 
     scene bg black
 
     scene bg staircase at bg
     play sound "stepping.mp3"
 
-    K "(I find myself stepping up what might've been the longest staircase of my entire life.)"
-    K "*Huff* *Huff*"
-    K "How big..."
-    K "Is this..."
-    K "Goddamn school...!?"
+    P "(I find myself stepping up what might've been the longest staircase of my entire life.)"
+    P "*Huff* *Huff*"
+    P "How big..."
+    P "Is this..."
+    P "Goddamn school...!?"
 
     scene bg black
 
@@ -586,19 +589,19 @@ label monday_rooftop:
     
     play music "rooftop.mp3"
 
-    K "Woah...!"
-    K "What a view..."
-    K "(I stepped closer to the fence, looking down the whole city.)"
+    P "Woah...!"
+    P "What a view..."
+    P "(I stepped closer to the fence, looking down the whole city.)"
 
     scene bg rooftop view at bg_pan
     with dissolve
     pause
 
-    K "Everything looks so small from up here."
+    P "Everything looks so small from up here."
     
     scene bg black
 
-    K "(I spend a moment enjoying watching people live their everyday life before going back to class.)"
+    P "(I spend a moment enjoying watching people live their everyday life before going back to class.)"
 
     stop music
     play sound "bell.wav" volume 0.5
@@ -611,42 +614,42 @@ label monday_afterschool:
     pause 3.0
     play music "TOL.mp3"
 
-    K "*Yawn*"
-    K "That class had me beat."
-    K "How am I supposed to be on the same level as everyone else, anyway?"
-    K "This is literally my first day here!"
-    K "..."
-    K "Whatever, I’m going home."
+    P "*Yawn*"
+    P "That class had me beat."
+    P "How am I supposed to be on the same level as everyone else, anyway?"
+    P "This is literally my first day here!"
+    P "..."
+    P "Whatever, I’m going home."
 
     scene bg black with dissolve
     play sound "stepping.mp3" volume 1.5
 
-    K "(Hmm? What’s all that noise?)"
-    K "(I look around, and find that the source of the commotion has been coming from the school gym.)"
-    K "(Guess I might check it out, I guess.)"
+    P "(Hmm? What’s all that noise?)"
+    P "(I look around, and find that the source of the commotion has been coming from the school gym.)"
+    P "(Guess I might check it out, I guess.)"
 
     scene bg gym with fade
 
-    K "(It seems that the basketball club had some activities today.)"
-    K "(I stick around for a while, watching the players do their drills.)"
-    K "(I blankly stare at a ball that came out of nowhere.)"
-    K "(Hey, isn’t that ball coming straight towards my—)"
+    P "(It seems that the basketball club had some activities today.)"
+    P "(I stick around for a while, watching the players do their drills.)"
+    P "(I blankly stare at a ball that came out of nowhere.)"
+    P "(Hey, isn’t that ball coming straight towards my—)"
 
     stop music
     play sound "punch.mp3"
     scene bg black
 
-    K "*Thud!*"
-    K "(An inexplicable pain started radiating from my forehead.)"
-    K "(I could feel all the blood rushing as the red mark started thumping non-stop.)"
+    P "*Thud!*"
+    P "(An inexplicable pain started radiating from my forehead.)"
+    P "(I could feel all the blood rushing as the red mark started thumping non-stop.)"
 
     uk "Oh my gosh! Are you okay!?"
 
-    K "(I open my eyes to find a girl standing right in front of me.)"
+    P "(I open my eyes to find a girl standing right in front of me.)"
 
     uk "Ahh, what do I do??"
-    K "Huh…"
-    K "(I manage to open my eyes.)"
+    P "Huh…"
+    P "(I manage to open my eyes.)"
 
     scene bg gym with dissolve
     play music "spirited.mp3"
@@ -655,14 +658,14 @@ label monday_afterschool:
     uk "Um!"
     uk "How many fingers am I holding!?"
 
-    K "What…?"
-    K "(I try to readjust my vision.)"
+    P "What…?"
+    P "(I try to readjust my vision.)"
 
     show travis fingers at scale_sprite
 
     uk "I said how many fingers am I holding??"
 
-    K "Uhh…"
+    P "Uhh…"
 
     menu:
         "2":
@@ -672,7 +675,7 @@ label monday_afterschool:
             jump concussed
 
 label normal:
-    K "Um, 2?"
+    P "Um, 2?"
     
     show travis excited at scale_sprite
 
@@ -681,7 +684,7 @@ label normal:
     jump monday_travis
 
 label concussed:
-    K "Um, 7?"
+    P "Um, 7?"
 
     show travis shocked at scale_sprite
 
@@ -705,17 +708,17 @@ label monday_travis:
     play music "ROB.mp3"
 
     uk "Here, let me help you up!"
-    K "(The peculiar girl reaches out her hand.)"
+    P "(The peculiar girl reaches out her hand.)"
 
     scene black
 
-    K "(Hup!)"
+    P "(Hup!)"
 
     scene bg gym
 
     show travis neutral at scale_sprite
     
-    K "Thanks…"
+    P "Thanks…"
 
     show travis smile at scale_sprite
 
@@ -732,8 +735,8 @@ label monday_travis:
 
     show travis neutral at scale_sprite
 
-    K "Ah, same here."
-    K "I’m [name_input]."
+    P "Ah, same here."
+    P "I’m [name_input]."
 
     T "I’m Sato Travis."
 
@@ -741,13 +744,13 @@ label monday_travis:
 
     T "But everyone just calls me Travis."
 
-    K "(I become rigid for a moment.)"
-    K "Ah! Are you sure?"
+    P "(I become rigid for a moment.)"
+    P "Ah! Are you sure?"
 
     show travis confused at scale_sprite
 
     T "What’s the matter?"
-    K "It’s just… we’ve just met and—"
+    P "It’s just… we’ve just met and—"
 
     show travis proud at scale_sprite
 
@@ -755,7 +758,7 @@ label monday_travis:
     T "So what?"
     T "Everyone I meet, I consider my closest friends!"
 
-    K "Um, okay… if you say so."
+    P "Um, okay… if you say so."
 
     T "But enough about that!"
 
@@ -763,7 +766,7 @@ label monday_travis:
 
     T "Is your head okay? You took a really hard hit."
 
-    K "(She tries to reach her hand out to me once again to examine my forehead when…)"
+    P "(She tries to reach her hand out to me once again to examine my forehead when…)"
 
     show travis shocked at scale_sprite
 
@@ -788,21 +791,21 @@ label monday_travis:
     #hide travis
     hide travis neutral with easeoutleft
 
-    K "(And another one runs away…)"
-    K "*sigh*"
-    K "I think I’ve had enough exploring for my first day here."
-    K "I’m gonna head home."
+    P "(And another one runs away…)"
+    P "*sigh*"
+    P "I think I’ve had enough exploring for my first day here."
+    P "I’m gonna head home."
 
     scene bg black
     jump monday_bedroom
 
 label monday_bedroom:
 
-    K "(I hurried home before the sun set.)"
+    P "(I hurried home before the sun set.)"
 
     #scene bg bedroom
 
-    K "(While I was a bit overwhelmed with the events that happened today, I was glad I made two new friends.)"
+    P "(While I was a bit overwhelmed with the events that happened today, I was glad I made two new friends.)"
     jump tuesday_morning
 
 label monday_labels:
@@ -851,43 +854,43 @@ label tuesday_morning:
 
     scene bg black
 
-    K "(My eyelids started lifting the moment the sun hit my eyes.)"
+    P "(My eyelids started lifting the moment the sun hit my eyes.)"
 
     #scene bg bedroom
     play music "ROB.mp3"
 
-    K "Argh… Morning already?"
-    K "(I groggily put on my uniform and gather my things.)"
-    K "Okay, time to go to—"
+    P "Argh… Morning already?"
+    P "(I groggily put on my uniform and gather my things.)"
+    P "Okay, time to go to—"
 
     stop music
 
-    K "(I suddenly put my hand over my right pocket.)"
+    P "(I suddenly put my hand over my right pocket.)"
 
     play music "ROB.mp3"
 
-    K "*Sigh* Thank god I remembered this time…"
-    K "I don’t want to ever climb in through the window again."
-    K "Hopefully no one saw me, I’d die of embarrassment."
-    K "Well, I’m off."
+    P "*Sigh* Thank god I remembered this time…"
+    P "I don’t want to ever climb in through the window again."
+    P "Hopefully no one saw me, I’d die of embarrassment."
+    P "Well, I’m off."
 
     play music "LEASE.mp3"
     scene bg hood with dissolve
     play sound "stepping.mp3"
 
-    K "I wonder if I’ll see Kanye again."
-    K "She seems a bit odd, but I’m glad to have another book-buddy."
-    K "Travis too."
-    K "I hope she treats me today, that ball did leave a bruise after all."
-    K "It took forever to stop the swelling…"
+    P "I wonder if I’ll see Kanye again."
+    P "She seems a bit odd, but I’m glad to have another book-buddy."
+    P "Travis too."
+    P "I hope she treats me today, that ball did leave a bruise after all."
+    P "It took forever to stop the swelling…"
 
     scene bg black
 
-    K "(As soon as I arrived inside the school entrance, I immediately headed straight for the library.)"
+    P "(As soon as I arrived inside the school entrance, I immediately headed straight for the library.)"
 
     scene bg outside library at bg ,with dissolve
 
-    K "(Here goes nothing...)"
+    P "(Here goes nothing...)"
 
     scene bg black
     scene bg library
@@ -902,7 +905,7 @@ label tuesday_morning:
 
     Ka "Good morning."
 
-    K "Ka…Kagaku-san..."
+    P "Ka…Kagaku-san..."
 
     #show kanye laugh
 
@@ -913,19 +916,19 @@ label tuesday_morning:
     Ka "Just Kanye is fine."
     Ka "It’s a bit odd if you add -san to my first name."
 
-    K "(My cheeks grow a bit pink from embarrassment.)"
+    P "(My cheeks grow a bit pink from embarrassment.)"
 
     Ka "How are you today?"
 
-    K "I’m pretty alright, thanks."
-    K "How about you?"
+    P "I’m pretty alright, thanks."
+    P "How about you?"
 
     #show kanye hesitated
 
     Ka "I’m… alright, thank you."
 
-    K "(I sense the slight hesitation in her words.)"
-    K "Is… something wrong?"
+    P "(I sense the slight hesitation in her words.)"
+    P "Is… something wrong?"
 
     show kanye startled at scale_sprite
 
@@ -938,8 +941,8 @@ label tuesday_morning:
     Ka "I’ve just taken a lot of responsibilities at once since we’re starting the school year."
     Ka "And I’ve just been a bit stressed while organising that and other things too."
 
-    K "(A wave of empathy washes over me as I continue to listen to her troubles.)"
-    K "Woah, sounds tough on you."
+    P "(A wave of empathy washes over me as I continue to listen to her troubles.)"
+    P "Woah, sounds tough on you."
 
     show kanye startled
 
@@ -949,9 +952,9 @@ label tuesday_morning:
 
     Ka "I just need a little time, that’s all."
 
-    K "(A sense of doubt and concern hits me, but I try to encourage Kanye.)"
-    K "Alright, just…"
-    K "Tell me if you need anything, okay?"
+    P "(A sense of doubt and concern hits me, but I try to encourage Kanye.)"
+    P "Alright, just…"
+    P "Tell me if you need anything, okay?"
 
     #show kanye startled
 
@@ -969,7 +972,7 @@ label tuesday_morning:
     show kanye neutral
     Ka "What a shame, I guess I’ll have to see you later?"
 
-    K "Yeah, later."
+    P "Yeah, later."
 
     hide kanye
     scene bg black
@@ -981,8 +984,8 @@ label tuesday_midday:
 
     #classroom bg
 
-    K "I've got nothing to do right now."
-    K "I should..."
+    P "I've got nothing to do right now."
+    P "I should..."
 
     menu:
         
@@ -994,32 +997,32 @@ label tuesday_midday:
     
 label tuesday_cafeteria:
     
-    K "I should go to the cafeteria."
-    K "I *am* feeling a bit hungry."
+    P "I should go to the cafeteria."
+    P "I *am* feeling a bit hungry."
 
     scene bg black
 
-    K "(I make my way to the cafeteria once again, curious for what's on the menu today.)"
+    P "(I make my way to the cafeteria once again, curious for what's on the menu today.)"
 
     play music "cafeteria.mp3"
 
     scene bg cafeteria
 
-    K "...!"
-    K "(I expected a delicious smell to greet me like yesterday...)"
+    P "...!"
+    P "(I expected a delicious smell to greet me like yesterday...)"
 
     stop music
 
-    K "(But today's meal took a total 180 degree turn.)"
+    P "(But today's meal took a total 180 degree turn.)"
 
     play music "spirited.mp3"
 
-    K "Ugh...what is this smell?"
-    K "(It was an indescribable smell.)"
-    K "(The closest I could get to describing this is physical assault...)"
-    K "(But to my nose.)"
-    K "(Yeah, no.)"
-    K "(I guess it's no lunch for me today.)"
+    P "Ugh...what is this smell?"
+    P "(It was an indescribable smell.)"
+    P "(The closest I could get to describing this is physical assault...)"
+    P "(But to my nose.)"
+    P "(Yeah, no.)"
+    P "(I guess it's no lunch for me today.)"
 
     scene bg black
     stop music
@@ -1029,18 +1032,18 @@ label tuesday_cafeteria:
 
 label  tuesday_theatre:  
 
-    K "I should check out the theatre."
-    K "A school this rich would have an impressive theatre, right?"
+    P "I should check out the theatre."
+    P "A school this rich would have an impressive theatre, right?"
 
     scene bg black
     
-    K "(I made my way to the theatre, admiring it's beautiful design)"
+    P "(I made my way to the theatre, admiring it's beautiful design)"
 
     #Theater BG
 
-    K "Woah..."
-    K "I haven't been one for plays but-"
-    K "Looking at a theatre this extravagant might just get me into it."
+    P "Woah..."
+    P "I haven't been one for plays but-"
+    P "Looking at a theatre this extravagant might just get me into it."
 
     play sound "bell.wav" volume 0.5
 
@@ -1054,45 +1057,45 @@ label tuesday_afterschool:
     pause 3.0
     play music "TOL.mp3"
 
-    K "*Sigh*"
-    K "I still don’t get a lot of what they’re teaching but—"
-    K "I think I made a lot of progress."
-    K "(I feel myself zoning out for a few seconds.)"
-    K "..."
-    K "(*growl*)"
-    K "Ah."
-    K "Travis was supposed to treat me today."
-    K "Honestly, I forgot about that."
-    K "But thinking about it now has gotten me quite excited."
-    K "I should go find her."
+    P "*Sigh*"
+    P "I still don’t get a lot of what they’re teaching but—"
+    P "I think I made a lot of progress."
+    P "(I feel myself zoning out for a few seconds.)"
+    P "..."
+    P "(*growl*)"
+    P "Ah."
+    P "Travis was supposed to treat me today."
+    P "Honestly, I forgot about that."
+    P "But thinking about it now has gotten me quite excited."
+    P "I should go find her."
 
     scene bg black with fade
 
-    K "(I head over to the school gym, my stomach pounding like it was playing some kind of desperate symphony.)"
+    P "(I head over to the school gym, my stomach pounding like it was playing some kind of desperate symphony.)"
 
     play sound "stepping.mp3"
     scene bg gym with dissolve
 
-    K "(To my surprise, there was no rowdy commotion this time.)"
-    K "(It seems like the basketball club had to leave early.)"
-    K "(Though, there were a bunch of basketballs scattered all over the ground…)"
-    K "(And a tight-lipped girl knelt down in the middle, gathering all of the balls.)"
-    K "(I make my way towards her, planning to offer my help but—)"
+    P "(To my surprise, there was no rowdy commotion this time.)"
+    P "(It seems like the basketball club had to leave early.)"
+    P "(Though, there were a bunch of basketballs scattered all over the ground…)"
+    P "(And a tight-lipped girl knelt down in the middle, gathering all of the balls.)"
+    P "(I make my way towards her, planning to offer my help but—)"
 
     show travis shocked at scale_sprite
 
     T "KYAH!"
-    K "Woah!"
+    P "Woah!"
     T "Who’s the—"
     T "Oh!"
 
     show travis tense at scale_sprite
 
     T "It’s just you, [name_input]."
-    K "Yeah…"
-    K "Sorry for startling you."
-    K "You sounded quite shocked, haha…"
-    K "(I nervously laugh, trying to brush off the crushing guilt weighing upon me.)"
+    P "Yeah…"
+    P "Sorry for startling you."
+    P "You sounded quite shocked, haha…"
+    P "(I nervously laugh, trying to brush off the crushing guilt weighing upon me.)"
 
     show travis embarrassed at scale_sprite
 
@@ -1109,14 +1112,14 @@ label tuesday_afterschool:
     show travis embarrassed at scale_sprite
 
     T "That was like, super embarrassing…"
-    K "Yeah, of course."
+    P "Yeah, of course."
 
     show travis anxious at scale_sprite
 
-    K "(It fell silent for what felt like eternity.)"
-    K "Um!"
-    K "What are you doing here, all alone?"
-    K "Where’s the rest of the club?"
+    P "(It fell silent for what felt like eternity.)"
+    P "Um!"
+    P "What are you doing here, all alone?"
+    P "Where’s the rest of the club?"
 
     show travis tense at scale_sprite
 
@@ -1126,8 +1129,8 @@ label tuesday_afterschool:
     show travis sad at scale_sprite
 
     T "Had other things to do."
-    K "(I become concerned at her tense demeanor.)"
-    K "Well—"
+    P "(I become concerned at her tense demeanor.)"
+    P "Well—"
 
     show travis sweat at scale_sprite
 
@@ -1153,8 +1156,8 @@ label tuesday_afterschool:
             pass
         "Console her":
 
-            K "Hey, I don't mind at all..."
-            K "And I don't think you're a bad senpai."
+            P "Hey, I don't mind at all..."
+            P "And I don't think you're a bad senpai."
 
             T "..."
 
@@ -1165,9 +1168,9 @@ label tuesday_afterschool:
             
             pass
 
-    K "..."
+    P "..."
     T "..."
-    K "(Travis turns away from you to wipe her face with her sleeve, before facing you again.)"
+    P "(Travis turns away from you to wipe her face with her sleeve, before facing you again.)"
 
     show travis smile at scale_sprite
 
@@ -1183,18 +1186,18 @@ label tuesday_afterschool:
 
     show travis s smile at scale_sprite
 
-    K  "(Despite her best attempts at putting on a smile, her softly creased eyebrows gave everything away.)"
-    K "(I try my best not to put down the mood.)"
-    K "Haha, of course not."
-    K "And sure, I’ll hold you to that…"
-    K "Okay?"
+    P  "(Despite her best attempts at putting on a smile, her softly creased eyebrows gave everything away.)"
+    P "(I try my best not to put down the mood.)"
+    P "Haha, of course not."
+    P "And sure, I’ll hold you to that…"
+    P "Okay?"
 
     show travis smile at scale_sprite
 
     T "Okay…!"
 
     scene bg black with fade
-    K "(Shortly after I helped her clean up the gym, we parted ways at the school gates.)"
+    P "(Shortly after I helped her clean up the gym, we parted ways at the school gates.)"
 
     jump tuesday_bedroom
 
@@ -1202,21 +1205,21 @@ label tuesday_bedroom:
 
     #scene bedroom with dissolve
 
-    K "I hope Travis’s okay…"
-    K "She was super bright when I first met her yesterday."
-    K "Kanye, too."
-    K "The start of a new year might’ve put too much pressure on both of them."
+    P "I hope Travis’s okay…"
+    P "She was super bright when I first met her yesterday."
+    P "Kanye, too."
+    P "The start of a new year might’ve put too much pressure on both of them."
 
-    K "(As I was finishing changing into my pajamas, I was getting ready to slip under my covers...)"
-    K "(Suddenly, I nearly slip as I stepped on a mysterious object.)"
-    K "Ah!"
-    K "Huh? What is this?"
-    K "Another piece of paper…"
+    P "(As I was finishing changing into my pajamas, I was getting ready to slip under my covers...)"
+    P "(Suddenly, I nearly slip as I stepped on a mysterious object.)"
+    P "Ah!"
+    P "Huh? What is this?"
+    P "Another piece of paper…"
 
     menu:
         "Open it":
 
-            K "(I examine the paper closer)"
+            P "(I examine the paper closer)"
 
             python:
                 #Kei file 2 write
@@ -1283,17 +1286,17 @@ label tuesday_bedroom:
 
                     kei = kei + 1
 
-            K "Butter?"
-            K "Flour?"
-            K "Milk?"
-            K "Huh, must’ve ripped off mom’s cooking books…"
+            P "Butter?"
+            P "Flour?"
+            P "Milk?"
+            P "Huh, must’ve ripped off mom’s cooking books…"
             pass
         
         "Leave it":
             pass
         
-    K "I carelessly throw the paper into the corner of the room..."
-    K "Then dozed off under the sweet embrace of my warm blanket."
+    P "I carelessly throw the paper into the corner of the room..."
+    P "Then dozed off under the sweet embrace of my warm blanket."
 
     scene bg black with fade
 
@@ -1318,34 +1321,34 @@ label wednesday_morning:
 
     #play sound "alarm_clock.ogg"
 
-    K "... "
+    P "... "
 
     #play sound "alarm_clock.ogg"
 
-    K "Five more minutes…"
+    P "Five more minutes…"
 
     #play sound "alarm_clock.ogg"
 
-    K "I said, I more—"
+    P "I said, I more—"
 
     #scene bedroom_bg with dissolve
 
     play music "spirited.mp3"
 
-    K "(My eyes fly open.)"
-    K "Oh crap, oh crap, oh crap!"
-    K "(I scramble under my covers trying to find my phone.)"
-    K "There it is!"
-    K "..."
-    K "8:55!?"
-    K "(I quickly leap out of my bed and start throwing my uniform on.)"
-    K "I’m going to be late!"
+    P "(My eyes fly open.)"
+    P "Oh crap, oh crap, oh crap!"
+    P "(I scramble under my covers trying to find my phone.)"
+    P "There it is!"
+    P "..."
+    P "8:55!?"
+    P "(I quickly leap out of my bed and start throwing my uniform on.)"
+    P "I’m going to be late!"
 
     #scene black with fade
 
     scene bg hood with dissolve
 
-    K "*Huff* *Huff*"
+    P "*Huff* *Huff*"
 
     scene bg black with fade
 
@@ -1353,18 +1356,18 @@ label wednesday_morning:
 
     stop music
 
-    K "Sorry, I came late!"
-    K "(As soon as I opened my eyes, I felt a whole class of unfamiliar faces staring at me…)"
-    K "(I quickly dart my gaze over to my teacher…)"
-    K "(But was met with a stranger.)"
+    P "Sorry, I came late!"
+    P "(As soon as I opened my eyes, I felt a whole class of unfamiliar faces staring at me…)"
+    P "(I quickly dart my gaze over to my teacher…)"
+    P "(But was met with a stranger.)"
 
     #scene black
 
-    K "(This wasn’t my class.)"
-    K "(I immediately bowed my head in embarrassment and guilt.)"
-    K "Sorry for the interruption!!!"
-    K "(I slammed the door shut and went to my actual classroom.)"
-    K "Not even a week here, and I might already be called a weirdo…"
+    P "(This wasn’t my class.)"
+    P "(I immediately bowed my head in embarrassment and guilt.)"
+    P "Sorry for the interruption!!!"
+    P "(I slammed the door shut and went to my actual classroom.)"
+    P "Not even a week here, and I might already be called a weirdo…"
 
     jump wednesday_midday
 
@@ -1372,8 +1375,8 @@ label wednesday_midday:
     
     #scene bg classroom
 
-    K "I've got nothing to do right now."
-    K "I should..."
+    P "I've got nothing to do right now."
+    P "I should..."
 
     menu:
         "Eat at cafeteria":
@@ -1384,29 +1387,29 @@ label wednesday_midday:
 
 label wednesday_cafeteria:
 
-    K "I should go to the cafeteria."
-    K "Maybe this time will be better..."
-    K "Third time's the charm, right?"
-    K "(I hesitantly tread over to the lunchroom.)"
+    P "I should go to the cafeteria."
+    P "Maybe this time will be better..."
+    P "Third time's the charm, right?"
+    P "(I hesitantly tread over to the lunchroom.)"
 
     scene bg black
 
-    K "(To my surprise, there was no smell indicating the quality of the food this time.)"
-    K "...Is that good or bad?"
-    K "..."
-    K "Eh, at least there's a chance that I won't succumb from biological warfare."
-    K "(I take a closer look at what was on the menu...)"
+    P "(To my surprise, there was no smell indicating the quality of the food this time.)"
+    P "...Is that good or bad?"
+    P "..."
+    P "Eh, at least there's a chance that I won't succumb from biological warfare."
+    P "(I take a closer look at what was on the menu...)"
 
     scene bg cafeteria
     play music "cafeteria.mp3"
 
-    K "Huh?"
-    K "What is that..."
-    K "Is that even food...?"
-    K "It's literally a grey blob."
-    K "(After a moment of contemplating my life choices, I take a big gulp and try the miscellaneous substance.)"
-    K "..."
-    K "It was meh."
+    P "Huh?"
+    P "What is that..."
+    P "Is that even food...?"
+    P "It's literally a grey blob."
+    P "(After a moment of contemplating my life choices, I take a big gulp and try the miscellaneous substance.)"
+    P "..."
+    P "It was meh."
 
     play sound "bell.wav" volume 0.5
 
@@ -1415,43 +1418,43 @@ label wednesday_cafeteria:
 
 label wednesday_club:
 
-    K "I should explore the clubs here."
-    K "Besides..."
-    K "I don't think I have an appetite from what I witnessed yesterday."
+    P "I should explore the clubs here."
+    P "Besides..."
+    P "I don't think I have an appetite from what I witnessed yesterday."
 
     scene bg black
 
-    K "(I start walking around the clubrooms, fascinated by the range of activities each club hosted.)"
-    K "(One club in particular caught my eye...)"
-    K "The cooking club, huh..."
-    K "(Not to brag, but I personally think I'm a pretty good cook.)"
-    K "(I do live alone after all, and take out would drain my money quite fast.)"
+    P "(I start walking around the clubrooms, fascinated by the range of activities each club hosted.)"
+    P "(One club in particular caught my eye...)"
+    P "The cooking club, huh..."
+    P "(Not to brag, but I personally think I'm a pretty good cook.)"
+    P "(I do live alone after all, and take out would drain my money quite fast.)"
 
     #Cooking club BG
 
-    K "Woah!"
-    K "This school must be pretty rich to have a commercial kitchen this nice!"
-    K "Am I in M*sterChef??"
-    K "(I spend a second in awe of the breathtaking workstations)"
-    K "(I don't know why, but I was strangely drawn to specifically the fridge.)"
-    K "(I walk over and swing open the shiny double doors...)"
-    K "(And find a bento box tucked away in the corner.)"
-    K "(In response, my stomach starts rumbling like never before.)"
-    K "Argh...I shouldn't take someone else's food..."
-    K "(However, my empty stomach says otherwise.)"
-    K "..."
-    K "They wouldn't mind, right?"
-    K "(I sheepishly take out the lunch box and open the lid...)"
-    K "Another note?"
+    P "Woah!"
+    P "This school must be pretty rich to have a commercial kitchen this nice!"
+    P "Am I in M*sterChef??"
+    P "(I spend a second in awe of the breathtaking workstations)"
+    P "(I don't know why, but I was strangely drawn to specifically the fridge.)"
+    P "(I walk over and swing open the shiny double doors...)"
+    P "(And find a bento box tucked away in the corner.)"
+    P "(In response, my stomach starts rumbling like never before.)"
+    P "Argh...I shouldn't take someone else's food..."
+    P "(However, my empty stomach says otherwise.)"
+    P "..."
+    P "They wouldn't mind, right?"
+    P "(I sheepishly take out the lunch box and open the lid...)"
+    P "Another note?"
 
     #Write Kei note 3
 
-    K "How strange..."
-    K "(I wasn't really interested in the note, but the food in the container)"
-    K " munch munch"
-    K "...!"
-    K "That's delicious!"
-    K "(I immediately scarf down the rest of the food, not leaving even a single grain of rice.)"
+    P "How strange..."
+    P "(I wasn't really interested in the note, but the food in the container)"
+    P " munch munch"
+    P "...!"
+    P "That's delicious!"
+    P "(I immediately scarf down the rest of the food, not leaving even a single grain of rice.)"
 
     scene bg black
     play sound "bell.wav" volume 0.5

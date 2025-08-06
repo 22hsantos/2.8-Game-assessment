@@ -1,15 +1,15 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1373, in script
-    K "I've got nothing to do right now."
+  File "game/script.rpy", line 855, in script
+    K "(My eyelids started lifting the moment the sun hit my eyes.)"
 NameError: name 'name_input' is not defined. Did you mean: 'raw_input'?
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 1373, in script
-    K "I've got nothing to do right now."
+  File "game/script.rpy", line 855, in script
+    K "(My eyelids started lifting the moment the sun hit my eyes.)"
   File "renpy/ast.py", line 2915, in execute
     Say.execute(self)
     ~~~~~~~~~~~^^^^^^
@@ -48,4 +48,4 @@ NameError: name 'name_input' is not defined. Did you mean: 'raw_input'?
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Mon Aug  4 11:41:39 2025
+Wed Aug  6 14:20:45 2025
