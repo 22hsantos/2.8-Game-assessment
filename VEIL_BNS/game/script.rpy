@@ -44,9 +44,10 @@ init python:
     #note file paths
     file_path1 = os.path.join(renpy.config.basedir, "game", "2025.txt")
     file_path2 = os.path.join(renpy.config.basedir, "game", "PLEASE_READ.txt")
+    file_path3 = os.path.join(renpy.config.basedir, "game", "3.txt")
 
     #file path list
-    file_path_list = [file_path1 , file_path2]
+    file_path_list = [file_path1 , file_path2 , file_path3]
     
 
     for path in file_path_list:
