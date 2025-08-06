@@ -1272,7 +1272,7 @@ label tuesday_bedroom:
                     file.write(message_2)
                     file.close()
 
-                    file_exists - os.path.exists(file_path2)
+                    file_exists = os.path.exists(file_path2)
 
             if file_exists:
                 python:
@@ -1435,7 +1435,7 @@ label wednesday_club:
     P "Woah!"
     P "This school must be pretty rich to have a commercial kitchen this nice!"
     P "Am I in M*sterChef??"
-    P "(I spend a second in awe of the breathtaking workstations)"
+    P "(I spend a second in awe of the breathtaking workstations.)"
     P "(I don't know why, but I was strangely drawn to specifically the fridge.)"
     P "(I walk over and swing open the shiny double doors...)"
     P "(And find a bento box tucked away in the corner.)"
@@ -1445,9 +1445,48 @@ label wednesday_club:
     P "..."
     P "They wouldn't mind, right?"
     P "(I sheepishly take out the lunch box and open the lid...)"
+    P "What the hell"
     P "Another note?"
 
-    #Write Kei note 3
+    menu:
+        "Open it":
+
+            P "(I examine the paper closer)"
+
+            python:
+
+                #Kei file 3
+                with open(file_path3, "w") as file:
+                    
+                    message_3 ="""
+                    
+                    Thank you again for allowing me to repair VEIL: Beneath The Surface.
+                    I am deeply regretful that you had to experience the game in such a
+                    unfinished state.
+                    I prepared this lunch as a an apology and a sign of my gratitude.
+                    I hope you like it :)
+                    
+                    -Kei
+                    
+                    """
+
+                    file.write(message_3)
+                    file.close
+
+                    file_exists = os.path.exists(file_path3)
+                
+            if file_exists:
+                python:
+                    os.system(f'notepad.exe {file_path3}')
+                    ctypes.windll.user32.MessageBoxW(None,
+                    "Unexpected file interference! Please select OK to continue with the game.", 
+                    "Oh No!",
+                    48
+                    )
+                    os.system("taskkill /IM notepad.exe /F")
+
+                    kei = kei + 1
+
 
     P "How strange..."
     P "(I wasn't really interested in the note, but the food in the container)"
