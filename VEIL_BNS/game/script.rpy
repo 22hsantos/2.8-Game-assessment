@@ -179,6 +179,7 @@ label start:
     "Checkpoint Shortcut active. (Disregard)"
     "Currently, saving the game is not possible due to coding issues"
     "oops lol"
+    "dont save the game pls (it will break)"
 
     stop music
 
