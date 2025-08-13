@@ -27,15 +27,21 @@ init python:
         shell32 (Shell32.dll) - system library that manages shell functions
         IsUserAnAdmin()  = built in fn inside Shell32.dll that returns True or False
         """
-        return ctypes.windll.shell32.IsUserAnAdmin()
+        try:
+            return ctypes.windll.shell32.IsUserAnAdmin()
+
+        except Exception:
+            return False
     
         if not is_admin():
-            """
 
-            ShellExecuteW(...) - restarts RenPy with admin privileges
+            #sys.executable - restarts Python instance with admin privileges
+            excecutable = sys.executable
+
+            """
+            ShellExecuteW(...) - restarts RenPy with admin privileges (runs this code in the shell)
             "runas" - Tells windows ask for permission (pop up window)
-            sys.executable - restarts Python instance with admin privileges
-            os.path.abspath("renpy.exe") - makes sure that renpy starts from the correct location
+            os.path.abspath("renpy.exe") - makes sure that renpy starts from the absolute path
             sys.exit() - 
             """
             ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
@@ -64,6 +70,8 @@ init python:
             except PermissionError:
                 is_admin()
 
+
+    is_admin()
 
     #gets the player's name
     player_name = os.getlogin()
@@ -179,14 +187,30 @@ label start:
 
     show screen key_listener
 
-    "Checkpoint Shortcut active. (Disregard)"
+    $ admin = is_admin()
+
+    if admin:
+        "Have admin perms"
+    
+    else:
+        "No admin perms"
+        
+        $ is_admin()
+
+
+    "Checkpoint Shortcut active."
     "Currently, saving the game is not possible due to coding issues"
     "oops lol"
     "dont save the game pls (it will break)"
 
     stop music
 
-    jump story_start
+
+    $ renpy.call_in_new_context("file_write")
+
+    jump file_write
+
+    #jump story_start
 
 #for easy label access
 label checkpoint:
