@@ -33,19 +33,19 @@ init python:
         except Exception:
             return False
     
-        if not is_admin():
+    if not is_admin():
 
-            #sys.executable - restarts Python instance with admin privileges
-            excecutable = sys.executable
+        #sys.executable - restarts Python instance with admin privileges
+        excecutable = sys.executable
 
-            """
-            ShellExecuteW(...) - restarts RenPy with admin privileges (runs this code in the shell)
-            "runas" - Tells windows ask for permission (pop up window)
-            os.path.abspath("renpy.exe") - makes sure that renpy starts from the absolute path
-            sys.exit() - 
-            """
-            ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
-            sys.exit()#terminates the session
+        """
+        ShellExecuteW(...) - restarts RenPy with admin privileges (runs this code in the shell)
+        "runas" - Tells windows ask for permission (pop up window)
+        os.path.abspath("renpy.exe") - makes sure that renpy starts from the absolute path
+        sys.exit() - 
+        """
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
+        sys.exit()#terminates the session
 
     #note file paths
     file_path1 = os.path.join(renpy.config.basedir, "game", "2025.txt")
