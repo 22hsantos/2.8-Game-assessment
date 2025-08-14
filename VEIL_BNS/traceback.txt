@@ -1,17 +1,17 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 245, in script
+  File "game/script.rpy", line 235, in script
     python:
-  File "game/script.rpy", line 248, in <module>
-    with open("2025.txt", "w") as file:
+  File "game/script.rpy", line 238, in <module>
+    with open(file_path1, "w") as file:
          ~~~~^^^^^^^^^^^^^^^^^         
-PermissionError: [Errno 13] Permission denied: '2025.txt'
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\heave\\OneDrive\\Renpy projects\\2.8-Game-assessment\\VEIL_BNS\\images\\Misc\\2025.txt'
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 245, in script
+  File "game/script.rpy", line 235, in script
     python:
   File "renpy/ast.py", line 1187, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
@@ -19,12 +19,12 @@ Traceback (most recent call last):
   File "renpy/python.py", line 1260, in py_exec_bytecode
     exec(bytecode, globals, locals)
     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 248, in <module>
-    with open("2025.txt", "w") as file:
+  File "game/script.rpy", line 238, in <module>
+    with open(file_path1, "w") as file:
          ~~~~^^^^^^^^^^^^^^^^^         
-PermissionError: [Errno 13] Permission denied: '2025.txt'
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\heave\\OneDrive\\Renpy projects\\2.8-Game-assessment\\VEIL_BNS\\images\\Misc\\2025.txt'
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Wed Aug 13 14:59:27 2025
+Thu Aug 14 13:04:44 2025

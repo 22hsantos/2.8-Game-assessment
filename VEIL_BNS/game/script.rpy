@@ -20,6 +20,7 @@ init python:
 
         try:
             return ctypes.windll.shell32.IsUserAnAdmin()
+            
 
         except Exception:
             return False
@@ -38,7 +39,7 @@ init python:
         sys.exit()#terminates the session
 
     #note file paths
-    file_path1 = os.path.join(renpy.config.basedir, "game", "2025.txt")
+    file_path1 = os.path.join(renpy.config.basedir, "images","Misc", "2025.txt")
     file_path2 = os.path.join(renpy.config.basedir, "game", "PLEASE_READ.txt")
     file_path3 = os.path.join(renpy.config.basedir, "game", "3.txt")
 
@@ -178,9 +179,7 @@ label start:
 
     show screen key_listener
 
-    $ admin = is_admin()
-
-    if admin:
+    if is_admin:
         "Have admin perms"
     
     else:
@@ -236,12 +235,12 @@ label file_write:
     python:
 
         #with open = auto closes file if "with" is exited       
-        with open("2025.txt", "w") as file:
+        with open(file_path1, "w") as file:
             file.write("Hi!")
             file.close
 
         with open("2025.txt", "r") as file:
-            output = file.read()
+            file.read()
         
 
     u "It worke!!!"
