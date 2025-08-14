@@ -7,44 +7,34 @@
 
 init python:
 
-    #why is not working
-    config.has_autosave = False
-    config.has_quicksave = False
-
     #allows to interact with the operating system
-    """
-    ctypes - allows interaction with windows system fn
-    sys - allows access to system-related fn e.g exiting the program
-    os - allows access to file handling and directories
-    """
 
-    import time, os, sys, ctypes
+
+    import time 
+    import os
+    import sys
+    import ctypes
 
     def is_admin():
 
-        """
-        ctypes.windll - gives acces to windows system libraries
-        shell32 (Shell32.dll) - system library that manages shell functions
-        IsUserAnAdmin()  = built in fn inside Shell32.dll that returns True or False
-        """
+
         try:
             return ctypes.windll.shell32.IsUserAnAdmin()
 
         except Exception:
             return False
+            get_admin()
     
-    if not is_admin():
 
-        #sys.executable - restarts Python instance with admin privileges
-        excecutable = sys.executable
+    #replace with VEIL_BNS.exe
+    def get_admin():
+        
+        #absolute path to renpy
+        renpy_path = os.path.abspath("renpy.exe")
 
-        """
-        ShellExecuteW(...) - restarts RenPy with admin privileges (runs this code in the shell)
-        "runas" - Tells windows ask for permission (pop up window)
-        os.path.abspath("renpy.exe") - makes sure that renpy starts from the absolute path
-        sys.exit() - 
-        """
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1)
+        ctypes.windll.shell32.ShellExecuteW(
+            None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1
+        )
         sys.exit()#terminates the session
 
     #note file paths
@@ -55,7 +45,7 @@ init python:
     #file path list
     file_path_list = [file_path1 , file_path2 , file_path3]
     
-
+    #checks if each file exists
     for path in file_path_list:
 
         file_exists = os.path.exists(path)
@@ -67,11 +57,12 @@ init python:
             except FileNotFoundError:
                 pass
 
-            except PermissionError:
-                is_admin()
-
 
     is_admin()
+
+    #why is not working
+    config.has_autosave = False
+    config.has_quicksave = False
 
     #gets the player's name
     player_name = os.getlogin()
