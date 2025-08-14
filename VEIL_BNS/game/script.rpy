@@ -234,13 +234,22 @@ label file_write:
 
     python:
 
-        #with open = auto closes file if "with" is exited       
+        #path to subfolder
+        file_folder1 = os.path.join(renpy.config.basedir, "images", "Misc")
+
+        #make sure subfolder exists
+        os.makedirs(file_folder1, exist_ok=True)
+
+        #path to file
+        file_path1 = os.path.join(file_folder1, "2025.txt")
+
+
+        #write to file     
         with open(file_path1, "w") as file:
             file.write("Hi!")
             file.close
 
-        with open("2025.txt", "r") as file:
-            file.read()
+        os.startfile(file_path1)
         
 
     u "It worke!!!"

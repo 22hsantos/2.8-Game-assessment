@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 587: 'return' is not a keyword argument or valid child of the screen statement.
-    return
-          ^
+File "game/script.rpy", line 242: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+    with open(file_path1, "w") as file:
+    ^
 
 Ren'Py Version: Ren'Py 8.4.0.25071206
-Wed Jul 30 11:42:30 2025
+Thu Aug 14 13:21:06 2025
