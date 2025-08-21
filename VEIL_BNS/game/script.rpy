@@ -9,7 +9,6 @@ init python:
 
     #allows to interact with the operating system
 
-
     import time 
     import os
     import sys
@@ -45,6 +44,8 @@ init python:
 
     #file path list
     file_path_list = [file_path1 , file_path2 , file_path3]
+
+
     
     #checks if each file exists
     for path in file_path_list:
