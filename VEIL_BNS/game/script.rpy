@@ -37,19 +37,53 @@ init python:
         )
         sys.exit()#terminates the session
 
+    #counts the number of Kei notes
+    kei = 0
+
     #notes folder
     note_folder = os.path.join(renpy.config.basedir, "images", "Misc")
 
     #note file paths
     file_path1 = os.path.join(note_folder, "2025.txt")
-    file_path2 = os.path.join(renpy.config.basedir, "game", "PLEASE_READ.txt")
-    file_path3 = os.path.join(renpy.config.basedir, "game", "3.txt")
+    file_path2 = os.path.join(note_folder, "PLEASE_READ.txt")
+    file_path3 = os.path.join(note_folder, "3.txt")
+
+    #file contents
+    message_1 = r"""
+        [code]
+        I'm sorry, but an uncaught exception occurred.
+
+        While running game code:
+        File "game/script.rpy", line 189, in script
+        Kei "Please help me"
+        Exception: Sayer 'Kei' is not defined.
+
+            -- Full Traceback ------------------------------------------------------------
+
+            Full traceback:
+            File "game/script.rpy", line 189, in script
+                Kei "Please help me"
+            File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 2586, in execute
+                Say.execute(self)
+            File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 583, in execute
+                who = eval_who(self.who, self.who_fast)
+            File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 472, in eval_who
+                raise Exception("Sayer '%s' is not defined." % who)
+            Exception: Sayer 'Kei' is not defined.
+            Attempting to define 'Kei'
+            Scanning game directory for 'Kei'
+            'Kei' successfully defined.
+            YOU MAY CLOSE THIS MESSAGE.
+
+            Windows-10-10.0.26100 AMD64
+            Ren'Py 8.3.7.25031702
+            VEIL: Beneath The Surface 1.0
+            XXX XXX 15 16:28:04 2025
+            [/code]"""
 
     #file path list
     file_path_list = [file_path1 , file_path2 , file_path3]
 
-
-    
     #checks if each file exists
     for path in file_path_list:
 
@@ -62,18 +96,35 @@ init python:
             except FileNotFoundError:
                 pass
 
+    def note_write(file_path, message):
+
+        #check if note folder exists, creates new if none
+        os.makedirs(note_folder, exist_ok=True)
+
+        #writes message in file
+        with open(file_path, "w") as file:
+            file.write(message)
+
+        #open file
+        os.startfile(file_path)
+
+        #error message
+        ctypes.windll.user32.MessageBoxW(None,
+        "Unexpected file interference! Please select OK to continue with the game.", 
+        "Oh No!",
+        48
+        )
+
+        os.system("taskkill /IM notepad.exe /F")
+
+        renpy.say(None, "HI")
+
+        kei = kei + 1
 
     is_admin()
 
-    #why is not working
-    config.has_autosave = False
-    config.has_quicksave = False
-
     #gets the player's name
     player_name = os.getlogin()
-
-    #counts the number of Kei notes
-    kei = 0
 
     #determines whether the player is stupid or not
     player_normal = False
@@ -199,7 +250,6 @@ label start:
 
     stop music
 
-
     $ renpy.call_in_new_context("file_write")
 
 
@@ -235,31 +285,9 @@ label file_write:
 
     u "Hello."
 
-    python:
+    $ note_write(file_path1, message_1)
 
-        #make sure subfolder exists, if not, create folder
-        os.makedirs(note_folder, exist_ok=True)
-
-        #write to file     
-        with open(file_path1, "w") as file:
-            file.write("Hi!")
-        
-        #open file
-        os.startfile(file_path1)
-
-        #error message
-        ctypes.windll.user32.MessageBoxW(None,
-        "Unexpected file interference! Please select OK to continue with the game.", 
-        "Oh No!",
-        48
-        )
-
-        os.system("taskkill /IM notepad.exe /F")
-
-        renpy.say(None, "HI")
-
-        kei = kei + 1
-        
+    u "[kei]"
 
     u "It worke!!!"
 
