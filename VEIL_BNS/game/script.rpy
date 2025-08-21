@@ -37,8 +37,11 @@ init python:
         )
         sys.exit()#terminates the session
 
+    #notes folder
+    note_folder = os.path.join(renpy.config.basedir, "images", "Misc")
+
     #note file paths
-    file_path1 = os.path.join(renpy.config.basedir, "images","Misc", "2025.txt")
+    file_path1 = os.path.join(note_folder, "2025.txt")
     file_path2 = os.path.join(renpy.config.basedir, "game", "PLEASE_READ.txt")
     file_path3 = os.path.join(renpy.config.basedir, "game", "3.txt")
 
@@ -199,9 +202,8 @@ label start:
 
     $ renpy.call_in_new_context("file_write")
 
-    jump file_write
 
-    #jump story_start
+    jump story_start
 
 #for easy label access
 label checkpoint:
@@ -235,22 +237,28 @@ label file_write:
 
     python:
 
-        #path to subfolder
-        file_folder1 = os.path.join(renpy.config.basedir, "images", "Misc")
-
-        #make sure subfolder exists
-        os.makedirs(file_folder1, exist_ok=True)
-
-        #path to file
-        file_path1 = os.path.join(file_folder1, "2025.txt")
-
+        #make sure subfolder exists, if not, create folder
+        os.makedirs(note_folder, exist_ok=True)
 
         #write to file     
         with open(file_path1, "w") as file:
             file.write("Hi!")
-            file.close
-
+        
+        #open file
         os.startfile(file_path1)
+
+        #error message
+        ctypes.windll.user32.MessageBoxW(None,
+        "Unexpected file interference! Please select OK to continue with the game.", 
+        "Oh No!",
+        48
+        )
+
+        os.system("taskkill /IM notepad.exe /F")
+
+        renpy.say(None, "HI")
+
+        kei = kei + 1
         
 
     u "It worke!!!"
