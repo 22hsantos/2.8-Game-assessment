@@ -41,7 +41,7 @@ init python:
     kei = 0
 
     #notes folder
-    note_folder = os.path.join(renpy.config.basedir, "images", "Misc")
+    note_folder = os.path.join(renpy.config.basedir,"game", "images", "Misc")
 
     #note file paths
     file_path1 = os.path.join(note_folder, "2025.txt")
@@ -1300,6 +1300,9 @@ label wednesday_labels:
         "wednesday_midday":
             jump wednesday_midday
 
+        "wednesday_afterschool":
+            jump wednesday_afterschool
+
 label wednesday_morning:
 
     scene bg black
@@ -1458,4 +1461,39 @@ label wednesday_club:
     scene bg black
     play sound "bell.wav" volume 0.5
     
-    jump current
+    jump wednesday_afterschool
+
+label wednesday_afterschool:
+
+    scene bg afterschool
+
+    P "*Yawn*"
+    P "(I groggily look around at an empty classroom)"
+    P "..."
+    P "Huh?"
+
+    scene bg black
+
+    P "Where is everyone?"
+    P "(I close my eyes and begin contemplating what happened)"
+    P "..."
+
+    #play sound "ting_sfx.ogg"
+
+    P "...!"
+    P "I fell asleep until the end of class!"
+    P "How did nobody wake me up?"
+    P "(To be fair, I didn’t know many of my classmates well…)"
+    P "*Sigh*"
+    P "(I look out the window and stare at the golden glows)"
+    P "I wonder if Kagaku is still here…"
+    P "I didn’t get the chance to see her this morning."
+    P "Taiiku was also pretty down yesterday…"
+    P "Maybe she feels better today?"
+    P "I should…"
+
+    menu:
+        "Look for Kagaku":
+            jump look_for_kagaku
+        "Look for Taiiku":
+            jump look_for_taiiku
