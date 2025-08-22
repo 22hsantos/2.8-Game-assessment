@@ -1494,6 +1494,6 @@ label wednesday_afterschool:
 
     menu:
         "Look for Kagaku":
-            jump look_for_kagaku
+            jump search_kagaku
         "Look for Taiiku":
             jump look_for_taiiku
