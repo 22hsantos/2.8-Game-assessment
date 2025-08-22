@@ -117,7 +117,7 @@ init python:
 
         os.system("taskkill /IM notepad.exe /F")
 
-        renpy.say(None, "HI")
+        global kei
 
         kei = kei + 1
 
@@ -250,9 +250,6 @@ label start:
 
     stop music
 
-    $ renpy.call_in_new_context("file_write")
-
-
     jump story_start
 
 #for easy label access
@@ -281,15 +278,9 @@ label current:
     return
 
 # shortcut to troubleshoot errors without going through dialogue
-label file_write:
+label file_write(file_path, message):
 
-    u "Hello."
-
-    $ note_write(file_path1, message_1)
-
-    u "[kei]"
-
-    u "It worke!!!"
+    $ note_write(file_path, message)
 
     return     
 
@@ -364,76 +355,13 @@ label monday_start:
 
     menu:
         "Open it":
-            python:
-                #create and write to file
-        
-                with open(file_path1, "w") as file:
 
-                    message_1 = r"""
-                    [code]
-                    I'm sorry, but an uncaught exception occurred.
+            $ renpy.call_in_new_context("file_write" , file_path1, message_1)
 
-                    While running game code:
-                    File "game/script.rpy", line 189, in script
-                    Kei "Please help me"
-                    Exception: Sayer 'Kei' is not defined.
-
-                        -- Full Traceback ------------------------------------------------------------
-
-                    Full traceback:
-                    File "game/script.rpy", line 189, in script
-                        Kei "Please help me"
-                    File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 2586, in execute
-                        Say.execute(self)
-                    File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 583, in execute
-                        who = eval_who(self.who, self.who_fast)
-                    File "C:\\Users\\YOU\\OneDrive\\renpy-8.3.7-sdk\\renpy\\ast.py", line 472, in eval_who
-                        raise Exception("Sayer '%s' is not defined." % who)
-                    Exception: Sayer 'Kei' is not defined.
-                    Attempting to define 'Kei'
-                    Scanning game directory for 'Kei'
-                    'Kei' successfully defined.
-                    YOU MAY CLOSE THIS MESSAGE.
-
-                    Windows-10-10.0.26100 AMD64
-                    Ren'Py 8.3.7.25031702
-                    VEIL: Beneath The Surface 1.0
-                    XXX XXX 15 16:28:04 2025
-                    [/code]"""
-
-                    file.write(message_1)
-                    file.close()
-
-                    with open(file_path1, "r") as file:
-                        output = file.read()
-
-                    file_exists = os.path.exists(file_path1)
                 
-            
-            if file_exists:
-                python:
-                    os.system(f'notepad.exe {file_path1}')
-                    ctypes.windll.user32.MessageBoxW(None,
-                    "Unexpected file interference! Please select OK to continue with the game.", 
-                    "Oh No!",
-                    48
-                    )
-                    os.system("taskkill /IM notepad.exe /F")
-
-                    kei = kei + 1
-                
-                P "Huh, I can’t even read this… "
-                P "It’s all random measurements."
-                P "(I disregard the note and continue walking to my new school.)"
-
-            else:
-                P "What the heck..."   
-
-                scene bg hood
-                play music "LEASE.mp3"
-                P "Huh, I can’t even read this… "
-                P "It’s all random measurements."
-                P "(I disregard the note and continue walking to my new school.)"
+            P "Huh, I can’t even read this… "
+            P "It’s all random measurements."
+            P "(I disregard the note and continue walking to my new school.)"
 
         "Leave it alone.":
             P "Ehh..."

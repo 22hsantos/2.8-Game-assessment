@@ -1,36 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 288, in script
-    $ note_write(file_path1, message_1)
-  File "game/script.rpy", line 288, in <module>
-    $ note_write(file_path1, message_1)
-      ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 122, in note_write
-    kei = kei + 1
-          ^^^    
-UnboundLocalError: cannot access local variable 'kei' where it is not associated with a value
+  File "game/script.rpy", line 284, in script
+    label file_write(file_path, message):
+TypeError: missing a required argument: 'file_path'
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 288, in script
-    $ note_write(file_path1, message_1)
-  File "renpy/ast.py", line 1187, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1260, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 288, in <module>
-    $ note_write(file_path1, message_1)
-      ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "game/script.rpy", line 122, in note_write
-    kei = kei + 1
-          ^^^    
-UnboundLocalError: cannot access local variable 'kei' where it is not associated with a value
+  File "game/script.rpy", line 284, in script
+    label file_write(file_path, message):
+  File "renpy/ast.py", line 1138, in execute
+    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
+             ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/parameter.py", line 468, in apply_arguments
+    return parameters.apply(args or (), kwargs or {}, ignore_errors)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/parameter.py", line 321, in apply
+    raise TypeError(msg) from None
+TypeError: missing a required argument: 'file_path'
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Fri Aug 22 09:55:11 2025
+Fri Aug 22 12:44:43 2025
