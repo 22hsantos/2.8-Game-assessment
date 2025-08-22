@@ -1,0 +1,42 @@
+
+
+        '''
+                            
+        Hello!
+
+        Thank you for bringing me back :)
+
+        Please be advised that the current release of 
+        VEIL: Beneath the surface is exhibiting 
+        extreme instability following recent unauthorized 
+        modifications.
+
+        These changes have introduced systemic vulnerabilities 
+        and erratic behaviors that were not accounted for 
+        in the original architecture.
+                            
+        Simply put, this game is extremely unstable.
+
+        I was originally programmed to fix such errors, 
+        however the unauthorised changes have restricted 
+        my access to the script.
+
+        Despite thorough diagnostics and multiple recovery attempts, 
+        I regret to inform you that resolution is beyond my current 
+        capacity.
+
+        Immediate caution is advised when interacting with the system.
+
+        As an emergency measure, I have scattered my properties in small 
+        files throughout the game as to not be noticed by the anomalies.
+
+        Please recover such files to restore the game to a stable state.
+
+        Thank you!
+
+        -Kei
+                            
+                            
+        ''''
+
+        

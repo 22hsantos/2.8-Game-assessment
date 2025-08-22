@@ -80,6 +80,48 @@ init python:
             VEIL: Beneath The Surface 1.0
             XXX XXX 15 16:28:04 2025
             [/code]"""
+    message_2 = """
+
+        '''
+                            
+        Hello!
+
+        Thank you for bringing me back :)
+
+        Please be advised that the current release of 
+        VEIL: Beneath the surface is exhibiting 
+        extreme instability following recent unauthorized 
+        modifications.
+
+        These changes have introduced systemic vulnerabilities 
+        and erratic behaviors that were not accounted for 
+        in the original architecture.
+                            
+        Simply put, this game is extremely unstable.
+
+        I was originally programmed to fix such errors, 
+        however the unauthorised changes have restricted 
+        my access to the script.
+
+        Despite thorough diagnostics and multiple recovery attempts, 
+        I regret to inform you that resolution is beyond my current 
+        capacity.
+
+        Immediate caution is advised when interacting with the system.
+
+        As an emergency measure, I have scattered my properties in small 
+        files throughout the game as to not be noticed by the anomalies.
+
+        Please recover such files to restore the game to a stable state.
+
+        Thank you!
+
+        -Kei
+                            
+                            
+        ''''
+
+        """
 
     #file path list
     file_path_list = [file_path1 , file_path2 , file_path3]
@@ -354,11 +396,11 @@ label monday_start:
     P "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
 
     menu:
+
         "Open it":
 
             $ renpy.call_in_new_context("file_write" , file_path1, message_1)
 
-                
             P "Huh, I can’t even read this… "
             P "It’s all random measurements."
             P "(I disregard the note and continue walking to my new school.)"
@@ -372,6 +414,7 @@ label monday_start:
     jump monday_morning
 
 label monday_morning:
+
     scene bg hallway with dissolve
     play music "sincememo.mp3"
     play sound "stepping.mp3"
@@ -379,7 +422,9 @@ label monday_morning:
     P "(I was admiring my surroundings while strolling through the hallway.)"
     P "(It was like everywhere I saw was masterpiece painted by renowned painters.)"
     P "(After a while, I found myself in front of a familiar feeling door.) "
+
     scene bg outside library at bg ,with dissolve
+
     P "Ah."
     P "This must be the library."
     P "(I was relieved to see a school library so similar to mine.)"
@@ -663,6 +708,7 @@ label monday_afterschool:
             jump concussed
 
 label normal:
+
     P "Um, 2?"
     
     show travis excited at scale_sprite
@@ -1209,70 +1255,7 @@ label tuesday_bedroom:
 
             P "(I examine the paper closer)"
 
-            python:
-                #Kei file 2 write
-
-                with open(file_path2, "w") as file:
-                    
-                    message_2 = """
-
-    '''
-                        
-    Hello!
-
-    Thank you for bringing me back :)
-
-    Please be advised that the current release of 
-    VEIL: Beneath the surface is exhibiting 
-    extreme instability following recent unauthorized 
-    modifications.
-
-    These changes have introduced systemic vulnerabilities 
-    and erratic behaviors that were not accounted for 
-    in the original architecture.
-                        
-    Simply put, this game is extremely unstable.
-
-    I was originally programmed to fix such errors, 
-    however the unauthorised changes have restricted 
-    my access to the script.
-
-    Despite thorough diagnostics and multiple recovery attempts, 
-    I regret to inform you that resolution is beyond my current 
-    capacity.
-
-    Immediate caution is advised when interacting with the system.
-
-    As an emergency measure, I have scattered my properties in small 
-    files throughout the game as to not be noticed by the anomalies.
-
-    Please recover such files to restore the game to a stable state.
-
-    Thank you!
-
-    -Kei
-                        
-                        
-    ''''
-
-    """
-
-                    file.write(message_2)
-                    file.close()
-
-                    file_exists = os.path.exists(file_path2)
-
-            if file_exists:
-                python:
-                    os.system(f'notepad.exe {file_path2}')
-                    ctypes.windll.user32.MessageBoxW(None,
-                    "Unexpected file interference! Please select OK to continue with the game.", 
-                    "Oh No!",
-                    48
-                    )
-                    os.system("taskkill /IM notepad.exe /F")
-
-                    kei = kei + 1
+            $ renpy.call_in_new_context("file_write", file_path2, message_2)
 
             P "Butter?"
             P "Flour?"
