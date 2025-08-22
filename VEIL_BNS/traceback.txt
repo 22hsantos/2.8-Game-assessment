@@ -1,26 +1,41 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 284, in script
-    label file_write(file_path, message):
-TypeError: missing a required argument: 'file_path'
+AttributeError: Can't get attribute 'name_select' on <renpy.python.StoreModule object at 0x00000000068437a0>
 
 -- Full Traceback ------------------------------------------------------------
 
 Traceback (most recent call last):
-  File "game/script.rpy", line 284, in script
-    label file_write(file_path, message):
-  File "renpy/ast.py", line 1138, in execute
-    values = apply_arguments(self.parameters, renpy.store._args, renpy.store._kwargs)
-             ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/parameter.py", line 468, in apply_arguments
-    return parameters.apply(args or (), kwargs or {}, ignore_errors)
-           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/parameter.py", line 321, in apply
-    raise TypeError(msg) from None
-TypeError: missing a required argument: 'file_path'
+  File "renpy/common/00start.rpy", line 219, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 551, in script
+    python hide:
+  File "renpy/ast.py", line 1187, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/python.py", line 1260, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/common/00keymap.rpy", line 551, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 565, in _execute_python_hide
+    renpy.load(renpy.session["_reload_slot"])
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "renpy/loadsave.py", line 634, in load
+    roots, log = loads(log_data)
+                 ~~~~~^^^^^^^^^^
+  File "renpy/compat/pickle.py", line 296, in loads
+    return load(io.BytesIO(s))
+           ~~~~^^^^^^^^^^^^^^^
+  File "renpy/compat/pickle.py", line 288, in load
+    return Unpickler(f, fix_imports=True, encoding="utf-8", errors="surrogateescape").load()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "renpy/compat/pickle.py", line 280, in find_class
+    return super().find_class(module, name)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+AttributeError: Can't get attribute 'name_select' on <renpy.python.StoreModule object at 0x00000000068437a0>
 
 Windows-11-10.0.26100-SP0 AMD64
 Ren'Py 8.4.0.25071206
 VEIL: Beneath The Surface 1.0
-Fri Aug 22 12:44:43 2025
+Fri Aug 22 13:02:14 2025

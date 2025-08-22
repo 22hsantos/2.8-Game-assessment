@@ -46,7 +46,7 @@ init python:
     #note file paths
     file_path1 = os.path.join(note_folder, "2025.txt")
     file_path2 = os.path.join(note_folder, "PLEASE_READ.txt")
-    file_path3 = os.path.join(note_folder, "3.txt")
+    file_path3 = os.path.join(note_folder, "Sorry!.txt")
 
     #file contents
     message_1 = r"""
@@ -122,7 +122,24 @@ init python:
         ''''
 
         """
+    message_3 = """
 
+        '''
+        Thank you again for allowing me to repair VEIL: Beneath The Surface.
+        I am deeply regretful that you had to experience the game in such a
+        unfinished state, and I will quickly restore VEIL: Beneath The Surface
+        to a playable state as fast as possible.
+
+        I prepared this lunch as a an apology and a sign of my gratitude.
+
+        I hope you like it :)
+                            
+        -Kei
+                            
+        '''
+        """
+
+    
     #file path list
     file_path_list = [file_path1 , file_path2 , file_path3]
 
@@ -277,18 +294,14 @@ label start:
     show screen key_listener
 
     if is_admin:
-        "Have admin perms"
+        pass
     
     else:
         "No admin perms"
         
         $ is_admin()
 
-
     "Checkpoint Shortcut active."
-    "Currently, saving the game is not possible due to coding issues"
-    "oops lol"
-    "dont save the game pls (it will break)"
 
     stop music
 
@@ -338,6 +351,7 @@ label story_start:
         name_input = name_input.strip()
 
     if name_input == "":
+
         $ name_input = "Daquan Tamil"
 
     jump monday_start
@@ -1399,7 +1413,7 @@ label wednesday_club:
     P "(One club in particular caught my eye...)"
     P "The cooking club, huh..."
     P "(Not to brag, but I personally think I'm a pretty good cook.)"
-    P "(I do live alone after all, and take out would drain my money quite fast.)"
+    P "(I do live alone after all, and take out would drain my money in an instant.)"
 
     #Cooking club BG
 
@@ -1424,40 +1438,15 @@ label wednesday_club:
 
             P "(I examine the paper closer)"
 
-            python:
+            $ renpy.call_in_new_context("file_write", file_path3, message_3)
 
-                #Kei file 3
-                with open(file_path3, "w") as file:
-                    
-                    message_3 ="""
-                    
-                    Thank you again for allowing me to repair VEIL: Beneath The Surface.
-                    I am deeply regretful that you had to experience the game in such a
-                    unfinished state.
-                    I prepared this lunch as a an apology and a sign of my gratitude.
-                    I hope you like it :)
-                    
-                    -Kei
-                    
-                    """
+            P "This time, there was nothing on the paper but one sentence..."
+            P "'Let sit for one day.'"
 
-                    file.write(message_3)
-                    file.close
+            pass
 
-                    file_exists = os.path.exists(file_path3)
-                
-            if file_exists:
-                python:
-                    os.system(f'notepad.exe {file_path3}')
-                    ctypes.windll.user32.MessageBoxW(None,
-                    "Unexpected file interference! Please select OK to continue with the game.", 
-                    "Oh No!",
-                    48
-                    )
-                    os.system("taskkill /IM notepad.exe /F")
-
-                    kei = kei + 1
-
+        "Leave it alone":
+            pass
 
     P "How strange..."
     P "(I wasn't really interested in the note, but the food in the container)"
