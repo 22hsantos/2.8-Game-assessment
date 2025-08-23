@@ -1,9 +1,9 @@
 
-label search_kagaku:
+label search_kanye:
 
     $ ka_route = True
 
-    P "I should look for Kagaku."
+    P "I should look for Kanye."
     P "She might still be lingering somewhere..."
     P "(I head over to the only place I know she might be.)"
 
@@ -76,5 +76,79 @@ label search_kagaku:
     P "(Seeing her sudden change in emotion made me lose all annoyance I had towards her.)"
     P "Oh..."
     P "Uh, what was it?"
+
+    P "(Kanye stands in silence, trying her best to answer my question)"
+    P "(She quietly mumbles an answer, then darts her eyes to me.)"
+    P "Um... what was that?"
+
+    Ka "...A H*llo K*tty Plush keychain."
+
+    P "(I freeze.)"
+    P "H*llo K*tty? The cartoon character for kids?"
+
+    show kanye angry
+
+    Ka "It's not just for kids!"
+    Ka "It's... um..."
+
+    P "(I cut her off)"
+    P "Hey, it's okay if you are a fan of things like these..."
+    P "I think it's quite cute."
+
+    show kanye blush
+
+    Ka "...You don't think I'm being childish by liking things like these?"
+
+    P "(I warmly smile at her.)"
+    P "Of course not."
+    P "In fact, I think that yellow dog one is cute—"
+
+    show kanye excited
+
+    Ka "P*mpompurin??"
+
+    P "(Seeing her excited and nerdy expression fills my heart with a strange warmth.)"
+
+    Ka "I know right?"
+    Ka "His yellow fur looks so suuuper soft and—"
+
+    menu:
+        "Interrupt her":
+            #jump interrupt_kanye
+            pass
+
+        "Let her yap":
+            #jump let_her_yap
+            pass
+
+    show kanye neutral 2
+
+    Ka "Anyway…"
+    Ka "Let’s head to the schoolyard."
+    Ka "I think that was the last time I had it."
+
+    scene bg black with fade
+
+    P "(Kanye and I head to the yard, scanning for any sign of a plush keychain every step of the way.)"
+
+    #scene schoolyard_bg with dissolve
+
+    P "Was the school yard always this big…?"
+    P "I thought a bright cat keychain would’ve been easy to spot."
+
+    show kanye startled
+    show kanye hes
+
+    Ka "What if someone stole it?"
+
+    P "(Kanye drops her head down)"
+    P "There’s no way someone could’ve stolen such a precious item—"
+    P "(Unexpectedly, a bright object in the corner of my eye catches my attention)"
+    P "...Is that it?"
+
+    show kanye excited
+    
+    P "(Kanye swiftly turns her head towards the direction I was looking.)"
+    Ka "That’s it!"
 
     return
