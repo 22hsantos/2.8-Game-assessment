@@ -264,7 +264,8 @@ image kanye neutral 2 = "images/Kanye/kanye_neutral2.png"
 image kanye smile = "images/Kanye/kanye_smile.png"
 image kanye laugh = "images/Kanye/kanye_laugh.png"
 image kanye hes = "images/Kanye/kanye_hes.png"
-
+image kanye blush = "images/Kanye/kanye_blush.png"
+image kanye emb = "images/Kanye/kanye_emb.png"
 
 #Travis Sprites
 image travis neutral = "images/Travis/Travis_neutral.png"
@@ -1558,7 +1559,7 @@ label wednesday_afterschool:
     P "I should…"
 
     menu:
-        "Look for Kagaku":
-            jump search_kagaku
+        "Look for Kanye":
+            jump search_kanye
         "Look for Taiiku":
             jump current

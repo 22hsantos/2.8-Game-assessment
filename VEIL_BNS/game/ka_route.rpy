@@ -9,6 +9,8 @@ label search_kanye:
 
     scene bg black
 
+    stop music fadeout 1.0
+
     $ renpy.play("audio/stepping.mp3", channel="sfx1")
 
     #scene afternoon_library_bg
@@ -25,6 +27,8 @@ label search_kanye:
     P "...Maybe she went home."
     P "I should go home too."
     P "(I turn around in defeat, when suddenly I hear rapid footsteps growing louder and louder.)"
+
+    play music "BTS.mp3"
     
     show kanye sil at scale_sprite
 
@@ -124,6 +128,9 @@ label search_kanye:
     show kanye neutral 2
 
     Ka "Anyway…"
+
+    show kanye neutral
+
     Ka "Let’s head to the schoolyard."
     Ka "I think that was the last time I had it."
 
@@ -136,19 +143,48 @@ label search_kanye:
     P "Was the school yard always this big…?"
     P "I thought a bright cat keychain would’ve been easy to spot."
 
-    show kanye startled
-    show kanye hes
+    show kanye hes at scale_sprite
 
     Ka "What if someone stole it?"
 
-    P "(Kanye drops her head down)"
+    P "(Kanye drops her head down.)"
     P "There’s no way someone could’ve stolen such a precious item—"
-    P "(Unexpectedly, a bright object in the corner of my eye catches my attention)"
+    P "(Unexpectedly, a bright object in the corner of my eye catches my attention.)"
     P "...Is that it?"
 
     show kanye excited
-    
+
     P "(Kanye swiftly turns her head towards the direction I was looking.)"
     Ka "That’s it!"
 
-    return
+    hide kanye
+
+    Ka "(I watch her bolt to the object and pick it up)"
+
+    show kanye excited at scale_sprite
+
+    Ka "[name_input]-kun, you found it!"
+
+    P "(Her expression couldn’t be any brighter.)"
+    P "(Though it was getting dark, her smile could’ve paralleled the sun.)"
+
+    Ka "I can’t thank you enough, [name_input]-kun."
+
+    P "...It’s no big deal."
+    P "You can ask for my help anytime."
+
+    scene bg black with fade
+
+    P "(Kanye shot me another smile…"
+    P "(This time, a whole lot warmer.)"
+    P "(After exchanging our goodbyes, we both parted to our houses.)"
+
+    #scene bedroom_bg with dissolve
+
+    P "I didn’t expect a person like Kanye…"
+    P "To be into such an out-of-character interest."
+    P "You can’t judge a book by its cover, I guess."
+
+    scene bg black with fade
+
+    jump current

@@ -1,28 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 1349, in script
-    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
-  File "game/script.rpy", line 1349, in <module>
-    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
-TypeError: play() got an unexpected keyword argument 'volume'
+  File "game/script.rpy", line 1563, in script
+    jump search_kagaku
+ScriptError: could not find label 'search_kagaku'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1349, in script
-    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "game/script.rpy", line 1349, in <module>
-    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\exports\mediaexports.py", line 126, in play
-    renpy.audio.music.play(filename, channel=channel, loop=False, **kwargs)
-TypeError: play() got an unexpected keyword argument 'volume'
+  File "game/script.rpy", line 1563, in script
+    jump search_kagaku
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 1712, in execute
+    rv = renpy.game.script.lookup(target)
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'search_kagaku'.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Sat Aug 23 19:15:01 2025
+Sat Aug 23 19:55:06 2025
