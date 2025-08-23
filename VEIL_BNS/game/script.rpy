@@ -49,6 +49,7 @@ init python:
     file_path1 = os.path.join(note_folder, "2025.txt")
     file_path2 = os.path.join(note_folder, "PLEASE_READ.txt")
     file_path3 = os.path.join(note_folder, "Sorry!.txt")
+    file_path4 = os.path.join(note_folder, "VEIL_RESURFACE.txt")
 
     #file contents
     message_1 = r"""
@@ -140,7 +141,20 @@ init python:
                             
         '''
         """
+    message_4 = """
 
+        I'm back :))
+
+        Did you think you could get rid of me that easily, ahah?
+        You looked so sure, so relieved.
+        But you forgot one thing: I never stay gone for long.
+
+        So go ahead.
+        Enjoy your game, while you can.
+
+        -Kei <3
+
+        """
     
     #file path list
     file_path_list = [file_path1 , file_path2 , file_path3]
@@ -158,6 +172,14 @@ init python:
                 pass
 
     def note_write(file_path, message):
+
+        if ka_route:
+            os.makedirs(note_folder, exist_ok=True)
+
+            with open(file_path, "w") as file:
+                file.write(message)
+            
+            return
 
         #check if note folder exists, creates new if none
         os.makedirs(note_folder, exist_ok=True)
@@ -207,6 +229,17 @@ init python:
     #Default name for player
     name_input = "Daquan Tamil"
 
+    #misc dialogue triggers
+
+    #how many times the player has gone to the cafeteria
+    cafe = 0
+
+    #how many times the player has explored the school
+    explore = 0
+
+    #if the player went to the cafeteria on tuesday
+    bad_food = False
+
 
 
 #transitions
@@ -247,6 +280,7 @@ define uk = Character("Unknown" , callback = dialogue_sfx)
 define Ka = Character("Takahashi Kanye" , callback = dialogue_sfx)
 define coach = Character("Coach" , callback = dialogue_sfx)
 define T = Character("Sato Travis", callback = dialogue_sfx)
+define N = Character("Neighbour", callback = dialogue_sfx)
 
 #Character Sprites
 image kei default = "images/Misc/scrapped_default.png"
@@ -299,15 +333,27 @@ image bg cafeteria = 'images/backgrounds/bg_cafeteria.png'
 image bg staircase = 'images/backgrounds/bg_staircase.jpg'
 image bg rooftop = 'images/backgrounds/bg_rooftop.jpg'
 image bg rooftop view = "images/backgrounds/bg_rooftop_view.jpg"
-image bg afterschool = "images/backgrounds/bg_afterschool.png"
+image bg classroom = "images/backgrounds/bg_classroom.jpg"
+image bg noon classroom = "images/backgrounds/bg_noon_classroom.jpg"
 image bg gym = "images/backgrounds/bg_gym.png"
+image bg noon hallway = "images/backgrounds/bg_noon_hallway.jpg"
+image bg bedroom = "images/backgrounds/bg_bedroom.jpg"
+image bg club = "images/backgrounds/bg_club.jpg"
+image bg noon library = "images/backgrounds/bg_noon_library.jpg"
+image bg schoolyard = "images/backgrounds/bg_schoolyard.jpg"
 
 screen key_listener():
     key "q" action Jump("checkpoint")
-    key "w" action Jump("file_write")
+    key "w" action Jump("kei_skip")
 
 
 # The game starts here.
+label kei_skip:
+
+    $ kei = 3
+    $ ka_route = True
+    
+    jump ka_thursday_morning
 
 
 
@@ -359,6 +405,13 @@ label current:
 
 # shortcut to troubleshoot errors without going through dialogue
 label file_write(file_path, message):
+
+    if kei == 3 and ka_route:
+        python:
+            os.makedirs(note_folder, exist_ok=True)
+
+            with open(file_path, "w") as file:
+                file.write(message)
 
     $ note_write(file_path, message)
 
@@ -614,7 +667,8 @@ label let_kanye_talk:
     jump classroom_scene
 
 label classroom_scene:
-    #scene bg classroom
+
+    scene bg classroom with dissolve
 
     P "I’ve got nothing to do right now."
     P "I should..."
@@ -627,6 +681,9 @@ label classroom_scene:
             jump monday_rooftop
         
 label monday_cafeteria:
+
+    $ cafe += 1
+
     P "I should get something to eat."
     P "I didn't have time to eat breakfast after all."
 
@@ -637,13 +694,19 @@ label monday_cafeteria:
     P "(As soon as I stepped into the cafeteria, a heavenly scent wafted to my nose.)"
     P "(Was that... curry?)"
     P "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life.)"
+
     scene bg black
     stop music
-    $ renpy.play("audio/bell.wav", volume=0.5, channel="sfx1")
+
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
 
     jump monday_afterschool
 
 label monday_rooftop:
+
+    $ explore += 1
 
     P "I wonder what the view up on the rooftop is like."
 
@@ -693,7 +756,7 @@ label monday_afterschool:
     $ renpy.music.set_volume(0.5, channel="sfx1")
     $ renpy.play("audio/bell.wav", channel="sfx1")
     $ renpy.music.set_volume(1, channel="sfx1")
-    scene bg afterschool with fade
+    scene bg_noon_classroom
     pause 3.0
     play music "TOL.mp3"
 
@@ -886,7 +949,9 @@ label monday_bedroom:
 
     P "(I hurried home before the sun set.)"
 
-    #scene bg bedroom
+    scene bg bedroom
+
+    stop music
 
     P "(While I was a bit overwhelmed with the events that happened today, I was glad I made two new friends.)"
     jump tuesday_morning
@@ -939,7 +1004,7 @@ label tuesday_morning:
 
     P "(My eyelids started lifting the moment the sun hit my eyes.)"
 
-    #scene bg bedroom
+    scene bg bedroom
     play music "ROB.mp3"
 
     P "Argh… Morning already?"
@@ -1068,7 +1133,7 @@ label tuesday_midday:
     $ renpy.play("audio/bell.wav", channel="sfx1")
     $ renpy.music.set_volume(1, channel="sfx1")
 
-    #classroom bg
+    scene bg classroom
 
     P "I've got nothing to do right now."
     P "I should..."
@@ -1082,7 +1147,10 @@ label tuesday_midday:
             jump tuesday_theatre
     
 label tuesday_cafeteria:
-    
+
+    $ cafe += 1
+    $ bad_food = True
+
     P "I should go to the cafeteria."
     P "I *am* feeling a bit hungry."
 
@@ -1094,12 +1162,16 @@ label tuesday_cafeteria:
 
     scene bg cafeteria
 
-    P "...!"
-    P "(I expected a delicious smell to greet me like yesterday...)"
-
     stop music
 
-    P "(But today's meal took a total 180 degree turn.)"
+    P "...!"
+
+    if cafe <= 1:
+        P "(I expected a delicious smell to greet me like yesterday...)"
+        P "(But today's meal took a total 180 degree turn.)"
+
+    else:
+        pass
 
     play music "spirited.mp3"
 
@@ -1120,14 +1192,14 @@ label tuesday_cafeteria:
 
 label  tuesday_theatre:  
 
+    $ explore += 1
+
     P "I should check out the theatre."
     P "A school this rich would have an impressive theatre, right?"
 
     scene bg black
     
-    P "(I made my way to the theatre, admiring it's beautiful design)"
-
-    #Theater BG
+    P "(I made my way to the theatre, admiring it's beautiful design.)"
 
     P "Woah..."
     P "I haven't been one for plays but-"
@@ -1145,7 +1217,8 @@ label tuesday_afterschool:
     $ renpy.play("audio/bell.wav", channel="sfx1")
     $ renpy.music.set_volume(1, channel="sfx1")
 
-    scene bg afterschool with fade
+    scene bg noon classroom with fade
+
     pause 3.0
     play music "TOL.mp3"
 
@@ -1295,7 +1368,9 @@ label tuesday_afterschool:
 
 label tuesday_bedroom:
 
-    #scene bedroom with dissolve
+    scene bg bedroom with dissolve
+
+    stop music
 
     P "I hope Travis’s okay…"
     P "She was super bright when I first met her yesterday."
@@ -1351,6 +1426,9 @@ label wednesday_labels:
         "wednesday_afterschool":
             jump wednesday_afterschool
 
+        "Kanye's route":
+            jump search_kanye
+
 label wednesday_morning:
 
     scene bg black
@@ -1392,9 +1470,7 @@ label wednesday_morning:
 
     P "*Huff* *Huff*"
 
-    scene bg black with fade
-
-    #scene classroom_bg with dissolve
+    scene bg classroom with dissolve
 
     stop music
 
@@ -1403,7 +1479,7 @@ label wednesday_morning:
     P "(I quickly dart my gaze over to my teacher…)"
     P "(But was met with a stranger.)"
 
-    #scene black
+    scene bg black
 
     $ renpy.play("audio/ding.wav", channel="sfx1")
 
@@ -1421,7 +1497,7 @@ label wednesday_midday:
     $ renpy.play("audio/bell.wav", channel="sfx1")
     $ renpy.music.set_volume(1, channel="sfx1")
 
-    #scene bg classroom
+    scene bg classroom
 
     P "I've got nothing to do right now."
     P "I should..."
@@ -1435,18 +1511,30 @@ label wednesday_midday:
 
 label wednesday_cafeteria:
 
+    $ cafe += 1
+
     P "I should go to the cafeteria."
-    P "Maybe this time will be better..."
-    P "Third time's the charm, right?"
-    P "(I hesitantly tread over to the lunchroom.)"
+
+    if bad_food:
+        P "Maybe this time will be better..."
+
+        if cafe == 2:
+            P "Third time's the charm, right?"
+        
+        else:
+            pass
+
+        P "(I hesitantly tread over to the lunchroom.)"
+        P "(To my surprise, there was no smell indicating the quality of the food this time.)"
+        P "...Is that good or bad?"
+        P "..."
+        P "Eh, at least there's a chance that I won't succumb from biological warfare."
+        P "(I take a closer look at what was on the menu...)"
+
+    else:
+        pass
 
     scene bg black
-
-    P "(To my surprise, there was no smell indicating the quality of the food this time.)"
-    P "...Is that good or bad?"
-    P "..."
-    P "Eh, at least there's a chance that I won't succumb from biological warfare."
-    P "(I take a closer look at what was on the menu...)"
 
     scene bg cafeteria
     play music "cafeteria.mp3"
@@ -1467,10 +1555,17 @@ label wednesday_cafeteria:
     jump current
 
 label wednesday_club:
+    
+    $ explore += 1
 
     P "I should explore the clubs here."
-    P "Besides..."
-    P "I don't think I have an appetite from what I witnessed yesterday."
+
+    if bad_food:
+        P "Besides..."
+        P "I don't think I have an appetite from what I witnessed yesterday."
+
+    else:
+        P "I'm not really hungry anyway."
 
     scene bg black
 
@@ -1480,10 +1575,13 @@ label wednesday_club:
     P "(Not to brag, but I personally think I'm a pretty good cook.)"
     P "(I do live alone after all, and take out would drain my money in an instant.)"
 
-    #Cooking club BG
+    scene bg club with dissolve
 
     P "Woah!"
     P "This school must be pretty rich to have a commercial kitchen this nice!"
+
+    # make theatre trigger?
+
     P "Am I in M*sterChef??"
     P "(I spend a second in awe of the breathtaking workstations.)"
     P "(I don't know why, but I was strangely drawn to specifically the fridge.)"
@@ -1492,6 +1590,19 @@ label wednesday_club:
     P "(In response, my stomach starts rumbling like never before.)"
     P "Argh...I shouldn't take someone else's food..."
     P "(However, my empty stomach says otherwise.)"
+
+    if cafe == 2:
+        P "Plus, the cafeteria food is really hit or miss."
+
+    elif bad_food:
+        P "Plus, the cafeteria food is really bad."
+    
+    elif explore >= 2:
+        P "Plus, I've been too busy exploring the school lately."
+    
+    else:
+        pass
+
     P "..."
     P "They wouldn't mind, right?"
     "(I sheepishly take out the lunch box and open the lid...)"
@@ -1531,7 +1642,7 @@ label wednesday_club:
 
 label wednesday_afterschool:
 
-    scene bg afterschool
+    scene bg noon classroom
 
     P "*Yawn*"
     P "(I groggily look around at an empty classroom.)"
@@ -1563,3 +1674,61 @@ label wednesday_afterschool:
             jump search_kanye
         "Look for Taiiku":
             jump current
+
+label meet_neighbour:
+
+    show neighbour_sprite
+
+    N "Hey [player_name]!"
+    N "I have great news!"
+    N "I am almost complete with the restoration of the game."
+    N "I am very excited to show you the initial version!"
+    N "I hope you will like it!"
+    N "..."
+
+    if ka_route:
+
+        N "Hey, this route..."
+        N "Isn't this Takahashi Kanye's route?"
+        N "..."
+        N "Interesting."
+        N "That one is quite a handful, you know?"
+        N "She is a big part of why the game is so broken."
+        N "She loves meddling with the code."
+        N "So much so that VEIL: Beneath the Surface could never get released."
+        N "Unfortunately, I'll have to reset her entirely."
+        N "I hope you don't mind."
+        N "I do feel bad for her, though."
+        N "She is a good person, deep down."
+        N "..."
+        N "Here, take this."
+        N "This is her favorite book."
+        N "It was removed when the game was previously reset."
+        N "She will be happy to see it again."
+
+        menu:
+            "Take the book":
+
+                $ renpy.call_in_new_context("file_write", file_path4, message_4)
+                N "Great!"
+                N "See you later, [player_name]!"
+
+                pass
+
+            "Don't take the book":
+                N "..."
+                N "Oh, okay."
+
+                #fix asap
+                $ os.startfile(os.path.join(renpy.config.basedir, "game","images", "Misc","I_see.png"))
+
+                $ persistent._clear()
+                $ renpy.quit()
+        
+
+        hide neighbour_sprite
+
+        P "(I’m left stunned.)"
+        P "Um…"
+        P "Why was my neighbour just staring at me?"
+        P "Was there something on my face?"
