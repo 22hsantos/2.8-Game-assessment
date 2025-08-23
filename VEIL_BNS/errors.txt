@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 242: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    with open(file_path1, "w") as file:
-    ^
+File "game/screens.rpy", line 214: 'volume' is not a keyword argument or valid child of the textbutton statement.
+    hover_sound "audio/click.wav" volume 0.5
+                                        ^
 
-Ren'Py Version: Ren'Py 8.4.0.25071206
-Thu Aug 14 13:21:06 2025
+Ren'Py Version: Ren'Py 8.3.7.25031702
+Sat Aug 23 15:18:57 2025

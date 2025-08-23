@@ -1,41 +1,37 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-AttributeError: Can't get attribute 'name_select' on <renpy.python.StoreModule object at 0x00000000068437a0>
+  File "game/options.rpy", line 59, in script
+    define config.mouse_click_sound = "audio/confirm.wav"
+  File "game/options.rpy", line 59, in script
+    define config.mouse_click_sound = "audio/confirm.wav"
+  File "renpy/common/000namespaces.rpy", line 34, in set
+    setattr(self.nso, name, value)
+Exception: config.mouse_click_sound is not a known configuration variable.
 
 -- Full Traceback ------------------------------------------------------------
 
-Traceback (most recent call last):
-  File "renpy/common/00start.rpy", line 219, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 551, in script
-    python hide:
-  File "renpy/ast.py", line 1187, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/python.py", line 1260, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/common/00keymap.rpy", line 551, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 565, in _execute_python_hide
-    renpy.load(renpy.session["_reload_slot"])
-    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "renpy/loadsave.py", line 634, in load
-    roots, log = loads(log_data)
-                 ~~~~~^^^^^^^^^^
-  File "renpy/compat/pickle.py", line 296, in loads
-    return load(io.BytesIO(s))
-           ~~~~^^^^^^^^^^^^^^^
-  File "renpy/compat/pickle.py", line 288, in load
-    return Unpickler(f, fix_imports=True, encoding="utf-8", errors="surrogateescape").load()
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "renpy/compat/pickle.py", line 280, in find_class
-    return super().find_class(module, name)
-           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
-AttributeError: Can't get attribute 'name_select' on <renpy.python.StoreModule object at 0x00000000068437a0>
+Full traceback:
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\bootstrap.py", line 359, in bootstrap
+    renpy.main.main()
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\main.py", line 541, in main
+    renpy.game.context().run(node)
+  File "game/options.rpy", line 59, in script
+    define config.mouse_click_sound = "audio/confirm.wav"
+  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
+  File "game/options.rpy", line 59, in script
+    define config.mouse_click_sound = "audio/confirm.wav"
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 2248, in execute
+    self.set()
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 2266, in set
+    ns.set(self.varname, value)
+  File "renpy/common/000namespaces.rpy", line 34, in set
+    setattr(self.nso, name, value)
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\defaultstore.py", line 101, in __setattr__
+    raise Exception('config.%s is not a known configuration variable.' % (name))
+Exception: config.mouse_click_sound is not a known configuration variable.
 
-Windows-11-10.0.26100-SP0 AMD64
-Ren'Py 8.4.0.25071206
+Windows-10-10.0.26100 AMD64
+Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Fri Aug 22 13:02:14 2025
+Sat Aug 23 15:45:15 2025

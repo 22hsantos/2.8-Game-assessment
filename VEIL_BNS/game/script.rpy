@@ -36,6 +36,8 @@ init python:
             None, "runas", sys.executable, os.path.abspath("renpy.exe"), None, 1
         )
         sys.exit()#terminates the session
+    
+    is_admin()
 
     #counts the number of Kei notes
     kei = 0
@@ -180,8 +182,6 @@ init python:
 
         kei = kei + 1
 
-    is_admin()
-
     #gets the player's name
     player_name = os.getlogin()
 
@@ -190,6 +190,7 @@ init python:
 
     #Default name for player
     name_input = "Daquan Tamil"
+
 
 
 #transitions
@@ -232,7 +233,7 @@ define coach = Character("Coach")
 define T = Character("Sato Travis")
 
 #Character Sprites
-image kei default = "images/Kei/kei_default.png"
+image kei default = "images/Misc/scrapped_default.png"
 
 #placeholder Sprites
 image ph = "images/placeholder/PH_default.png"
@@ -543,8 +544,11 @@ label monday_kanye:
 label interrupt_kanye:
 
     show kanye startled
+
     Ka "Ah."
+
     show kanye neutral
+    
     Ka "Ahem. Sorry, I got a bit carried away."
     Ka "I have to go to class."
     Ka "See you."
@@ -1496,4 +1500,4 @@ label wednesday_afterschool:
         "Look for Kagaku":
             jump search_kagaku
         "Look for Taiiku":
-            jump look_for_taiiku
+            jump current

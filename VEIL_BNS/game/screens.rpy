@@ -209,7 +209,10 @@ screen choice(items):
 
     vbox:
         for i in items:
-            textbutton i.caption action i.action
+            textbutton i.caption:
+                action i.action
+                hover_sound "audio/click.wav"
+
 
 
 style choice_vbox is vbox
@@ -225,9 +228,11 @@ style choice_vbox:
 
 style choice_button is default:
     properties gui.button_properties("choice_button")
+    activate_sound "audio/confirm.wav"
 
 style choice_button_text is default:
     properties gui.text_properties("choice_button")
+
 
 
 ## Quick Menu screen ###########################################################
