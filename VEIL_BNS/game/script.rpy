@@ -182,6 +182,10 @@ init python:
 
         kei = kei + 1
 
+    #sfx channel
+    renpy.music.register_channel("sfx1", mixer="sfx", loop=False, stop_on_mute=True)
+
+    #adds typewriter style sfx to dialogue
     def dialogue_sfx(event, interact = True, **kwargs):
         if event == "show":
             renpy.sound.play("audio/blip.wav", loop=True)
@@ -194,6 +198,11 @@ init python:
 
     #determines whether the player is stupid or not
     player_normal = False
+
+    #route triggers
+    ka_route = False
+    t_route = False
+    fix_route = False
 
     #Default name for player
     name_input = "Daquan Tamil"
@@ -252,6 +261,10 @@ image kanye angry = "images/Kanye/kanye_angry.png"
 image kanye excited = "images/Kanye/kanye_excited.png"
 image kanye startled = "images/Kanye/kanye_startled.png"
 image kanye neutral 2 = "images/Kanye/kanye_neutral2.png"
+image kanye smile = "images/Kanye/kanye_smile.png"
+image kanye laugh = "images/Kanye/kanye_laugh.png"
+image kanye hes = "images/Kanye/kanye_hes.png"
+
 
 #Travis Sprites
 image travis neutral = "images/Travis/Travis_neutral.png"
@@ -312,6 +325,9 @@ label start:
     "Checkpoint Shortcut active."
 
     stop music
+
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
+
 
     jump story_start
 
@@ -390,7 +406,8 @@ label monday_start:
     P "the amount of sleep I’ve lost because of those damn barking dogs was enough to drive me insane."
     P "Maybe that's why I have dementia..."
 
-    play sound "stepping.mp3"
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
+
 
     P "(...)"
 
@@ -412,7 +429,8 @@ label monday_start:
 
     stop music
 
-    play sound "sad_trombone.mp3"
+    $ renpy.play("audio/sad_trombone.mp3", channel="sfx1")
+
     P "(I left my house keys at home.)"
     P "(I let out a long disappointed sigh of defeat.)"
     P "(But oddly enough, there was a note I didn’t remember putting in my pocket...)"
@@ -421,6 +439,7 @@ label monday_start:
 
         "Open it":
 
+            $ time.sleep(3.0)
             $ renpy.call_in_new_context("file_write" , file_path1, message_1)
 
             P "Huh, I can’t even read this… "
@@ -439,7 +458,7 @@ label monday_morning:
 
     scene bg hallway with dissolve
     play music "sincememo.mp3"
-    play sound "stepping.mp3"
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
 
     P "(I was admiring my surroundings while strolling through the hallway.)"
     P "(It was like everywhere I saw was masterpiece painted by renowned painters.)"
@@ -453,8 +472,9 @@ label monday_morning:
     P "(That even though I’m in a new place, I'd still have a place to run away and escape reality.)"
     P "(I gently slid open the door.)"
 
+    $ renpy.play("audio/sliding_door.mp3", channel="sfx1")
     scene bg black
-    play sound "stepping.mp3"
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
 
 label monday_kanye:
 
@@ -470,11 +490,11 @@ label monday_kanye:
 
     stop sound
     stop music
-    play sound "bamboo.ogg"
+    $ renpy.play("audio/bamboo.ogg", channel="sfx1")
 
     P "...!"
 
-    play sound "crash.ogg"
+    $ renpy.play("audio/crash.ogg", channel="sfx1")
 
     uk "Oof!"
 
@@ -585,7 +605,7 @@ label let_kanye_talk:
     hide  kanye neutral at left with easeoutleft
     hide kanye
 
-    P "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president)"
+    P "(I’m left speechless at the sudden switch from a fanatic bookworm to a composed president.)"
     P "(...)"
     P "I guess I’ll go too…"
 
@@ -618,7 +638,7 @@ label monday_cafeteria:
     P "(I couldn't help but chase after the source, and taste what might've smelled like the best food I'd have in my entire life.)"
     scene bg black
     stop music
-    play sound "bell.wav" volume 0.5
+    $ renpy.play("audio/bell.wav", volume=0.5, channel="sfx1")
 
     jump monday_afterschool
 
@@ -629,7 +649,7 @@ label monday_rooftop:
     scene bg black
 
     scene bg staircase at bg
-    play sound "stepping.mp3"
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
 
     P "(I find myself stepping up what might've been the longest staircase of my entire life.)"
     P "*Huff* *Huff*"
@@ -639,7 +659,7 @@ label monday_rooftop:
 
     scene bg black
 
-    play sound "sliding_door.mp3"
+    $ renpy.play("audio/sliding_door.mp3", channel="sfx1")
 
     pause 1.5
 
@@ -662,12 +682,16 @@ label monday_rooftop:
     P "(I spend a moment enjoying watching people live their everyday life before going back to class.)"
 
     stop music
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
 
     jump monday_afterschool
 
 label monday_afterschool:
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
     scene bg afterschool with fade
     pause 3.0
     play music "TOL.mp3"
@@ -680,7 +704,7 @@ label monday_afterschool:
     P "Whatever, I’m going home."
 
     scene bg black with dissolve
-    play sound "stepping.mp3" volume 1.5
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
 
     P "(Hmm? What’s all that noise?)"
     P "(I look around, and find that the source of the commotion has been coming from the school gym.)"
@@ -694,7 +718,7 @@ label monday_afterschool:
     P "(Hey, isn’t that ball coming straight towards my—)"
 
     stop music
-    play sound "punch.mp3"
+    $ renpy.play("audio/punch.mp3", channel="sfx1")
     scene bg black
 
     P "*Thud!*"
@@ -748,7 +772,7 @@ label concussed:
     show travis shocked at scale_sprite
 
     stop music
-    play sound "crash.ogg"
+    $ renpy.play("audio/crash.ogg", channel="sfx1")
     uk "..."
     uk '****'
 
@@ -934,7 +958,7 @@ label tuesday_morning:
 
     play music "LEASE.mp3"
     scene bg hood with dissolve
-    play sound "stepping.mp3"
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
 
     P "I wonder if I’ll see Kanye again."
     P "She seems a bit odd, but I’m glad to have another book-buddy."
@@ -959,13 +983,13 @@ label tuesday_morning:
     Ka "Oh!"
     Ka "[name_input]-kun."
 
-    #show kanye smile
+    show kanye smile
 
     Ka "Good morning."
 
     P "Ka…Kagaku-san..."
 
-    #show kanye laugh
+    show kanye laugh
 
     Ka "Hahaha!"
 
@@ -981,7 +1005,7 @@ label tuesday_morning:
     P "I’m pretty alright, thanks."
     P "How about you?"
 
-    #show kanye hesitated
+    show kanye hes
 
     Ka "I’m… alright, thank you."
 
@@ -992,7 +1016,7 @@ label tuesday_morning:
 
     Ka "Ah! It’s nothing. It’s just…"
 
-    #show kanye hesitated
+    show kanye hes
     show kanye neutral
 
     Ka "..."
@@ -1006,7 +1030,7 @@ label tuesday_morning:
 
     Ka "No! Not at all! I can handle it myself."
 
-    #show kanye hesitated
+    show kanye hes
 
     Ka "I just need a little time, that’s all."
 
@@ -1014,17 +1038,18 @@ label tuesday_morning:
     P "Alright, just…"
     P "Tell me if you need anything, okay?"
 
-    #show kanye startled
+    show kanye startled
 
     Ka "..."
 
-    #show kanye smile
+    show kanye smile
 
     Ka "Thank you, [name_input]-kun."
     Ka "That means a lot to me."
 
-    play sound "bell.wav" volume 0.5
-
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
     pause 3.0
 
     show kanye neutral
@@ -1038,7 +1063,9 @@ label tuesday_morning:
     jump tuesday_midday
 
 label tuesday_midday:
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
 
     #classroom bg
 
@@ -1060,7 +1087,7 @@ label tuesday_cafeteria:
 
     scene bg black
 
-    P "(I make my way to the cafeteria once again, curious for what's on the menu today.)"
+    P "(I make my way to the cafeteria, curious for what's on the menu today.)"
 
     play music "cafeteria.mp3"
 
@@ -1084,7 +1111,9 @@ label tuesday_cafeteria:
 
     scene bg black
     stop music
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
 
     jump tuesday_afterschool
 
@@ -1103,13 +1132,17 @@ label  tuesday_theatre:
     P "I haven't been one for plays but-"
     P "Looking at a theatre this extravagant might just get me into it."
 
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
 
     jump tuesday_afterschool
 
 label tuesday_afterschool:
 
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
 
     scene bg afterschool with fade
     pause 3.0
@@ -1131,7 +1164,7 @@ label tuesday_afterschool:
 
     P "(I head over to the school gym, my stomach pounding like it was playing some kind of desperate symphony.)"
 
-    play sound "stepping.mp3"
+    $ renpy.play("audio/stepping.mp3", channel="sfx1")
     scene bg gym with dissolve
 
     P "(To my surprise, there was no rowdy commotion this time.)"
@@ -1271,6 +1304,9 @@ label tuesday_bedroom:
     P "(As I was finishing changing into my pajamas, I was getting ready to slip under my covers...)"
     P "(Suddenly, I nearly slip as I stepped on a mysterious object.)"
     P "Ah!"
+
+    stop music
+
     P "Huh? What is this?"
     P "Another piece of paper…"
 
@@ -1279,6 +1315,7 @@ label tuesday_bedroom:
 
             P "(I examine the paper closer)"
 
+            $ time.sleep(3.0)
             $ renpy.call_in_new_context("file_write", file_path2, message_2)
 
             P "Butter?"
@@ -1295,7 +1332,7 @@ label tuesday_bedroom:
 
     scene bg black with fade
 
-    jump current
+    jump wednesday_morning
 
 #--- WEDNESDAY ---
 
@@ -1317,19 +1354,19 @@ label wednesday_morning:
 
     scene bg black
 
-    #play sound "alarm_clock.ogg"
+    $ renpy.play("audio/clock.mp3", channel="sfx1")
 
     P "... "
 
-    #play sound "alarm_clock.ogg"
+    $ renpy.play("audio/clock.mp3", channel="sfx1")
 
     P "Five more minutes…"
 
-    #play sound "alarm_clock.ogg"
+    $ renpy.play("audio/clock.mp3", channel="sfx1")
 
     P "I said, I more—"
 
-    #scene bedroom_bg with dissolve
+    $ renpy.play("audio/clock.mp3", channel="sfx1")
 
     play music "spirited.mp3"
 
@@ -1338,11 +1375,17 @@ label wednesday_morning:
     P "(I scramble under my covers trying to find my phone.)"
     P "There it is!"
     P "..."
+
+    stop music
+
+    $ renpy.play("audio/crash.ogg", channel="sfx1")
+
     P "8:55!?"
+
+    play music "spirited.mp3"
+
     P "(I quickly leap out of my bed and start throwing my uniform on.)"
     P "I’m going to be late!"
-
-    #scene black with fade
 
     scene bg hood with dissolve
 
@@ -1361,6 +1404,8 @@ label wednesday_morning:
 
     #scene black
 
+    $ renpy.play("audio/ding.wav", channel="sfx1")
+
     P "(This wasn’t my class.)"
     P "(I immediately bowed my head in embarrassment and guilt.)"
     P "Sorry for the interruption!!!"
@@ -1371,6 +1416,10 @@ label wednesday_morning:
 
 label wednesday_midday:
     
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
+
     #scene bg classroom
 
     P "I've got nothing to do right now."
@@ -1409,7 +1458,9 @@ label wednesday_cafeteria:
     P "..."
     P "It was meh."
 
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
 
     scene bg black
     jump current
@@ -1442,7 +1493,7 @@ label wednesday_club:
     P "(However, my empty stomach says otherwise.)"
     P "..."
     P "They wouldn't mind, right?"
-    P "(I sheepishly take out the lunch box and open the lid...)"
+    "(I sheepishly take out the lunch box and open the lid...)"
     P "What the hell"
     P "Another note?"
 
@@ -1450,6 +1501,8 @@ label wednesday_club:
         "Open it":
 
             P "(I examine the paper closer)"
+
+            $ time.sleep(3.0)
 
             $ renpy.call_in_new_context("file_write", file_path3, message_3)
 
@@ -1462,14 +1515,16 @@ label wednesday_club:
             pass
 
     P "How strange..."
-    P "(I wasn't really interested in the note, but the food in the container)"
+    P "(I wasn't really interested in the note, but the food in the container.)"
     P " munch munch"
-    P "...!"
+    "...!"
     P "That's delicious!"
     P "(I immediately scarf down the rest of the food, not leaving even a single grain of rice.)"
 
     scene bg black
-    play sound "bell.wav" volume 0.5
+    $ renpy.music.set_volume(0.5, channel="sfx1")
+    $ renpy.play("audio/bell.wav", channel="sfx1")
+    $ renpy.music.set_volume(1, channel="sfx1")
     
     jump wednesday_afterschool
 
@@ -1478,24 +1533,24 @@ label wednesday_afterschool:
     scene bg afterschool
 
     P "*Yawn*"
-    P "(I groggily look around at an empty classroom)"
+    P "(I groggily look around at an empty classroom.)"
     P "..."
     P "Huh?"
 
     scene bg black
 
     P "Where is everyone?"
-    P "(I close my eyes and begin contemplating what happened)"
+    P "(I close my eyes and begin contemplating what happened.)"
     P "..."
 
-    #play sound "ting_sfx.ogg"
+    $ renpy.play("audio/ding.wav", channel="sfx1")
 
     P "...!"
     P "I fell asleep until the end of class!"
     P "How did nobody wake me up?"
-    P "(To be fair, I didn’t know many of my classmates well…)"
+    P "(To be fair, I don't think anyone knows my name…)"
     P "*Sigh*"
-    P "(I look out the window and stare at the golden glows)"
+    P "(I look out the window and stare at the golden glow.)"
     P "I wonder if Kagaku is still here…"
     P "I didn’t get the chance to see her this morning."
     P "Taiiku was also pretty down yesterday…"

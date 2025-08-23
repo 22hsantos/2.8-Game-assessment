@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 214: 'volume' is not a keyword argument or valid child of the textbutton statement.
-    hover_sound "audio/click.wav" volume 0.5
-                                        ^
+File "game/script.rpy", line 1056: invalid syntax
+    renpy.play("audio/bell.wav", channel="sfx1")$ renpy.music.set_volume(1, channel="sfx1")
+                                                 ^
+
+File "game/script.rpy", line 1103: invalid syntax
+    renpy.play("audio/bell.wav", channel="sfx1")$ renpy.music.set_volume(1, channel="sfx1")
+                                                 ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Sat Aug 23 15:18:57 2025
+Sat Aug 23 19:08:12 2025

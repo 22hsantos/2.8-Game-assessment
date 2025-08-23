@@ -1,28 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 8, in script
-    init python:
-  File "game/script.rpy", line 192, in <module>
-    config.say_event_callbacks.append(dialogue_sfx)
-Exception: config.say_event_callbacks is not a known configuration variable.
+  File "game/script.rpy", line 1349, in script
+    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
+  File "game/script.rpy", line 1349, in <module>
+    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
+TypeError: play() got an unexpected keyword argument 'volume'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 8, in script
-    init python:
+  File "game/script.rpy", line 1349, in script
+    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
   File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
     exec(bytecode, globals, locals)
-  File "game/script.rpy", line 192, in <module>
-    config.say_event_callbacks.append(dialogue_sfx)
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\defaultstore.py", line 93, in __getattr__
-    raise Exception('config.%s is not a known configuration variable.' % (name))
-Exception: config.say_event_callbacks is not a known configuration variable.
+  File "game/script.rpy", line 1349, in <module>
+    $ renpy.play("audio/clock.mp3", volume = 0.8, channel="sfx1")
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\exports\mediaexports.py", line 126, in play
+    renpy.audio.music.play(filename, channel=channel, loop=False, **kwargs)
+TypeError: play() got an unexpected keyword argument 'volume'
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Sat Aug 23 17:51:27 2025
+Sat Aug 23 19:15:01 2025
