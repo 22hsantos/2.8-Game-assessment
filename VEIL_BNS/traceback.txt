@@ -1,37 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/options.rpy", line 59, in script
-    define config.mouse_click_sound = "audio/confirm.wav"
-  File "game/options.rpy", line 59, in script
-    define config.mouse_click_sound = "audio/confirm.wav"
-  File "renpy/common/000namespaces.rpy", line 34, in set
-    setattr(self.nso, name, value)
-Exception: config.mouse_click_sound is not a known configuration variable.
+  File "game/script.rpy", line 8, in script
+    init python:
+  File "game/script.rpy", line 192, in <module>
+    config.say_event_callbacks.append(dialogue_sfx)
+Exception: config.say_event_callbacks is not a known configuration variable.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\bootstrap.py", line 359, in bootstrap
-    renpy.main.main()
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\main.py", line 541, in main
-    renpy.game.context().run(node)
-  File "game/options.rpy", line 59, in script
-    define config.mouse_click_sound = "audio/confirm.wav"
-  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
-  File "game/options.rpy", line 59, in script
-    define config.mouse_click_sound = "audio/confirm.wav"
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 2248, in execute
-    self.set()
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 2266, in set
-    ns.set(self.varname, value)
-  File "renpy/common/000namespaces.rpy", line 34, in set
-    setattr(self.nso, name, value)
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\defaultstore.py", line 101, in __setattr__
+  File "game/script.rpy", line 8, in script
+    init python:
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
+    exec(bytecode, globals, locals)
+  File "game/script.rpy", line 192, in <module>
+    config.say_event_callbacks.append(dialogue_sfx)
+  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\defaultstore.py", line 93, in __getattr__
     raise Exception('config.%s is not a known configuration variable.' % (name))
-Exception: config.mouse_click_sound is not a known configuration variable.
+Exception: config.say_event_callbacks is not a known configuration variable.
 
 Windows-10-10.0.26100 AMD64
 Ren'Py 8.3.7.25031702
 VEIL: Beneath The Surface 1.0
-Sat Aug 23 15:45:15 2025
+Sat Aug 23 17:51:27 2025

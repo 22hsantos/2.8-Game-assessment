@@ -182,6 +182,13 @@ init python:
 
         kei = kei + 1
 
+    def dialogue_sfx(event, interact = True, **kwargs):
+        if event == "show":
+            renpy.sound.play("audio/blip.wav", loop=True)
+
+        elif event in ("slow_done", "end"):
+            renpy.sound.stop()
+
     #gets the player's name
     player_name = os.getlogin()
 
@@ -224,13 +231,13 @@ transform bg:
     xalign 0.5
     yalign 0.5
 
-define Ke = Character("Zaigaku Kei")
-define P = Character("[name_input]")
-define u = Character("[player_name]")
-define uk = Character("Unknown")
-define Ka = Character("Takahashi Kanye")
-define coach = Character("Coach")
-define T = Character("Sato Travis")
+define Ke = Character("Zaigaku Kei" , callback = dialogue_sfx)
+define P = Character("[name_input]" , callback = dialogue_sfx)
+define u = Character("[player_name]" , callback = dialogue_sfx)
+define uk = Character("Unknown" , callback = dialogue_sfx)
+define Ka = Character("Takahashi Kanye" , callback = dialogue_sfx)
+define coach = Character("Coach" , callback = dialogue_sfx)
+define T = Character("Sato Travis", callback = dialogue_sfx)
 
 #Character Sprites
 image kei default = "images/Misc/scrapped_default.png"
@@ -548,7 +555,7 @@ label interrupt_kanye:
     Ka "Ah."
 
     show kanye neutral
-    
+
     Ka "Ahem. Sorry, I got a bit carried away."
     Ka "I have to go to class."
     Ka "See you."
@@ -840,7 +847,6 @@ label monday_travis:
 
     T "I’ll treat you sometime as an apology!"
 
-    #hide travis
     hide travis neutral with easeoutleft
 
     P "(And another one runs away…)"
