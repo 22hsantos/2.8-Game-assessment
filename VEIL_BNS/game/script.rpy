@@ -37,7 +37,7 @@ init python:
         )
         sys.exit()#terminates the session
     
-    is_admin()
+    #admin perms are not needed ig
 
     #counts the number of Kei notes
     kei = 0
@@ -149,15 +149,14 @@ init python:
         You looked so sure, so relieved.
         But you forgot one thing: I never stay gone for long.
 
-        So go ahead.
-        Enjoy your game, while you can.
+        So go ahead and enjoy what time you left.
 
         -Kei <3
 
         """
     
     #file path list
-    file_path_list = [file_path1 , file_path2 , file_path3]
+    file_path_list = [file_path1 , file_path2 , file_path3, file_path4]
 
     #checks if each file exists
     for path in file_path_list:
@@ -225,11 +224,15 @@ init python:
     ka_route = False
     t_route = False
     fix_route = False
+    book = False
 
     #Default name for player
     name_input = "Daquan Tamil"
 
-    #misc dialogue triggers
+    #misc dialogue triggers--------------
+
+    #if the player went to the rooftop
+    rooftop = False
 
     #how many times the player has gone to the cafeteria
     cafe = 0
@@ -239,6 +242,35 @@ init python:
 
     #if the player went to the cafeteria on tuesday
     bad_food = False
+
+    taiiku = r"""
+    [code]
+    I'm sorry, but an uncaught exception occurred.
+
+    While running game code:
+    File "game/script.rpy", line 1680, in script
+        jump TAIIKU
+    ScriptError: could not find label 'TAIIKU'.
+
+    -- Full Traceback ------------------------------------------------------------
+
+    Full traceback:
+    File "game/script.rpy", line 1680, in script
+        jump TAIIKU
+    File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 1712, in execute
+        rv = renpy.game.script.lookup(target)
+    File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\script.py", line 1103, in lookup
+        raise ScriptError("could not find label '%s'." % str(original))
+    ScriptError: could not find label 'TAIIKU'.
+
+    Windows-10-10.0.26100 AMD64
+    Ren'Py 8.3.7.25031702
+    VEIL: Beneath The Surface 1.0
+    Sun Aug 24 23:16:34 2025
+[/code]
+
+    
+    """
 
 
 
@@ -300,6 +332,8 @@ image kanye laugh = "images/Kanye/kanye_laugh.png"
 image kanye hes = "images/Kanye/kanye_hes.png"
 image kanye blush = "images/Kanye/kanye_blush.png"
 image kanye emb = "images/Kanye/kanye_emb.png"
+image kanye eat = "images/Kanye/kanye_eat.png"
+image blank = "images/Kanye/kagaku_blank.png"
 
 #Travis Sprites
 image travis neutral = "images/Travis/Travis_neutral.png"
@@ -355,7 +389,12 @@ label kei_skip:
     
     jump ka_thursday_morning
 
+label I_see:
 
+    $ os.startfile(os.path.join(renpy.config.basedir, "game","images", "Misc","I_see.png"))
+    $ persistent._clear()
+    $ renpy.quit()
+    
 
 label start:
 
@@ -405,13 +444,6 @@ label current:
 
 # shortcut to troubleshoot errors without going through dialogue
 label file_write(file_path, message):
-
-    if kei == 3 and ka_route:
-        python:
-            os.makedirs(note_folder, exist_ok=True)
-
-            with open(file_path, "w") as file:
-                file.write(message)
 
     $ note_write(file_path, message)
 
@@ -706,6 +738,7 @@ label monday_cafeteria:
 
 label monday_rooftop:
 
+    $ rooftop = True
     $ explore += 1
 
     P "I wonder what the view up on the rooftop is like."
@@ -1672,7 +1705,9 @@ label wednesday_afterschool:
     menu:
         "Look for Kanye":
             jump search_kanye
-        "Look for Taiiku":
+        "Look for Travis":
+            "[taiiku]"
+            "Travis is missing."
             jump current
 
 label meet_neighbour:
@@ -1699,7 +1734,7 @@ label meet_neighbour:
         N "Unfortunately, I'll have to reset her entirely."
         N "I hope you don't mind."
         N "I do feel bad for her, though."
-        N "She is a good person, deep down."
+        N "Deep down, she is a good person."
         N "..."
         N "Here, take this."
         N "This is her favorite book."
@@ -1709,6 +1744,7 @@ label meet_neighbour:
         menu:
             "Take the book":
 
+                $ book = True
                 $ renpy.call_in_new_context("file_write", file_path4, message_4)
                 N "Great!"
                 N "See you later, [player_name]!"
@@ -1716,14 +1752,14 @@ label meet_neighbour:
                 pass
 
             "Don't take the book":
+
+                stop music
+                
                 N "..."
                 N "Oh, okay."
 
                 #fix asap
-                $ os.startfile(os.path.join(renpy.config.basedir, "game","images", "Misc","I_see.png"))
-
-                $ persistent._clear()
-                $ renpy.quit()
+                $ renpy.call_in_new_context("I_see")
         
 
         hide neighbour_sprite
@@ -1732,3 +1768,5 @@ label meet_neighbour:
         P "Um…"
         P "Why was my neighbour just staring at me?"
         P "Was there something on my face?"
+
+        return

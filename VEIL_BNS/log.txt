@@ -1,14 +1,14 @@
-2025-08-23 11:59:53 UTC
+2025-08-24 11:38:53 UTC
 Windows-10-10.0.26100
 Ren'Py 8.3.7.25031702
 
-Early init took 0.09s
-Loading error handling took 0.03s
-Loading script took 0.27s
-Loading save slot metadata took 0.03s
+Early init took 0.08s
+Loading error handling took 0.10s
+Loading script took 1.31s
+Loading save slot metadata took 0.04s
 Loading persistent took 0.00s
-Running init code took 0.05s
-Loading analysis data took 0.01s
+Running init code took 0.10s
+Loading analysis data took 0.00s
 Analyze and compile ATL took 0.00s
 Reloading save slot metadata took 0.03s
 Index archives took 0.00s
@@ -16,62 +16,17 @@ Backing up script files to 'C:\\Users\\EternalShrine Maiden\\AppData\\Roaming/Re
 Dump and make backups took 0.04s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.04s
+Initial gc took 0.03s
 DPI scale factor: 1.500000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: Disabled thread optimizations.
-Creating interface object took 0.25s
+Creating interface object took 0.22s
 Cleaning stores took 0.00s
 Init translation took 0.00s
 Build styles took 0.00s
 Load screen analysis took 0.00s
-Analyze screens took 0.01s
-Save screen analysis took 0.02s
-Prepare screens took 0.05s
-Save pyanalysis. took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.01s
+Prepare screens took 0.11s
+Save pyanalysis. took 0.01s
 Save bytecode. took 0.02s
-Running _start took 0.00s
-Interface start took 0.25s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 2560, 1440)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce RTX 3060/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 572.83'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1056, 594) drawable=(1056, 594)
-Maximum texture size: 4096x4096
-controller: '030000005e040000ff02000000007200' 'Controller (Xbox One For Windows)' 1
-
-Full traceback:
-  File "renpy/common/00keymap.rpy", line 504, in script
-    python hide:
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\ast.py", line 834, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\python.py", line 1187, in py_exec_bytecode
-    exec(bytecode, globals, locals)
-  File "renpy/common/00keymap.rpy", line 504, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 531, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\loadsave.py", line 436, in save
-    reraise(t, e, tb)
-  File "lib/python3.9/future/utils/__init__.py", line 444, in raise_
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\loadsave.py", line 417, in save
-    dump((roots, renpy.game.log), logf)
-  File "C:\Users\EternalShrine Maiden\OneDrive\renpy-8.3.7-sdk\renpy\compat\pickle.py", line 107, in dump
-    pickle.dump(o, f, pickle.HIGHEST_PROTOCOL if highest else PROTOCOL)
-TypeError: cannot pickle '_io.TextIOWrapper' object (perhaps store.file = <_io.TextIOWrapper name='C:\\Users\\EternalShrine Maiden\\Documents\\DIT work ugh\\2.8-Game-assessment\\VEIL_BNS\\game\\images\\Misc\\VEIL_RESURFACE.txt' mode=')
-
-While running game code:
-  File "renpy/common/00keymap.rpy", line 504, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 504, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 531, in _execute_python_hide
-    renpy.save("_reload-1", "reload save game")
-TypeError: cannot pickle '_io.TextIOWrapper' object (perhaps store.file = <_io.TextIOWrapper name='C:\\Users\\EternalShrine Maiden\\Documents\\DIT work ugh\\2.8-Game-assessment\\VEIL_BNS\\game\\images\\Misc\\VEIL_RESURFACE.txt' mode=')
-Screen sizes: virtual=(1920, 1080) physical=(1310, 799) drawable=(1310, 799)
-Maximum texture size: 4096x4096

@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1056: invalid syntax
-    renpy.play("audio/bell.wav", channel="sfx1")$ renpy.music.set_volume(1, channel="sfx1")
-                                                 ^
-
-File "game/script.rpy", line 1103: invalid syntax
-    renpy.play("audio/bell.wav", channel="sfx1")$ renpy.music.set_volume(1, channel="sfx1")
-                                                 ^
+File "game/ka_route.rpy", line 617: expected 'image_name_component' not found.
+    show
+        ^
 
 Ren'Py Version: Ren'Py 8.3.7.25031702
-Sat Aug 23 19:08:12 2025
+Sun Aug 24 22:57:49 2025
