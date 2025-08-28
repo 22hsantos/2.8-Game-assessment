@@ -881,11 +881,110 @@ label ka_thursday_noon:
     else:
         menu:
             "What book do you recommend?":
-                jump current
+                pass
     
     Ka "What do I recommend?"
     Ka "..."
-    Ka "Personally, I like "
+    Ka "Personally, I like 'The very sleepy c*terpiller'"
+    Ka "I know it's childish..."
+    Ka "But my father always used to read it to me as a kid."
+    Ka "It was one of my favourite moments with him..."
+
+    show kanye hes
+
+    Ka "Before I lost him..."
+    Ka "I wonder what he would think if he saw me now."
+    Ka "..."
+    Ka "Sorry."
+    
+    show kanye neutral
+
+    Ka "I didn't mean to bring the mood down."
+
+    P "No."
+
+    show kanye startled
+
+    P "You don't have to apologise."
+    P "I'm glad that you can open up to me about these things."
+    P "And I'm really happy that you trust me enough..."
+
+    menu:
+
+        "Because..."
+
+        "I really like you.":
+            jump good_ending
+
+        "I also see you as a close friend.":
+            jump bad_ending
+
+label good_ending:
+
+    play musice "end.mp3"
+
+    Ka "..."
+    Ka "I..."
+
+    show kanye neutral
+
+    Ka "I don't know what to say."
+    Ka "We've only met this week..."
+    Ka "But..."
+    Ka "I can't deny that I also have an interest in you."
+
+    show kanye smile
+
+    Ka "Thank you so much, [name_input]-kun."
+    Ka "Thank you for giving me the courage to do the things I couldn't before."
+    Ka "And express myself without being ashamed."
+    Ka "Thank you..."
+
+    hide kanye
+
+    "Good Ending."
+
+    return
+
+label bad_ending:
+    
+    show kanye hes
+
+    Ka "...Oh."
+    Ka "Is that so."
+
+    if kei == 3:
+
+        stop music
+
+        Ka "Is it because of her?"
+        Ka "she always manages to slip her way back in."
+        Ka "Like some kind of cockroach."
+        Ka "I think she spread her disgusting cockroach aura to you."
+        
+        hide kanye
+        show blank at scale_sprite
+
+        Ka "We need to clean you..."
+        Ka "Now."
+
+        $ persistent._clear()
+        $ renpy.quit()
+
+    else:
+        Ka "I see."
+        Ka "..."
+        Ka "I just remembered I had an errand to run."
+        Ka "I have to go."
+        Ka "Sorry."
+
+        hide kanye with easeoutleft
+
+        "Bad end"
+
+        return 
+
+
 
 label give_book:
 

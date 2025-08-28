@@ -376,10 +376,6 @@ image bg club = "images/backgrounds/bg_club.jpg"
 image bg noon library = "images/backgrounds/bg_noon_library.jpg"
 image bg schoolyard = "images/backgrounds/bg_schoolyard.jpg"
 
-screen key_listener():
-    key "q" action Jump("checkpoint")
-    key "w" action Jump("kei_skip")
-
 
 # The game starts here.
 label kei_skip:
@@ -401,22 +397,20 @@ label I_see:
 
 label start:
 
-    show screen key_listener
-
-    if is_admin:
-        pass
-    
-    else:
-        "No admin perms"
-        
-        $ is_admin()
-
-    "Checkpoint Shortcut active."
-
     stop music
 
     $ renpy.play("audio/stepping.mp3", channel="sfx1")
 
+    "Are you familiar with visual novels?"
+
+    menu:
+        "yes":
+            "Right click to see the menu"
+            "Then click help"
+            pass
+        
+        "no":
+            pass
 
     jump story_start
 
@@ -1711,7 +1705,7 @@ label wednesday_afterschool:
         "Look for Travis":
             "[taiiku]"
             "Travis is missing."
-            jump current
+            jump search_kanye
 
 label meet_neighbour:
 
