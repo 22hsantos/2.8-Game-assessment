@@ -392,6 +392,9 @@ label kei_skip:
 label I_see:
 
     $ os.startfile(os.path.join(renpy.config.basedir, "game","images", "Misc","I_see.png"))
+
+    pause 2.0
+
     $ persistent._clear()
     $ renpy.quit()
     

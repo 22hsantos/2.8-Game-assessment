@@ -874,7 +874,7 @@ label ka_thursday_noon:
     if book == True:
         menu:
             "I have a book for you.":
-                jump give_book
+                $ renpy.call_in_new_context("give_book")
 
             "What book do you recommend?":
                 jump current
@@ -882,6 +882,10 @@ label ka_thursday_noon:
         menu:
             "What book do you recommend?":
                 jump current
+    
+    Ka "What do I recommend?"
+    Ka "..."
+    Ka "Personally, I like "
 
 label give_book:
 
@@ -905,6 +909,15 @@ label give_book:
             jump repeat_response
 
         "Say nothing":
+
+            Ka "..."
+            Ka "Okay."
+
+            $ os.remove(file_path4)
+            $ book == False
+
+            #kanye runs off into the sunset with Elon Musk
+
             return
 
 label repeat_response:  
